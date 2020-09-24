@@ -56,3 +56,5 @@ The Overview module will be the top-most module on the Product Detail page.  The
 			* If the default ‘Select Size’ is currently selected: Clicking this button should open the size dropdown, and a message should appear above the dropdown stating “Please select size”
 			* If there is no stock: This button should be hidden
 			* If both a valid size and valid quantity are selected: Clicking this button will add the product to the user’s cart.
+
+## Sprint 1

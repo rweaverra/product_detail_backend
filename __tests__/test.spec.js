@@ -1,4 +1,4 @@
-import App from '../client/src/App.jsx';
+import App from './client/src/app.jsx';
 import mount from 'enzyme';
 
 const wrapper = mount(<App />);

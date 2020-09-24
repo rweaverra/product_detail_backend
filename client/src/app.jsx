@@ -2,6 +2,8 @@ import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 // const apiTest = () => {
 //   fetch('http://52.26.193.201:3000/products/list')
@@ -24,6 +26,12 @@ const App = () => (
         <Button variant="primary">Learn More</Button>
       </p>
     </Jumbotron>
+    <Container>
+      <Row>
+        <Col>
+        </Col>
+      </Row>
+    </Container>
   </Container>
 );
 

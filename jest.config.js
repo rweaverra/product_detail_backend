@@ -2,6 +2,9 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
+  rootDir: '__tests__/',
+  testRegex: '/__tests__/.*spec\\.js$',
+  setupFiles: ['<rootDir>/setup.js'],
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 

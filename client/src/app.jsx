@@ -18,6 +18,7 @@ const App = () => (
   <Container>
     <Jumbotron>
       <h1>The Proto Company</h1>
+      <h2>It is my app!</h2>
       <p>
         This is a simple hero unit, a simple jumbotron-style component for calling
         extra attention to featured content or information.

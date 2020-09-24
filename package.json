@@ -5,7 +5,8 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "start": "cd client/dist && live-server",
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack -d"
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button'
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import Button from 'react-bootstrap/Button';
 
 // const apiTest = () => {
 //   fetch('http://52.26.193.201:3000/products/list')
@@ -13,20 +12,18 @@ import Button from 'react-bootstrap/Button'
 //       console.log(err);
 //         })
 // }
-
 const App = () => (
   <Container>
-    <Row>
-      <Col md={8}>md8</Col>
-      <Col md={4}><Button>It's my Button</Button></Col>
-    </Row>
-    <Row>
-
-    </Row>
-    <div id="test">
-      It is my app!
-      <div>no</div>
-    </div>
+    <Jumbotron>
+      <h1>The Proto Company</h1>
+      <p>
+        This is a simple hero unit, a simple jumbotron-style component for calling
+        extra attention to featured content or information.
+      </p>
+      <p>
+        <Button variant="primary">Learn More</Button>
+      </p>
+    </Jumbotron>
   </Container>
 );
 

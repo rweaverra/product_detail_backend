@@ -1,11 +1,10 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container'
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import { useState } from 'react';
-import { Carousel } from 'react-bootstrap';
+import React, { useState } from 'react';
+// import Container from 'react-bootstrap/Container'
+// import Jumbotron from 'react-bootstrap/Jumbotron'
+// import Button from 'react-bootstrap/Button';
+// import Col from 'react-bootstrap/Col';
+// import Row from 'react-bootstrap/Row';
+import { Container, Jumbotron, Button, Col, Row, Carousel, Card } from 'react-bootstrap';
 import MainImage from './mainImage';
 
 // const apiTest = () => {
@@ -17,6 +16,7 @@ import MainImage from './mainImage';
 //       console.log(err);
 //         })
 // }
+
 const App = () => (
   <Container>
     <br></br>
@@ -57,7 +57,9 @@ const App = () => (
           </Carousel.Item>
         </Carousel></Col>
         <Col xs={12} s={4}> 
-          Product Details Here :D 
+          <Card>
+            <Card.Body>Product Details Here :D</Card.Body> 
+          </Card>
         </Col>
         <Col xs={0} s={2}> </Col>
       </Row>

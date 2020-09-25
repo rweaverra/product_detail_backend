@@ -23,4 +23,4 @@ describe('App', () => {
     const wrapper = mount(<App />);
     expect(wrapper.find(Jumbotron).length).toEqual(1);
   });
-})
+});

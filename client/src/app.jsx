@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 // import Button from 'react-bootstrap/Button';
 // import Col from 'react-bootstrap/Col';
 // import Row from 'react-bootstrap/Row';
-import { Container, Jumbotron, Button, Col, Row, Carousel, Card } from 'react-bootstrap';
+import { Container, Jumbotron, Button, Col, Row, Carousel } from 'react-bootstrap';
 import MainImage from './mainImage';
 
 // const apiTest = () => {
@@ -57,9 +57,7 @@ const App = () => (
           </Carousel.Item>
         </Carousel></Col>
         <Col xs={12} s={4}> 
-          <Card>
-            <Card.Body>Product Details Here :D</Card.Body> 
-          </Card>
+          Product Details Here :D 
         </Col>
         <Col xs={0} s={2}> </Col>
       </Row>

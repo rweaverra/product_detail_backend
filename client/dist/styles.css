@@ -1,9 +1,32 @@
 /******************** 
+ ****** Styles ******
+ ********************/
+body {
+  background-color: #f1eee6;
+}
+/******************** 
  **** Typography ****
  ********************/
-body, a {
+body, p, a {
   font-family: 'Crimson Text', serif;
 }
 h1, h2, h3, h4, h5 {
   font-family: 'Kumbh Sans', sans-serif;
 }
+h1, h2 {
+  color: #658DC6;
+}
+h3, h4, h5 {
+  color: #0f4c81;
+}
+/******************** 
+ **** Components ****
+ ********************/
+.carousel {
+    width:600;
+    height:400;
+}
+.jumbotron {
+  border: 1px solid #658dc6;
+}
+

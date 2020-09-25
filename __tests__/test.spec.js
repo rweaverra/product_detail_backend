@@ -14,7 +14,7 @@ describe('App', () => {
   // });
   it('renders the inner Containers', () => {
     const wrapper = mount(<App />);
-    expect(wrapper.find(Container).length).toEqual(2);
+    expect(wrapper.find(Container).length).toEqual(3);
   });
   it('renders the Title Image', () => {
     const wrapper = mount(<App />);

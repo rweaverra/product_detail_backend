@@ -19,16 +19,7 @@ Status: 200 OK
     "description": "The So Fatigues will wake you up and fit you in. This high energy camo...",
     "category": "Jackets",
     "default_price": "140"
-  },
-  {
-    "id": 2,
-    "name": "Bright Future Sunglasses",
-    "slogan": "You've got to wear shades",
-    "description": "Where you're going you might not need roads, but you definitely need ...",
-    "category": "Accessories",
-    "default_price": "69"
-  },
-  // ...
+  }
 ]
 */
 const listProducts = (callback) => {

@@ -1,5 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`App renders snapshot 1`] = `
+<div
+  className="container"
+>
+  <br />
+  <div
+    className="jumbotron"
+  >
+    <h1>
+      The Proto Company
+    </h1>
+    <br />
+    <p
+      style={
+        Object {
+          "fontSize": 25,
+        }
+      }
+    >
+      Add a touch of comfort to your everyday wardrobe with our casual wear, including soft sweaters and hoodies, joggers, cargo pants and relaxed shirts. Complete your look with our casual jackets and shoes.
+    </p>
+  </div>
+</div>
+`;
+
 exports[`App snapshot renders 1`] = `
 <div
   className="container"

@@ -4,6 +4,9 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { useState } from 'react';
+import { Carousel } from 'react-bootstrap';
+import MainImage from './mainImage';
 
 // const apiTest = () => {
 //   fetch('http://52.26.193.201:3000/products/list')
@@ -16,9 +19,9 @@ import Row from 'react-bootstrap/Row';
 // }
 const App = () => (
   <Container>
+    <br></br>
     <Jumbotron>
       <h1>The Proto Company</h1>
-      <h2>It is my app!</h2>
       <p>
         This is a simple hero unit, a simple jumbotron-style component for calling
         extra attention to featured content or information.
@@ -29,8 +32,34 @@ const App = () => (
     </Jumbotron>
     <Container>
       <Row>
-        <Col>
+        <Col xs={0} s={2}> </Col>
+        <Col xs={12} s={8}> </Col>
+        <Col xs={0} s={2}> </Col>
+      </Row>
+      <Row>
+        <Col xs={0} s={2}> </Col>
+        <Col xs={12} s={6}> 
+        <Carousel interval={null}>
+          <Carousel.Item>
+            <img src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png"/>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png"/>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png"/>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png"/>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png"/>
+          </Carousel.Item>
+        </Carousel></Col>
+        <Col xs={12} s={4}> 
+          Product Details Here :D 
         </Col>
+        <Col xs={0} s={2}> </Col>
       </Row>
     </Container>
   </Container>

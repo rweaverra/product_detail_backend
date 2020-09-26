@@ -42,14 +42,23 @@ h3, h4, h5 {
   text-shadow: #f1eee6 2px 0 12px;
 }
 img {
+  border: 0.25em solid #658dc6;
   height: 500px;
   width: 100%;
   object-fit: cover;
 }
 /******************** 
+ **** Image Zoom ****
+ ********************/
+
+
+/******************** 
  ****** Buttons *****
  ********************/
 btn, Button {
+  border: 0.25em solid #658dc6;
   outline: none !important;
   box-shadow: none !important;
 }
+
+

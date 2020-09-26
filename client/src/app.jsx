@@ -3,6 +3,7 @@ import { Container, Row } from 'react-bootstrap';
 import TitleImage from './components/titleImage';
 import MainImage from './components/mainImage';
 import { getAllStyles } from './lib/routes';
+import Zoom from 'react-medium-image-zoom';
 
 const App = () => {
   const [styles, setStyles] = useState({});

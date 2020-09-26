@@ -125,7 +125,7 @@ Status: 200 OK
 }
 */
 export const getAllStyles = (callback, id = Math.ceil(Math.random() * 10000)) => {
-  console.log('fetching styles');
+  // console.log('fetching styles');
   const path = `${apiPath}/products/${id}/styles`;
   return fetch(path)
     .then((result) => result.json())

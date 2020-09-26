@@ -10,7 +10,7 @@ const MainImage = ({ styles }) => {
   const handleImgLoad = useCallback(() => {
     setIsZoomed(true);
   }, []);
-  const handleZoomChange = useCallback(shouldZoom => {
+  const handleZoomChange = useCallback((shouldZoom) => {
     setIsZoomed(shouldZoom);
   }, []);
   return (

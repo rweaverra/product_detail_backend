@@ -3,16 +3,15 @@ import { Container, Row } from 'react-bootstrap';
 import TitleImage from './components/titleImage';
 import MainImage from './components/mainImage';
 import { getAllStyles } from './lib/routes';
-import Zoom from 'react-medium-image-zoom';
 
 const App = () => {
   const [styles, setStyles] = useState({});
   const [productId, setId] = useState(1);
 
   useEffect(() => {
-    console.log('this time!');
+    // console.log('this time!');
     getAllStyles((error, response) => {
-      console.log('data within get all styles', response.data);
+      // console.log('data within get all styles', response.data);
       if (error) {
         return 'Could not get styles';
       }

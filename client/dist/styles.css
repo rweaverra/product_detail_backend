@@ -37,3 +37,9 @@ h3, h4, h5 {
   color: #B5C7D3;
   font-size: 25px;
 }
+img {
+  height: 500px;
+  /* width: fit-content; */
+  width: 100%;
+  object-fit: cover;
+}

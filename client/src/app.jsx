@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <Container>
-      <br />
+      {/* <br /> */}
       <TitleImage />
       <Container>
         <Row>

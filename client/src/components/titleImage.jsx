@@ -10,7 +10,7 @@ const TitleImage = () => (
       including soft sweaters and hoodies, joggers, cargo pants and relaxed
       shirts. Complete your look with our casual jackets and shoes.
     </p>
-    <Button>Learn More</Button>
+    <Button className="products">View All Products</Button>
   </Jumbotron>
 );
 

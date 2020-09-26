@@ -1,4 +1,4 @@
-const apiPath = 'http://52.26.193.201:3000/';
+const apiPath = 'http://52.26.193.201:3000';
 /* List Products - Retrieves the list of products.
 
 GET /products/list
@@ -22,9 +22,10 @@ Status: 200 OK
   }
 ]
 */
-const listProducts = (callback) => {
+export const listProducts = (callback) => {
   const path = `${apiPath}/products/list`;
   fetch(path)
+    .then((result) => result.json())
     .then((data) => { callback(null, data); })
     .catch((error) => { callback(error, null); });
 };
@@ -123,7 +124,14 @@ Status: 200 OK
   // ...
 }
 */
-
+export const getAllStyles = (callback, id = Math.ceil(Math.random() * 10000)) => {
+  console.log('fetching styles');
+  const path = `${apiPath}/products/${id}/styles`;
+  return fetch(path)
+    .then((result) => result.json())
+    .then((data) => { callback(null, data); })
+    .catch((error) => { callback(error, null); });
+};
 /* Reviews - Returns a list of reviews for a particular product.
 
 GET /reviews/:product_id/list
@@ -236,5 +244,3 @@ time         string      Required. Time the interaction occurred
 Success: Status: 201 CREATED
 Invalid parameters: Status: 422 UNPROCESSABLE ENTITY
  */
-
-export default listProducts;

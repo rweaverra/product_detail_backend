@@ -13,7 +13,12 @@ const MainImage = ({ styles }) => {
   }, []);
 
   return (
-    <Carousel interval={null} style={{ width: 600, height: 500 }}>
+    <Carousel
+      interval={null}
+      style={{ width: 600, height: 500 }}
+      indicators={false}
+      wrap={false}
+    >
       {!!photoArr && photoArr.map((photo) => (
         <Carousel.Item key={photo.url} id="mainImage">
           <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange} closeText="Unzoom Image" openText="Zoom Image" zoomZindex="1">

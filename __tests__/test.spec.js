@@ -6,6 +6,9 @@ import App from '../client/src/app.jsx';
 import TitleImage from '../client/src/components/titleImage';
 import MainImage from '../client/src/components/mainImage';
 
+// describe('test', () => {
+//   test('tests', () => {expect(true).toBe(true);})
+// })
 describe('App', () => {
   // test('renders snapshot', () => {
   //   const component = renderer.create(<App />);

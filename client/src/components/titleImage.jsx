@@ -1,5 +1,5 @@
 import React from 'react';
-import { Jumbotron } from 'react-bootstrap';
+import { Jumbotron, Button } from 'react-bootstrap';
 
 const TitleImage = () => (
   <Jumbotron>
@@ -10,6 +10,7 @@ const TitleImage = () => (
       including soft sweaters and hoodies, joggers, cargo pants and relaxed
       shirts. Complete your look with our casual jackets and shoes.
     </p>
+    <Button>Learn More</Button>
   </Jumbotron>
 );
 

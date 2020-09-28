@@ -5,8 +5,9 @@ import {
 import TitleImage from './components/titleImage';
 import MainImage from './components/mainImage';
 import DetailedInfo from './components/detailedInfo';
-import { getAllStyles, getInfo } from './lib/routes';
 import Features from './components/features';
+import ProductTitle from './components/productTitle';
+import { getAllStyles, getInfo } from './lib/routes';
 
 const App = () => {
   const [styles, setStyles] = useState({});
@@ -44,22 +45,26 @@ const App = () => {
       <TitleImage />
       <Container>
         <Row>
-          <MainImage styles={styles} />
-          Stars will go here
-          <br />
-          Category will go here
-          <br />
-          Product Name will go here
-          <br />
-          Price will go here
-          <br />
-          Style and Selected Style will go here
-          <br />
-          Style Thumbnails will go here
-          <br />
-          Size and Quantity Dropdowns will go here
-          <br />
-          Add to Cart and Favorite Buttons will go here
+          <Col xs={12} sm={8} md={8}>
+            <MainImage styles={styles} />
+          </Col>
+          <Col xs={12} sm={4} md={4}>
+            Stars will go here
+            <br />
+            Category will go here
+            <br />
+            <ProductTitle product={product} />
+            <br />
+            Price will go here
+            <br />
+            Style and Selected Style will go here
+            <br />
+            Style Thumbnails will go here
+            <br />
+            Size and Quantity Dropdowns will go here
+            <br />
+            Add to Cart and Favorite Buttons will go here
+          </Col>
         </Row>
       </Container>
       <Container>
@@ -72,6 +77,7 @@ const App = () => {
           </Col>
         </Row>
       </Container>
+      <br />
     </Container>
   );
 };

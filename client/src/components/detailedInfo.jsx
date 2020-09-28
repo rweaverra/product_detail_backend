@@ -12,7 +12,7 @@ const DetailedInfo = ({ product }) => {
   // console.log('product id', product && product[]);
   return (
     <Card className="accordion-style">
-      <Card.Header className="accordion-slogan">
+      <Card.Header>
         <Accordion.Toggle as={Button} variant="link" eventKey="0" className="accordion-links">
           { slogan }
           <br />

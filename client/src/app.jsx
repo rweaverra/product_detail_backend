@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Accordion } from 'react-bootstrap';
+import { Container, Row, Accordion, Card, Col } from 'react-bootstrap';
 import TitleImage from './components/titleImage';
 import MainImage from './components/mainImage';
 import DetailedInfo from './components/detailedInfo';
 import { getAllStyles, getInfo } from './lib/routes';
+import Features from './components/features';
 
 const App = () => {
   const [styles, setStyles] = useState({});
@@ -38,7 +39,6 @@ const App = () => {
 
   return (
     <Container>
-      {/* <br /> */}
       <TitleImage />
       <Container>
         <Row>
@@ -61,7 +61,14 @@ const App = () => {
         </Row>
       </Container>
       <Container>
-        <Accordion><DetailedInfo product={product} productId={productId} /></Accordion>
+        <Row>
+          <Col xs={12} sm={8} md={8}>
+            <Accordion className="accordion-height"><DetailedInfo product={product} productId={productId} /></Accordion>
+          </Col>
+          <Col xs={12} sm={4} md={4}>
+            <Features product={product} />
+          </Col>
+        </Row>
       </Container>
     </Container>
   );

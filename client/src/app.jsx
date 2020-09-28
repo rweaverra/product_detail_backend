@@ -54,7 +54,6 @@ const App = () => {
             Category will go here
             <br />
             <ProductTitle product={product} />
-            <br />
             Price will go here
             <br />
             Style and Selected Style will go here

@@ -219,3 +219,11 @@ small {
   font-size: 1vw;
   padding: 10px;
 }
+/******************** 
+ ******* Title ******
+ ********************/
+.product-title {
+  font-family: 'Kumbh Sans', sans-serif;
+  color: #658DC6;
+  padding: 5px;
+}

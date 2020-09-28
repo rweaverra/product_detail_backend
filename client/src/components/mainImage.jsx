@@ -21,7 +21,7 @@ const MainImage = ({ styles }) => {
       wrap={false}
     >
       {!!photoArr && photoArr.map((photo) => (
-        <Carousel.Item key={photo.url} id="mainImage">
+        <Carousel.Item key={photo.url + photo.name} id="mainImage">
           <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange} closeText="Unzoom Image" openText="Zoom Image" zoomZindex="1" zoomMargin={20}>
             <img
               src={photo.url}

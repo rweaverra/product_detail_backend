@@ -168,7 +168,7 @@ img {
   text-decoration: none !important;
   color: #f1eee6;
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: 1vw;
+  font-size: 20px;
   padding-top: 10px;
   outline: none !important;
   box-shadow: none !important;
@@ -177,7 +177,7 @@ img {
   background-color: #f1eee6;
   color: #0f4c81;
   font-family: 'Crimson Text', serif;
-  font-size: 1vw;
+  font-size: 20px;
   padding: 10px;
 }
 small {

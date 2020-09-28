@@ -53,7 +53,7 @@ h3, h4, h5 {
 img {
   border: 0.25em solid #658dc6;
   border-radius: 5px;
-  height: 500px;
+  height: 20vmax;
   width: 100%;
   object-fit: cover;
 }
@@ -191,7 +191,8 @@ small {
  ***** Features *****
  ********************/
  .features-style {
-  border: 0.2em solid #658dc6;
+  /* border: 0.2em solid #658dc6; */
+  border: none;
   background-color: #84898C;
 }
 .features-check {
@@ -224,6 +225,22 @@ small {
  ********************/
 .product-title {
   font-family: 'Kumbh Sans', sans-serif;
+  font-size: 25px;
   color: #658DC6;
-  padding: 5px;
+  display: inline;
 }
+/******************** 
+ ***** Category *****
+ ********************/
+.product-category {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 200;
+  color: #0f4c81;
+  text-transform: uppercase;
+  display: inline;
+}
+ /******************** 
+ ******* Price *******
+ ********************/
+

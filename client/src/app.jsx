@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Accordion } from 'react-bootstrap';
 import TitleImage from './components/titleImage';
 import MainImage from './components/mainImage';
-import { getAllStyles } from './lib/routes';
+import DetailedInfo from './components/detailedInfo';
+import { getAllStyles, getInfo } from './lib/routes';
 
 const App = () => {
   const [styles, setStyles] = useState({});
   const [productId, setId] = useState(1);
+  // const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState({});
 
   useEffect(() => {
     // console.log('this time!');
@@ -15,8 +18,21 @@ const App = () => {
       if (error) {
         return 'Could not get styles';
       }
-      setId(response.product_id);
       return setStyles(response);
+    });
+    // listProducts((error, response) => {
+    //   if (error) {
+    //     return 'Could not get products';
+    //   }
+    //   return setProducts(response);
+    // });
+    getInfo((error, response) => {
+      if (error) {
+        return 'Could not get products';
+      }
+      // console.log('id in app: ', response.id);
+      setId(response.id);
+      return setProduct(response);
     });
   }, []);
 
@@ -42,11 +58,10 @@ const App = () => {
           Size and Quantity Dropdowns will go here
           <br />
           Add to Cart and Favorite Buttons will go here
-          <br />
         </Row>
       </Container>
       <Container>
-        Product Description will go here
+        <Accordion><DetailedInfo product={product} productId={productId} /></Accordion>
       </Container>
     </Container>
   );

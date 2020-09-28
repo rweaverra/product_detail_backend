@@ -29,6 +29,7 @@ h3, h4, h5 {
 .carousel {
     width:600;
     height:400;
+    margin: 10px;
 }
 .jumbotron {
   background-color: #0f4c81;
@@ -47,6 +48,7 @@ h3, h4, h5 {
 }
 img {
   border: 0.25em solid #658dc6;
+  border-radius: 5px;
   height: 500px;
   width: 100%;
   object-fit: cover;
@@ -96,10 +98,10 @@ img {
            appearance: none;
  }
  [data-rmiz-btn-open] {
-   cursor: zoom-in;
+   cursor: zoom-in !important;
  }
  [data-rmiz-btn-close] {
-   cursor: zoom-out;
+   cursor: zoom-out !important;
  }
  [data-rmiz-modal-content] {
    position: absolute;
@@ -138,4 +140,45 @@ img {
   outline: none !important;
   box-shadow: none !important;
   padding-top: 10px;
+}
+
+/******************** 
+ ** Detailed Info ***
+ ********************/
+.accordion-style {
+  border: 0.2em solid #658dc6;
+  background-color: #84898C;
+  margin: 20px;
+}
+.accordion-links {
+  text-decoration: none !important;
+  color: #f1eee6;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 1.25vw;
+  padding-top: 10px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.accordion-links:hover {
+  text-decoration: none !important;
+  color: #f1eee6;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 1.25vw;
+  padding-top: 10px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.accordion-body {
+  background-color: #f1eee6;
+  color: #0f4c81;
+  font-family: 'Crimson Text', serif;
+  font-size: 1vw;
+  padding: 10px;
+}
+small {
+  /* text-decoration: none !important; */
+  color: #f1eee6;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: .5vw;
+  float: left;
 }

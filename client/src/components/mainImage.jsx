@@ -16,7 +16,7 @@ const MainImage = ({ styles }) => {
   return (
     <Carousel
       interval={null}
-      style={{ width: 700, height: 500 }}
+      style={{ width: '37vmax', height: '20vmax' }}
       indicators={false}
       wrap={false}
     >

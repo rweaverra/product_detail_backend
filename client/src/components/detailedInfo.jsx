@@ -1,5 +1,7 @@
 import React from 'react';
-import { Accordion, Card, Button } from 'react-bootstrap';
+import {
+  Accordion, Card, Button, Row,
+} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const DetailedInfo = ({ product }) => {
@@ -14,14 +16,22 @@ const DetailedInfo = ({ product }) => {
     <Card className="accordion-style">
       <Card.Header>
         <Accordion.Toggle as={Button} variant="link" eventKey="0" className="accordion-links">
-          { slogan }
-          <br />
-          <small>click for more info </small>
+          <Row>
+            { slogan }
+          </Row>
+          <Row>
+            <small>click for more info </small>
+          </Row>
         </Accordion.Toggle>
       </Card.Header>
       <Accordion.Collapse eventKey="0" className="accordion-body">
         <Card.Body>
-          { description }
+          <Row>
+            {/* <Col xs={12} sm={12} md={8} lg={8}> */}
+            { description }
+            {/* </Col> */}
+            {/* <Col xs={12} sm={12} md={4} lg={4} /> */}
+          </Row>
         </Card.Body>
       </Accordion.Collapse>
     </Card>

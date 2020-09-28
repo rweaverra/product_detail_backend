@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Accordion, Card, Col } from 'react-bootstrap';
+import {
+  Container, Row, Accordion, Col,
+} from 'react-bootstrap';
 import TitleImage from './components/titleImage';
 import MainImage from './components/mainImage';
 import DetailedInfo from './components/detailedInfo';

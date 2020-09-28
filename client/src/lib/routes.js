@@ -22,13 +22,16 @@ Status: 200 OK
   }
 ]
 */
+const productID = Math.ceil(Math.random() * 10000);
+
 export const listProducts = (callback) => {
-  const path = `${apiPath}/products/list`;
+  const path = `${apiPath}/products/list/`;
   fetch(path)
     .then((result) => result.json())
     .then((data) => { callback(null, data); })
     .catch((error) => { callback(error, null); });
 };
+
 /* Product Information - Returns all product level information for a specified product id.
 
 GET /products/:product_id
@@ -59,6 +62,15 @@ Status: 200 OK
   ],
 }
 */
+
+export const getInfo = (callback) => {
+  // console.log('fetching styles');
+  const path = `${apiPath}/products/${productID}`;
+  return fetch(path)
+    .then((result) => result.json())
+    .then((data) => { callback(null, data); })
+    .catch((error) => { callback(error, null); });
+};
 
 /* Product Styles - Returns the all styles available for the given product.
 
@@ -124,9 +136,9 @@ Status: 200 OK
   // ...
 }
 */
-export const getAllStyles = (callback, id = Math.ceil(Math.random() * 10000)) => {
+export const getAllStyles = (callback) => {
   // console.log('fetching styles');
-  const path = `${apiPath}/products/${id}/styles`;
+  const path = `${apiPath}/products/${productID}/styles`;
   return fetch(path)
     .then((result) => result.json())
     .then((data) => { callback(null, data); })

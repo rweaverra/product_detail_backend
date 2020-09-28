@@ -7,6 +7,7 @@
  ********************/
 body {
   background-color: #f1eee6;
+  margin: 20px;
 }
 /******************** 
  **** Typography ****
@@ -148,8 +149,6 @@ img {
 /******************** 
  ** Detailed Info ***
  ********************/
- .accordion-height {
- }
 .accordion-style {
   border: 0.2em solid #658dc6;
   background-color: #84898C;
@@ -191,10 +190,32 @@ small {
 /******************** 
  ***** Features *****
  ********************/
-.features-height {
-  display: inline-block;
-  border-radius: 10px;
+ .features-style {
+  border: 0.2em solid #658dc6;
+  background-color: #84898C;
 }
-.features-title {
+.features-check {
+  border: none;
+  height: auto;
+  width: 20px;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  display: legacy;
+}
+.features-links {
+  text-decoration: none !important;
+  text-align: left;
+  color: #f1eee6;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 20px;
   padding-top: 10px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.features-body {
+  background-color: #f1eee6;
+  color: #0f4c81;
+  font-family: 'Crimson Text', serif;
+  font-size: 1vw;
+  padding: 10px;
 }

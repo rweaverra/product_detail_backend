@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import ControlledZoom from 'react-medium-image-zoom';
+import PropTypes from 'prop-types';
 
 const MainImage = ({ styles }) => {
   const photoArr = styles.results && styles.results[0].photos;
@@ -15,7 +16,7 @@ const MainImage = ({ styles }) => {
   return (
     <Carousel
       interval={null}
-      style={{ width: 600, height: 500 }}
+      style={{ width: 700, height: 500 }}
       indicators={false}
       wrap={false}
     >
@@ -32,6 +33,13 @@ const MainImage = ({ styles }) => {
       ))}
     </Carousel>
   );
+};
+
+MainImage.defaultProps = {
+  styles: PropTypes.objectOf(PropTypes.string, PropTypes.number),
+};
+MainImage.propTypes = {
+  styles: PropTypes.objectOf(PropTypes.string, PropTypes.number),
 };
 
 export default MainImage;

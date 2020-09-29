@@ -34,7 +34,7 @@ h3, h4, h5 {
 }
 .jumbotron {
   /* background-color: #0f4c81; */
-  border: 0.25em solid #658dc6;
+  border: 0.15em solid #658dc6;
   background-image: url(https://media.giphy.com/media/Pn0OvNxhkma6oAaD96/giphy.gif);
   background-size: 100%;
   background-repeat: no-repeat;
@@ -51,7 +51,7 @@ h3, h4, h5 {
   text-shadow: #f1eee6 2px 0 12px;
 }
 img {
-  border: 0.25em solid #658dc6;
+  border: 0.15em solid #658dc6;
   border-radius: 5px;
   height: 20vmax;
   width: 100%;
@@ -150,8 +150,8 @@ img {
  ** Detailed Info ***
  ********************/
 .accordion-style {
-  border: 0.2em solid #658dc6;
-  background-color: #84898C;
+  border: 0.15em solid #658dc6;
+  background-color: #373838;
 }
 .accordion-links {
   text-decoration: none !important;

@@ -1,6 +1,9 @@
 import React from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { v4 as uuidv4 } from 'uuid';
 
 const Features = ({ product }) => {
   const featureList = product && product.features;
@@ -15,7 +18,7 @@ const Features = ({ product }) => {
       <Card.Body className="accordion-body">
         {
         !!featureArray && featureArray.map((trait) => (
-          <Row key={500 + trait.feature}>
+          <Row key={uuidv4()}>
             <Col>
               <img
                 src="https://icons-for-free.com/iconfiles/png/512/checkmark+circle+icon-1320195547843144574.png"
@@ -34,10 +37,16 @@ const Features = ({ product }) => {
   );
 };
 
-Features.defaultProps = {
-  product: PropTypes.objectOf(PropTypes.string),
-};
 Features.propTypes = {
-  product: PropTypes.objectOf(PropTypes.string, PropTypes.number),
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    slogan: PropTypes.string,
+    description: PropTypes.string,
+    category: PropTypes.string,
+    default_price: PropTypes.string,
+    features: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
 };
+
 export default Features;

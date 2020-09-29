@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import ControlledZoom from 'react-medium-image-zoom';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
 const MainImage = ({ styles }) => {
   const photoArr = styles.results && styles.results[0].photos;
@@ -21,7 +22,7 @@ const MainImage = ({ styles }) => {
       wrap={false}
     >
       {!!photoArr && photoArr.map((photo) => (
-        <Carousel.Item key={photo.url + photo.name} id="mainImage">
+        <Carousel.Item key={uuidv4()} id="mainImage">
           <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange} closeText="Unzoom Image" openText="Zoom Image" zoomZindex="1" zoomMargin={20}>
             <img
               src={photo.url}
@@ -35,11 +36,11 @@ const MainImage = ({ styles }) => {
   );
 };
 
-MainImage.defaultProps = {
-  styles: PropTypes.objectOf(PropTypes.string, PropTypes.number),
-};
 MainImage.propTypes = {
-  styles: PropTypes.objectOf(PropTypes.string, PropTypes.number),
+  styles: PropTypes.shape({
+    product_id: PropTypes.string,
+    results: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
 };
 
 export default MainImage;

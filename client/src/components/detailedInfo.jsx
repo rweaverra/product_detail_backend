@@ -1,7 +1,8 @@
 import React from 'react';
-import {
-  Accordion, Card, Button, Row,
-} from 'react-bootstrap';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
 import PropTypes from 'prop-types';
 
 const DetailedInfo = ({ product }) => {
@@ -38,10 +39,15 @@ const DetailedInfo = ({ product }) => {
   );
 };
 
-DetailedInfo.defaultProps = {
-  product: PropTypes.objectOf(PropTypes.string),
-};
 DetailedInfo.propTypes = {
-  product: PropTypes.objectOf(PropTypes.string, PropTypes.number),
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    slogan: PropTypes.string,
+    description: PropTypes.string,
+    category: PropTypes.string,
+    default_price: PropTypes.string,
+    features: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
 };
 export default DetailedInfo;

@@ -7,7 +7,7 @@
  ********************/
 body {
   background-color: #f1eee6;
-  margin: 20px;
+  margin: 2vw;
 }
 /******************** 
  **** Typography ****
@@ -28,19 +28,22 @@ h3, h4, h5 {
  **** Components ****
  ********************/
 .carousel {
-    width:600;
-    height:400;
-    margin-bottom: 10px;
+    max-width:70vw;
+    height:40vw;
+    margin-bottom: 1vw;
 }
 .jumbotron {
-  /* background-color: #0f4c81; */
+  background-color: #F5B895;
   border: 0.15em solid #658dc6;
-  background-image: url(https://media.giphy.com/media/Pn0OvNxhkma6oAaD96/giphy.gif);
-  background-size: 100%;
+  border-radius: .5%;
+  /* background-image: url(https://media.giphy.com/media/Pn0OvNxhkma6oAaD96/giphy.gif); */
+  background-image: url(http://cdn.lowgif.com/full/558c542dc02a1df0-.gif);
+  background-size: 110%;
   background-repeat: no-repeat;
   background-clip: padding-box;
-  padding: 20px;
-  margin-top: 10px;
+  margin-top: 1vw;
+  width: 100%;
+  min-height: 20vw;
 }
 .jumbotron-h1 {
   color: #f1eee6;
@@ -52,7 +55,7 @@ h3, h4, h5 {
 }
 img {
   border: 0.15em solid #658dc6;
-  border-radius: 5px;
+  border-radius: .5%;
   height: 20vmax;
   width: 100%;
   object-fit: cover;
@@ -124,6 +127,7 @@ img {
   outline: none !important;
   box-shadow: none !important;
   padding-top: 10px;
+  border-radius: .5%;
 }
 
 .products:hover {
@@ -134,6 +138,7 @@ img {
   outline: none !important;
   box-shadow: none !important;
   padding-top: 10px;
+  border-radius: .5%;
 }
 
 .products:focus {
@@ -144,6 +149,7 @@ img {
   outline: none !important;
   box-shadow: none !important;
   padding-top: 10px;
+  border-radius: .5%;
 }
 
 /******************** 
@@ -151,6 +157,7 @@ img {
  ********************/
 .accordion-style {
   border: 0.15em solid #658dc6;
+  border-radius: .5%;
   background-color: #373838;
 }
 .accordion-links {
@@ -225,7 +232,7 @@ small {
  ********************/
 .product-title {
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: 25px;
+  font-size: 1.25vw;
   color: #658DC6;
   display: inline;
 }
@@ -234,7 +241,7 @@ small {
  ********************/
 .product-category {
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: 15px;
+  font-size: .75vw;
   font-weight: 200;
   color: #0f4c81;
   text-transform: uppercase;
@@ -244,3 +251,23 @@ small {
  ******* Price *******
  ********************/
 
+ /******************** 
+ ******* Stars *******
+ ********************/
+.stars-review-link a {
+  text-decoration: none !important;
+  color: #F5B895 !important;
+  font-family: 'Crimson Text', serif;
+  font-size: .75vw;
+  letter-spacing: 0.02em;
+}
+.stars-review-link:hover a {
+  text-decoration: none !important;
+  color: #0F4C81 !important;
+  font-family: 'Crimson Text', serif;
+  font-size: .75vw;
+  letter-spacing: 0.02em;
+}
+.stars-spacing {
+  margin-bottom: .5vw;
+}

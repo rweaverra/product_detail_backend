@@ -12,9 +12,6 @@ const Features = ({ product }) => {
 
   return (
     <Card className="features-style">
-      {/* <Card.Header>
-        <p className="features-links">Features</p>
-      </Card.Header> */}
       <Card.Body className="accordion-body">
         {
         !!featureArray && featureArray.map((trait) => (

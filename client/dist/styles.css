@@ -247,9 +247,6 @@ small {
   text-transform: uppercase;
   display: inline;
 }
- /******************** 
- ******* Price *******
- ********************/
 
  /******************** 
  ******* Stars *******
@@ -270,4 +267,10 @@ small {
 }
 .stars-spacing {
   margin-bottom: .5vw;
+}
+ /******************** 
+ ******* Social ******
+ ********************/
+.social-spacing {
+  margin-right: 3px;
 }

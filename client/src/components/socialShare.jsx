@@ -14,6 +14,7 @@ import PropTypes from 'prop-types';
 const SocialShare = ({ styles, product }) => (
   <div>
     <TwitterShareButton
+      className="social-spacing"
       title={product.name}
       via="The Proto Company"
       hashtags={['TheProtoCo', 'MyProto']}
@@ -22,6 +23,7 @@ const SocialShare = ({ styles, product }) => (
       <TwitterIcon size={18} round />
     </TwitterShareButton>
     <FacebookShareButton
+      className="social-spacing"
       quote="Check out this style from The Proto Company!"
       hashtag="TheProtoCo"
       url="facebook.com"
@@ -29,6 +31,7 @@ const SocialShare = ({ styles, product }) => (
       <FacebookIcon size={18} round />
     </FacebookShareButton>
     <PinterestShareButton
+      className="social-spacing"
       media={styles.results}
       description={product.name}
       url="pinterest.com"
@@ -36,6 +39,7 @@ const SocialShare = ({ styles, product }) => (
       <PinterestIcon size={18} round />
     </PinterestShareButton>
     <EmailShareButton
+      className="social-spacing"
       subject={product.name}
       body="Check out this style I found at the Proto Company!"
     >

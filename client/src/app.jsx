@@ -58,6 +58,7 @@ const App = () => {
       if (error) {
         return 'Could not get reviews';
       }
+      console.log('App: get reviews response', response.ratings);
       return setReviews(response.ratings); // object
     });
     // getRating((error, response) => {
@@ -78,11 +79,20 @@ const App = () => {
     // });
   }, []);
 
+  // console.log('App: rating before passing to product info: ', rating);
+  // console.log('App: count before passing to product info: ', count);
+  if (Object.keys(reviews).length === 0
+  || Object.keys(product).length === 0
+  || Object.keys(styles).length === 0) {
+    return (
+      <div />
+    );
+  }
   console.log('reviews before passing to product info: ', reviews);
   return (
     <Container>
       <TitleImage />
-      <ProductInfo styles={styles} product={product} />
+      <ProductInfo styles={styles} product={product} reviews={reviews} />
       {/* <ProductInfo styles={styles} product={product} rating={rating} count={count} /> */}
       <ProductDetails product={product} productId={productId} />
       <br />

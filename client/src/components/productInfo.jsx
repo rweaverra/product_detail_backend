@@ -6,12 +6,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MainImage from './mainImage';
 import StarRating from './starRatings';
-// import ProductTitle from './productTitle';
-// import ProductCategory from './productCategory';
+import SocialShare from './socialShare';
 
 const ProductInfo = ({ styles, product, reviews }) => {
-  // console.log('count and rating in productInfo before passing to StarRating', count, rating);
-  // console.log('ProductInfo: styles, product');
   const [rating, setRating] = useState(0);
   const [count, setCount] = useState(0);
 
@@ -30,6 +27,7 @@ const ProductInfo = ({ styles, product, reviews }) => {
     console.log('ProductInfo: logging total and count', reviewTotal, reviewCount);
     return reviewTotal / reviewCount;
   };
+
   const getTheReviewCount = (starData) => {
     let reviewCount = 0;
     const ratingArr = Object.entries(starData);
@@ -47,7 +45,6 @@ const ProductInfo = ({ styles, product, reviews }) => {
     setRating(average);
     setCount(numberOReviews);
   }, [reviews]);
-
   return (
     <Container>
       <Row>
@@ -61,7 +58,7 @@ const ProductInfo = ({ styles, product, reviews }) => {
           <Col xs={12}>
             {/* Social Sharing */}
             <Row>
-              Social Share Buttons
+              <SocialShare product={product} styles={styles} />
             </Row>
             {/* Product Star Ratings */}
             <Row>
@@ -117,8 +114,6 @@ ProductInfo.propTypes = {
     recommended: PropTypes.objectOf(PropTypes.string),
     characteristics: PropTypes.objectOf(PropTypes.string),
   }).isRequired,
-  // rating: PropTypes.number.isRequired,
-  // count: PropTypes.number.isRequired,
 };
 
 export default ProductInfo;

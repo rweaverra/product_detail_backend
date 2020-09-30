@@ -247,7 +247,6 @@ small {
   text-transform: uppercase;
   display: inline;
 }
-
  /******************** 
  ******* Stars *******
  ********************/
@@ -275,3 +274,31 @@ small {
   margin-right: 3px;
   margin-bottom: 5px;
 }
+ /******************** 
+ ******* Price *******
+ ********************/
+ .price {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: .75vw;
+  font-weight: 300;
+  color: #0f4c81;
+  text-transform: uppercase;
+  display: inline;
+ }
+ .price-sale {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: .75vw;
+  font-weight: 300;
+  color: #F5B895;
+  text-transform: uppercase;
+  display: inline;
+ }
+ .price-original {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: .75vw;
+  font-weight: 200;
+  color: #658DC6;
+  text-decoration: line-through;
+  text-transform: uppercase;
+  display: inline;
+ }

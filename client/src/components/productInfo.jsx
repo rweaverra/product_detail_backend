@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import MainImage from './mainImage';
 import StarRating from './starRatings';
 import SocialShare from './socialShare';
+import StylePrice from './stylesPrice';
 
 const ProductInfo = ({ styles, product, reviews }) => {
   const [rating, setRating] = useState(0);
@@ -78,7 +79,7 @@ const ProductInfo = ({ styles, product, reviews }) => {
               </div>
             </Row>
             {/* Product Price */}
-            <Row>Price will go here</Row>
+            <Row><StylePrice styles={styles} /></Row>
             {/* Product Style */}
             <Row>Style and Selected Style will go here</Row>
             {/* Product Style Thumbnails */}

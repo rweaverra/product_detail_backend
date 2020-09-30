@@ -8,6 +8,7 @@ import MainImage from './mainImage';
 import StarRating from './starRatings';
 import SocialShare from './socialShare';
 import StylePrice from './stylesPrice';
+import StyleThumbnails from './styleThumbnails';
 
 const ProductInfo = ({ styles, product, reviews }) => {
   const [rating, setRating] = useState(0);
@@ -83,7 +84,7 @@ const ProductInfo = ({ styles, product, reviews }) => {
             {/* Product Style */}
             <Row>Style and Selected Style will go here</Row>
             {/* Product Style Thumbnails */}
-            <Row>Style Thumbnails will go here</Row>
+            <Row><StyleThumbnails /></Row>
             {/* Size and Quantity Selectors */}
             <Row>Size and Quantity Dropdowns will go here</Row>
             {/* Cart Options */}

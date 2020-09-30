@@ -7,7 +7,6 @@
  ********************/
 body {
   background-color: #f1eee6;
-  margin: 2vw;
 }
 /******************** 
  **** Typography ****
@@ -53,7 +52,7 @@ h3, h4, h5 {
   font-size: 25px;
   text-shadow: #f1eee6 2px 0 12px;
 }
-img {
+.main-img {
   border: 0.15em solid #658dc6;
   border-radius: .5%;
   height: 20vmax;
@@ -302,3 +301,20 @@ small {
   text-transform: uppercase;
   display: inline;
  }
+ /******************** 
+ ***** Thumbnails ****
+ ********************/
+.thumbnails-img {
+  border: 0.15em solid #658dc6;
+  border-radius: .5%;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+/* .thumbnails-cage {
+  border: 0.15em solid #658dc6 !important;
+  border-radius: .5% !important;
+  padding: 2px;
+} */

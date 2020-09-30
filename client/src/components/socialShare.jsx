@@ -16,7 +16,7 @@ const SocialShare = ({ styles, product }) => (
     <TwitterShareButton
       className="social-spacing"
       title={product.name}
-      via="The Proto Company"
+      via="TheProtoCompany"
       hashtags={['TheProtoCo', 'MyProto']}
       url="twitter.com"
     >

@@ -1,17 +1,53 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MainImage from './mainImage';
-// import StarRating from './starRating';
+import StarRating from './starRatings';
 // import ProductTitle from './productTitle';
 // import ProductCategory from './productCategory';
 
-const ProductInfo = ({ styles, product }) => {
+const ProductInfo = ({ styles, product, reviews }) => {
   // console.log('count and rating in productInfo before passing to StarRating', count, rating);
-  console.log('ProductInfo: styles, product');
+  // console.log('ProductInfo: styles, product');
+  const [rating, setRating] = useState(0);
+  const [count, setCount] = useState(0);
+
+  const getTheAverageRating = (starData) => {
+    console.log('ProductInfo: star data ', starData);
+    let reviewCount = 0;
+    let reviewTotal = 0;
+    const ratingArr = Object.entries(starData);
+    for (let i = 0; i < ratingArr.length; i += 1) {
+      const current = ratingArr[i];
+      const stars = Number(current[0]);
+      const counter = current[1];
+      reviewCount += counter;
+      reviewTotal += stars * counter;
+    }
+    console.log('ProductInfo: logging total and count', reviewTotal, reviewCount);
+    return reviewTotal / reviewCount;
+  };
+  const getTheReviewCount = (starData) => {
+    let reviewCount = 0;
+    const ratingArr = Object.entries(starData);
+    for (let i = 0; i < ratingArr.length; i += 1) {
+      const current = ratingArr[i];
+      const counter = current[1];
+      reviewCount += counter;
+    }
+    return reviewCount;
+  };
+
+  useEffect(() => {
+    const average = getTheAverageRating(reviews);
+    const numberOReviews = getTheReviewCount(reviews);
+    setRating(average);
+    setCount(numberOReviews);
+  }, [reviews]);
+
   return (
     <Container>
       <Row>
@@ -23,10 +59,13 @@ const ProductInfo = ({ styles, product }) => {
         </div>
         <div>
           <Col xs={12}>
+            {/* Social Sharing */}
+            <Row>
+              Social Share Buttons
+            </Row>
             {/* Product Star Ratings */}
             <Row>
-              Redo Star Ratings Here.
-              {/* <StarRating rating={rating} count={count} /> */}
+              <StarRating rating={rating} count={count} />
             </Row>
             {/* Product Category */}
             <Row>
@@ -72,12 +111,12 @@ ProductInfo.propTypes = {
     default_price: PropTypes.string,
     features: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
-  // reviews: PropTypes.shape({
-  //   product_id: PropTypes.string,
-  //   ratings: PropTypes.objectOf(PropTypes.string),
-  //   recommended: PropTypes.objectOf(PropTypes.string),
-  //   characteristics: PropTypes.objectOf(PropTypes.string),
-  // }).isRequired,
+  reviews: PropTypes.shape({
+    product_id: PropTypes.string,
+    ratings: PropTypes.objectOf(PropTypes.string),
+    recommended: PropTypes.objectOf(PropTypes.string),
+    characteristics: PropTypes.objectOf(PropTypes.string),
+  }).isRequired,
   // rating: PropTypes.number.isRequired,
   // count: PropTypes.number.isRequired,
 };

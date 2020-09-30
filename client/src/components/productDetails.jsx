@@ -1,7 +1,3 @@
-// Chris suggested modularizing my code more by brining in the
-// main containers from app into different files
-
-// This is where the product details and features will go
 import React from 'react';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';

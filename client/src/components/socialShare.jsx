@@ -20,7 +20,7 @@ const SocialShare = ({ styles, product }) => (
       hashtags={['TheProtoCo', 'MyProto']}
       url="twitter.com"
     >
-      <TwitterIcon size={18} round />
+      <TwitterIcon size={24} round />
     </TwitterShareButton>
     <FacebookShareButton
       className="social-spacing"
@@ -28,7 +28,7 @@ const SocialShare = ({ styles, product }) => (
       hashtag="TheProtoCo"
       url="facebook.com"
     >
-      <FacebookIcon size={18} round />
+      <FacebookIcon size={24} round />
     </FacebookShareButton>
     <PinterestShareButton
       className="social-spacing"
@@ -36,14 +36,14 @@ const SocialShare = ({ styles, product }) => (
       description={product.name}
       url="pinterest.com"
     >
-      <PinterestIcon size={18} round />
+      <PinterestIcon size={24} round />
     </PinterestShareButton>
     <EmailShareButton
       className="social-spacing"
       subject={product.name}
       body="Check out this style I found at the Proto Company!"
     >
-      <EmailIcon size={18} round />
+      <EmailIcon size={24} round />
     </EmailShareButton>
   </div>
 );

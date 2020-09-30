@@ -25,6 +25,7 @@ const MainImage = ({ styles }) => {
         <Carousel.Item key={uuidv4()} id="mainImage">
           <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange} closeText="Unzoom Image" openText="Zoom Image" zoomZindex="1" zoomMargin={20}>
             <img
+              className="main-img"
               src={photo.url}
               alt={photo.name}
               onLoad={handleImgLoad}

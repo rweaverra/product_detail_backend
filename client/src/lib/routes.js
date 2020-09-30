@@ -1,4 +1,5 @@
-const apiPath = 'http://52.26.193.201:3000/';
+/* eslint-disable no-console */
+const apiPath = 'http://52.26.193.201:3000';
 /* List Products - Retrieves the list of products.
 
 GET /products/list
@@ -22,12 +23,16 @@ Status: 200 OK
   }
 ]
 */
-const listProducts = (callback) => {
-  const path = `${apiPath}/products/list`;
+const productID = Math.ceil(Math.random() * 10000);
+
+export const listProducts = (callback) => {
+  const path = `${apiPath}/products/list/`;
   fetch(path)
+    .then((result) => result.json())
     .then((data) => { callback(null, data); })
     .catch((error) => { callback(error, null); });
 };
+
 /* Product Information - Returns all product level information for a specified product id.
 
 GET /products/:product_id
@@ -58,6 +63,15 @@ Status: 200 OK
   ],
 }
 */
+
+export const getInfo = (callback) => {
+  // console.log('fetching styles');
+  const path = `${apiPath}/products/${productID}`;
+  return fetch(path)
+    .then((result) => result.json())
+    .then((data) => { callback(null, data); })
+    .catch((error) => { callback(error, null); });
+};
 
 /* Product Styles - Returns the all styles available for the given product.
 
@@ -123,7 +137,14 @@ Status: 200 OK
   // ...
 }
 */
-
+export const getAllStyles = (callback) => {
+  // console.log('fetching styles');
+  const path = `${apiPath}/products/${productID}/styles`;
+  return fetch(path)
+    .then((result) => result.json())
+    .then((data) => { callback(null, data); })
+    .catch((error) => { callback(error, null); });
+};
 /* Reviews - Returns a list of reviews for a particular product.
 
 GET /reviews/:product_id/list
@@ -178,8 +199,61 @@ Status: 200 OK
     // ...
   ]
 }
-*/
+Get Review Metadata
+Returns review metadata for a given product.
 
+GET /reviews/:product_id/meta
+
+Parameters
+
+Parameter Type Description
+product_id integer Required ID of the product for which data should be returned
+Response
+
+Status: 200 OK
+
+{
+  "product_id": "2",
+  "ratings": {
+    2: 1,
+    3: 1,
+    4: 2,
+    // ...
+  },
+  "recommended": {
+    0: 5
+    // ...
+  },
+  "characteristics": {
+    "Size": {
+      "id": 14,
+      "value": "4.0000"
+    },
+    "Width": {
+      "id": 15,
+      "value": "3.5000"
+    },
+    "Comfort": {
+      "id": 16,
+      "value": "4.0000"
+    },
+    // ...
+}
+*/
+export const getReviews = (callback) => {
+  // console.log('fetching styles');
+  const path = `${apiPath}/reviews/${productID}/meta`;
+  return fetch(path)
+    .then((result) => result.json())
+    .then((data) => {
+      console.log('Routes: data in fetch', data);
+      callback(null, data);
+    })
+    .catch((error) => {
+      console.log('data in fetch error');
+      callback(error, null);
+    });
+};
 /* Questions & Answers
   I think I will want to connect to Kym's service via link.
 */
@@ -236,5 +310,3 @@ time         string      Required. Time the interaction occurred
 Success: Status: 201 CREATED
 Invalid parameters: Status: 422 UNPROCESSABLE ENTITY
  */
-
-export default listProducts;

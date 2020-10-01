@@ -5,30 +5,53 @@
 // What will the badge look like?
 // How will you grab the image url and the style id?
 // What will be held in state?
-import React from 'react';
-// import Container from 'react-bootstrap/Container';
+import React, { useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
+import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Col from 'react-bootstrap/Col';
+// import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
+import { v4 as uuidv4 } from 'uuid';
 
-const StyleThumbnails = () => (
-  <div className="thumbnails-cage">
-    <Col sm={10} md={7}>
-      {/* mapping fn returns the following */}
-      <Image className="thumbnails-img" src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" roundedCircle />
-      {/* end mapping fn */}
-      <Image className="thumbnails-img" src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" roundedCircle />
+const StyleThumbnails = ({ styles }) => {
+  const [isSelected, imgIsSelected] = useState(false);
+  const photoArr = styles.results[0].photos;
+  const handleStyleSelect = useCallback(() => {
+    imgIsSelected(!isSelected); // current style will go here
+  }, [isSelected]);
 
-      <Image className="thumbnails-img" src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" roundedCircle />
+  let className = 'thumbnails-img ';
+  if (isSelected) {
+    className += 'thumbnails-selected';
+  }
 
-      <Image className="thumbnails-img" src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" roundedCircle />
+  return (
+    <div>
+      {/* <Col sm={10} md={7}> */}
+      <Container className="thumbnails-cage">
+        {photoArr.map((photo) => (
+          <Image
+            key={uuidv4()}
+            className={className}
+            src={photo.thumbnail_url}
+            alt={photo.name}
+            roundedCircle
+            onClick={handleStyleSelect}
+          />
+        ))}
+      </Container>
+      {/* </Col> */}
+    </div>
+  );
+};
 
-      <Image className="thumbnails-img" src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" roundedCircle />
-
-      <Image className="thumbnails-img" src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" roundedCircle />
-    </Col>
-
-  </div>
-);
+StyleThumbnails.propTypes = {
+  styles: PropTypes.shape({
+    product_id: PropTypes.string,
+    results: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+  // productId: PropTypes.number.isRequired,
+};
 
 export default StyleThumbnails;

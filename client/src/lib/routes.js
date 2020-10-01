@@ -23,7 +23,8 @@ Status: 200 OK
   }
 ]
 */
-const productID = Math.ceil(Math.random() * 10000);
+// const productID = Math.ceil(Math.random() * 10000);
+const productID = 4;
 
 export const listProducts = (callback) => {
   const path = `${apiPath}/products/list/`;

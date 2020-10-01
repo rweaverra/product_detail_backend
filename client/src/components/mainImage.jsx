@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 const MainImage = ({ styles }) => {
-  const photoArr = styles.results && styles.results[0].photos;
+  const photoArr = styles.results[0].photos;
   const [isZoomed, setIsZoomed] = useState(false);
   const handleImgLoad = useCallback(() => {
     setIsZoomed(true);

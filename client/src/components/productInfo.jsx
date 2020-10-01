@@ -9,8 +9,14 @@ import StarRating from './starRatings';
 import SocialShare from './socialShare';
 import StylePrice from './stylesPrice';
 import StyleThumbnails from './styleThumbnails';
+import SizeDropdown from './sizeDropdown';
+import QuantityDropdown from './quantityDropdown';
+import StyleName from './styleNames';
+import Cart from './shoppingCart';
 
-const ProductInfo = ({ styles, product, reviews }) => {
+const ProductInfo = ({
+  styles, product, productId, reviews,
+}) => {
   const [rating, setRating] = useState(0);
   const [count, setCount] = useState(0);
 
@@ -53,10 +59,10 @@ const ProductInfo = ({ styles, product, reviews }) => {
         {/* Product Image Carousel & Thumbnail Viewer */}
         <div>
           <Col xs={12}>
-            <MainImage styles={styles} />
+            <MainImage productId={productId} styles={styles} />
           </Col>
         </div>
-        <div>
+        <div className="product-container">
           <Col xs={12}>
             {/* Social Sharing */}
             <Row>
@@ -82,14 +88,24 @@ const ProductInfo = ({ styles, product, reviews }) => {
             {/* Product Price */}
             <Row><StylePrice styles={styles} /></Row>
             {/* Product Style */}
-            <Row>Style and Selected Style will go here</Row>
+            <Row><StyleName styles={styles} /></Row>
             {/* Product Style Thumbnails */}
-            <Row><StyleThumbnails /></Row>
+            <Row><StyleThumbnails productId={productId} styles={styles} /></Row>
             {/* Size and Quantity Selectors */}
-            <Row>Size and Quantity Dropdowns will go here</Row>
-            {/* Cart Options */}
-            <Row>Add to Cart and Favorite Buttons will go here</Row>
+            <Row>
+              <SizeDropdown />
+              <QuantityDropdown />
+            </Row>
+            {/* Add to Cart/Favorite Options */}
+            <Row>
+              <div className="cart-root cart-control">Add to Cart</div>
+              <div className="favorite-root favorite-control">Favorite</div>
+            </Row>
           </Col>
+        </div>
+        {/* Cart */}
+        <div>
+          <Cart />
         </div>
       </Row>
     </Container>
@@ -116,6 +132,7 @@ ProductInfo.propTypes = {
     recommended: PropTypes.objectOf(PropTypes.string),
     characteristics: PropTypes.objectOf(PropTypes.string),
   }).isRequired,
+  productId: PropTypes.number.isRequired,
 };
 
 export default ProductInfo;

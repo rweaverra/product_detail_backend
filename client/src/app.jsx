@@ -39,7 +39,11 @@ const App = () => {
   || Object.keys(product).length === 0
   || Object.keys(styles).length === 0) {
     return (
-      <div />
+      <div>
+        <h1 className="loading-h1">The Proto Company</h1>
+        <h3 className="loading-h3">504: Oops! Please Refresh The Page</h3>
+        <img alt="loading" className="loading-img" src="https://i.pinimg.com/originals/f3/e3/0d/f3e30d7942942b7b1b03647e9e2b1e25.gif" />
+      </div>
     );
   }
   console.log('reviews before passing to product info: ', reviews);

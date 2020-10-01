@@ -1,7 +1,19 @@
 /******************** 
- ***** Imports ******
+ ***** Loading ******
  ********************/
-
+.loading-h1 {
+  text-align: center;
+  padding-top: 30px;
+}
+.loading-h3 {
+  text-align: center;
+  color: #F5B895;
+  font-family: 'Crimson Text', serif;
+}
+.loading-img {
+  width: 100%;
+  margin-left: 20px;
+}
 /******************** 
  ****** Styles ******
  ********************/

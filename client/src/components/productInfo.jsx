@@ -12,6 +12,7 @@ import StyleThumbnails from './styleThumbnails';
 import SizeDropdown from './sizeDropdown';
 import QuantityDropdown from './quantityDropdown';
 import StyleName from './styleNames';
+import Cart from './shoppingCart';
 
 const ProductInfo = ({
   styles, product, productId, reviews,
@@ -95,12 +96,16 @@ const ProductInfo = ({
               <SizeDropdown />
               <QuantityDropdown />
             </Row>
-            {/* Cart/Favorite Options */}
+            {/* Add to Cart/Favorite Options */}
             <Row>
               <div className="cart-root cart-control">Add to Cart</div>
               <div className="favorite-root favorite-control">Favorite</div>
             </Row>
           </Col>
+        </div>
+        {/* Cart */}
+        <div>
+          <Cart />
         </div>
       </Row>
     </Container>

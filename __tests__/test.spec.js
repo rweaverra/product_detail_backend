@@ -41,11 +41,11 @@ describe('Title Image', () => {
   });
   it('renders the informational text', () => {
     const wrapper = shallow(<TitleImage />);
-    expect(wrapper.find('p').text()).not.toBe('');
+    expect(wrapper.find('p').text()).toEqual('Add a touch of comfort to your everyday wardrobe with our casual wear, including soft sweaters and hoodies, joggers, cargo pants and relaxed shirts. Complete your look with our casual jackets and shoes.');
   });
   it('renders a button to view all products', () => {
     const wrapper = shallow(<TitleImage />);
-    expect(wrapper.find('Button').text()).toEqual('View All Products');
+    expect(wrapper.find('div').text()).toEqual('View All Products');
   })
 });
 

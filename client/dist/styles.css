@@ -331,6 +331,10 @@ small {
   margin-right: 3px;
   margin-bottom: 5px;
 }
+.social-spacing:last-child {
+  margin-right: 80px;
+  margin-bottom: 5px;
+}
  /******************** 
  ******* Price *******
  ********************/
@@ -382,6 +386,7 @@ small {
 .thumbnails-cage {
   /* border: 0.15em solid #658dc6 !important; */
   max-width: 250px;
+  margin-top: 10px;
 }
  /******************** 
  ****** Dropdown *****
@@ -561,6 +566,6 @@ small {
   align-content: right;
   width: 30px;
   mask: #F5B895;
-  float: right;
+  float: right !important;
   opacity: .8;
 }

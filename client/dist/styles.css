@@ -1,3 +1,6 @@
+body {
+  background-color: #f1eee6;
+}
 /******************** 
  ***** Loading ******
  ********************/
@@ -16,12 +19,6 @@
   /* background-image: url("https://lh3.googleusercontent.com/proxy/LHpsau3rVyL88HbNSqgIWavi98DBxyioDIrFyhHaki8Fo2O_p-HGVrO9xgSGSDThdC-IUR59UVUsYu1ZMcZKtCrDm4ofjAHV_PtYGgLCVHpU2041JpAH_CbXYQC5_HRhiX71eYZ2aVs4G9f95KxueO7EJOE"); */
   background-image: url("https://pixelpapa.com/wp-content/uploads/2018/11/1.gif");
   width: 100%;
-}
-/******************** 
- ****** Styles ******
- ********************/
-body {
-  background-color: #f1eee6;
 }
 /******************** 
  **** Typography ****
@@ -45,27 +42,6 @@ h3, h4, h5 {
     max-width:70vw;
     height:40vw;
     margin-bottom: 1vw;
-}
-.jumbotron {
-  background-color: #F5B895;
-  border: 0.15em solid #658dc6;
-  border-radius: .5%;
-  /* background-image: url(https://media.giphy.com/media/Pn0OvNxhkma6oAaD96/giphy.gif); */
-  background-image: url(http://cdn.lowgif.com/full/558c542dc02a1df0-.gif);
-  background-size: 110%;
-  background-repeat: no-repeat;
-  background-clip: padding-box;
-  margin-top: 1vw;
-  width: 100%;
-  min-height: 20vw;
-}
-.jumbotron-h1 {
-  color: #f1eee6;
-}
-.jumbotron-p {
-  color: #373838;
-  font-size: 25px;
-  text-shadow: #f1eee6 2px 0 12px;
 }
 .main-img {
   border: 0.15em solid #658dc6;
@@ -131,41 +107,108 @@ h3, h4, h5 {
  }
 
 /******************** 
- ****** Buttons *****
+ ***** Jumbotron ****
  ********************/
-.products {
-  border: 0.15em solid #f1eee6;
-  background-color: #658dc6;
-  color: #F5B895;
-  font-family: 'Kumbh Sans', sans-serif;
-  outline: none !important;
-  box-shadow: none !important;
-  padding-top: 10px;
+ .jumbotron {
+  background-color: #F5B895;
+  border: 0.15em solid #658dc6;
   border-radius: .5%;
+  /* background-image: url(https://media.giphy.com/media/Pn0OvNxhkma6oAaD96/giphy.gif); */
+  background-image: url(http://cdn.lowgif.com/full/558c542dc02a1df0-.gif);
+  background-size: 110%;
+  background-repeat: no-repeat;
+  background-clip: padding-box;
+  margin-top: 1vw;
+  width: 100%;
+  min-height: 20vw;
 }
-
-.products:hover {
-  border: 0.15em solid #F5B895;
-  background-color: #0f4c81;
+.jumbotron-h1 {
   color: #f1eee6;
-  font-family: 'Kumbh Sans', sans-serif;
-  outline: none !important;
-  box-shadow: none !important;
-  padding-top: 10px;
-  border-radius: .5%;
 }
-
-.products:focus {
-  border: 0.15em solid #0f4c81;
-  background-color: #f1eee6;
-  color: #658dc6;
-  font-family: 'Kumbh Sans', sans-serif;
-  outline: none !important;
-  box-shadow: none !important;
-  padding-top: 10px;
-  border-radius: .5%;
+.jumbotron-p {
+  color: #373838;
+  font-size: 25px;
+  text-shadow: #f1eee6 2px 0 12px;
 }
-
+.products-root {
+  position: relative;
+  width: 120px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.products-control {
+  position: relative;
+  overflow: hidden;
+  background-color: #373838;
+  border: 2px solid #658DC6;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 10px;
+}
+.products-control:hover {
+  position: relative;
+  overflow: hidden;
+  background-color: #B5C7D3;
+  border: 2px solid #F5B895;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #0F4C81;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 10px;
+}
+.products-control:active {
+  position: relative;
+  overflow: hidden;
+  background-color: #0f4c81;
+  border: 2px solid #F5B895;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 10px;
+}
+/******************** 
+ *** Product Info ***
+ ********************/
+.product-container {
+  margin-left: 30px;
+}
+.styles-name {
+font-family: 'Kumbh Sans', sans-serif;
+font-size: .75vw;
+font-weight: 200;
+color: #0f4c81;
+text-transform: uppercase;
+display: inline;
+padding-top: 10px;
+}
+.styles-name-selected {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: .75vw;
+  font-weight: 400;
+  color: #F5B895;
+  text-transform: uppercase;
+  display: inline;
+  padding-top: 10px;
+  text-decoration: #F5B895 underline;
+  }
 /******************** 
  ** Detailed Info ***
  ********************/
@@ -321,15 +364,193 @@ small {
  ********************/
 .thumbnails-img {
   border: 0.15em solid #658dc6;
-  border-radius: .5%;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   object-fit: cover;
-  margin-right: 10px;
-  margin-bottom: 3px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
-/* .thumbnails-cage {
-  border: 0.15em solid #658dc6 !important;
-  border-radius: .5% !important;
-  padding: 2px;
-} */
+.thumbnails-selected {
+  border: 0.2em solid #F5B895;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  opacity: .8;
+}
+.thumbnails-cage {
+  /* border: 0.15em solid #658dc6 !important; */
+  max-width: 250px;
+}
+ /******************** 
+ ****** Dropdown *****
+ ********************/
+.Dropdown-root {
+  position: relative;
+  width: 120px;
+  margin-right: 5px;
+}
+.Dropdown-control {
+  position: relative;
+  overflow: hidden;
+  background-color: #373838;
+  border: 2px solid #658DC6;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 52px 8px 10px;
+  transition: all 200ms ease;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 10px;
+}
+.Dropdown-arrow {
+  border-color: #658DC6 transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: ' ';
+  display: block;
+  height: 0;
+  margin-top: -ceil(2.5);
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  width: 0
+}
+.is-open .Dropdown-arrow {
+  border-color: transparent transparent #F5B895;
+  border-width: 0 5px 5px;
+}
+.Dropdown-menu {
+  background-color: #f1eee6;
+  border-left: 2px solid #658DC6;
+  border-bottom: 2px solid #658DC6;
+  border-right: 2px solid #658DC6;
+  box-sizing: border-box;
+  margin-top: -1px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+}
+.Dropdown-option {
+  box-sizing: border-box;
+  color: #0F4C81;
+  cursor: pointer;
+  display: block;
+  padding: 4px 8px;
+  /* text-transform: uppercase; */
+  font-size: 12px;
+  font-family: 'Kumbh Sans', sans-serif;
+}
+.Dropdown-option:last-child {
+  border-bottom-right-radius: 2px;
+   border-bottom-left-radius: 2px;
+}
+
+.Dropdown-option:hover {
+  background-color: #F5B895;
+  color: #658DC6;
+  font-weight: 500;
+}
+.Dropdown-option.is-selected {
+  background-color: #F5B895;
+  color: #658DC6;
+  font-weight: 500;
+}
+.Dropdown-noresults {
+  box-sizing: border-box;
+  color: #F5B895;
+  cursor: default;
+  display: block;
+  padding: 8px 10px;
+}
+ /******************** 
+ ******** Cart *******
+ ********************/
+.cart-root {
+  position: relative;
+  width: 120px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.cart-control {
+  position: relative;
+  overflow: hidden;
+  background-color: #373838;
+  border: 2px solid #658DC6;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 10px;
+}
+.cart-control:hover {
+  position: relative;
+  overflow: hidden;
+  background-color: #B5C7D3;
+  border: 2px solid #F5B895;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #0F4C81;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 10px;
+}
+  /******************** 
+ ****** Favorite ******
+ ********************/
+ .favorite-root {
+  position: relative;
+  width: 120px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.favorite-control {
+  position: relative;
+  overflow: hidden;
+  background-color: #373838;
+  border: 2px solid #658DC6;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 10px;
+}
+.favorite-control:hover {
+  position: relative;
+  overflow: hidden;
+  background-color: #B5C7D3;
+  border: 2px solid #F5B895;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #0F4C81;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 10px;
+}

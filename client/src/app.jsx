@@ -8,6 +8,8 @@ import { getAllStyles, getInfo, getReviews } from './lib/routes';
 
 const App = () => {
   const [styles, setStyles] = useState({});
+  // current style
+  // related styles
   const [productId, setId] = useState(1);
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState({});
@@ -50,7 +52,7 @@ const App = () => {
   return (
     <Container>
       <TitleImage />
-      <ProductInfo styles={styles} product={product} reviews={reviews} />
+      <ProductInfo styles={styles} product={product} productId={productId} reviews={reviews} />
       <ProductDetails product={product} productId={productId} />
     </Container>
   );

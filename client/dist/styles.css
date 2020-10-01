@@ -4,6 +4,7 @@
 .loading-h1 {
   text-align: center;
   padding-top: 30px;
+  height: 500px;
 }
 .loading-h3 {
   text-align: center;
@@ -11,8 +12,10 @@
   font-family: 'Crimson Text', serif;
 }
 .loading-img {
+  background-repeat: repeat;
+  /* background-image: url("https://lh3.googleusercontent.com/proxy/LHpsau3rVyL88HbNSqgIWavi98DBxyioDIrFyhHaki8Fo2O_p-HGVrO9xgSGSDThdC-IUR59UVUsYu1ZMcZKtCrDm4ofjAHV_PtYGgLCVHpU2041JpAH_CbXYQC5_HRhiX71eYZ2aVs4G9f95KxueO7EJOE"); */
+  background-image: url("https://pixelpapa.com/wp-content/uploads/2018/11/1.gif");
   width: 100%;
-  margin-left: 20px;
 }
 /******************** 
  ****** Styles ******

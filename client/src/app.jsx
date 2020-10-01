@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import TitleImage from './components/titleImage';
 import ProductInfo from './components/productInfo';
 import ProductDetails from './components/productDetails';
+import Cart from './components/shoppingCart';
 import { getAllStyles, getInfo, getReviews } from './lib/routes';
 
 const App = () => {
@@ -52,6 +53,7 @@ const App = () => {
   return (
     <Container>
       <TitleImage />
+      <Cart />
       <ProductInfo styles={styles} product={product} productId={productId} reviews={reviews} />
       <ProductDetails product={product} productId={productId} />
     </Container>

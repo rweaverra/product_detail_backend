@@ -21,7 +21,6 @@ const ProductInfo = ({
   const [count, setCount] = useState(0);
 
   const getTheAverageRating = (starData) => {
-    console.log('ProductInfo: star data ', starData);
     let reviewCount = 0;
     let reviewTotal = 0;
     const ratingArr = Object.entries(starData);
@@ -32,7 +31,6 @@ const ProductInfo = ({
       reviewCount += counter;
       reviewTotal += stars * counter;
     }
-    // console.log('ProductInfo: logging total and count', reviewTotal, reviewCount);
     return reviewTotal / reviewCount;
   };
 
@@ -53,9 +51,6 @@ const ProductInfo = ({
     setRating(average);
     setCount(numberOReviews);
   }, [reviews]);
-
-  console.log('Product Info: current style:', currentStyle.photos);
-  console.log('Product Info: styles:', styles.results[0].photos[0].url);
 
   return (
     <Container>

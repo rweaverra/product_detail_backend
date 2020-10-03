@@ -30,16 +30,24 @@ const StyleThumbnails = ({ styles }) => {
     <div>
       {/* <Col sm={10} md={7}> */}
       <Container className="thumbnails-cage">
-        {photoArr.map((photo) => (
-          <Image
-            key={uuidv4()}
-            className={className}
-            src={photo.thumbnail_url}
-            alt={photo.name}
-            roundedCircle
-            onClick={handleStyleSelect}
-          />
-        ))}
+        {photoArr.map((photo) => {
+          let photoUrl = '';
+          if (photo.thumbnail_url === null) {
+            photoUrl = 'https://i.imgur.com/5vMEbrv.jpg';
+          } else {
+            photoUrl = photo.thumbnail_url;
+          }
+          return (
+            <Image
+              key={uuidv4()}
+              className={className}
+              src={photoUrl}
+              alt={photo.name}
+              roundedCircle
+              onClick={handleStyleSelect}
+            />
+          );
+        })}
       </Container>
       {/* </Col> */}
     </div>

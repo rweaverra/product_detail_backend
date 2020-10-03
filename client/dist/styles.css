@@ -1,6 +1,12 @@
 body {
   background-color: #f1eee6;
 }
+.product-info-root {
+  margin-bottom: 20px;
+}
+.product-details-root {
+  margin-top: 10px;
+}
 /******************** 
  ***** Loading ******
  ********************/
@@ -38,15 +44,10 @@ h3, h4, h5 {
 /******************** 
  **** Components ****
  ********************/
-.carousel {
-    max-width:70vw;
-    height:40vw;
-    margin-bottom: 1vw;
-}
 .main-img {
-  border: 0.15em solid #658dc6;
+  border: 2px solid #658dc6;
   border-radius: .5%;
-  height: 20vmax;
+  max-height: 600px;
   width: 100%;
   object-fit: cover;
 }
@@ -105,22 +106,20 @@ h3, h4, h5 {
    transition-property: transform;
    transform-origin: center center;
  }
-
 /******************** 
  ***** Jumbotron ****
  ********************/
  .jumbotron {
   background-color: #F5B895;
-  border: 0.15em solid #658dc6;
-  border-radius: .5%;
-  /* background-image: url(https://media.giphy.com/media/Pn0OvNxhkma6oAaD96/giphy.gif); */
+  border: 2px solid #658dc6;
+  border-top: none;
+  border-radius: 0;
   background-image: url(http://cdn.lowgif.com/full/558c542dc02a1df0-.gif);
-  background-size: 110%;
+  background-size: 104%;
   background-repeat: no-repeat;
   background-clip: padding-box;
-  margin-top: 1vw;
   width: 100%;
-  min-height: 20vw;
+  min-height: 400px;
 }
 .jumbotron-h1 {
   color: #f1eee6;
@@ -132,7 +131,7 @@ h3, h4, h5 {
 }
 .products-root {
   position: relative;
-  width: 120px;
+  width: 130px;
   margin-right: 5px;
   margin-top: 5px;
 }
@@ -188,11 +187,11 @@ h3, h4, h5 {
  *** Product Info ***
  ********************/
 .product-container {
-  margin-left: 30px;
+  margin-left: 20px;
 }
 .styles-name {
 font-family: 'Kumbh Sans', sans-serif;
-font-size: .75vw;
+font-size: 16px;
 font-weight: 200;
 color: #0f4c81;
 text-transform: uppercase;
@@ -201,7 +200,7 @@ padding-top: 10px;
 }
 .styles-name-selected {
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: .75vw;
+  font-size: 16px;
   font-weight: 400;
   color: #F5B895;
   text-transform: uppercase;
@@ -212,53 +211,28 @@ padding-top: 10px;
 /******************** 
  ** Detailed Info ***
  ********************/
-.accordion-style {
-  border: 0.15em solid #658dc6;
+.details-header {
+  border-bottom: 2px solid #658dc6;
   border-radius: .5%;
   background-color: #373838;
-}
-.accordion-links {
-  text-decoration: none !important;
-  text-align: left;
   color: #f1eee6;
-  font-family: 'Kumbh Sans', sans-serif;
-  font-size: 20px;
-  padding-top: 10px;
-  outline: none !important;
-  box-shadow: none !important;
+  font-size: 24px;
 }
-.accordion-links:hover {
-  text-align: left;
-  text-decoration: none !important;
-  color: #f1eee6;
-  font-family: 'Kumbh Sans', sans-serif;
-  font-size: 20px;
-  padding-top: 10px;
-  outline: none !important;
-  box-shadow: none !important;
-}
-.accordion-body {
+.details-body {
   background-color: #f1eee6;
   color: #0f4c81;
   font-family: 'Crimson Text', serif;
   font-size: 20px;
   padding: 10px;
+  border: 2px solid #658dc6;
+  border-top: none;
 }
-small {
-  /* text-decoration: none !important; */
-  color: #F5B895;
-  font-family: 'Kumbh Sans', sans-serif;
-  font-size: .5vw;
-  float: left;
+.details-body-divider {
+  border-right: 2px solid #658dc6;
 }
 /******************** 
  ***** Features *****
  ********************/
- .features-style {
-  /* border: 0.2em solid #658dc6; */
-  border: none;
-  background-color: #84898C;
-}
 .features-check {
   border: none;
   height: auto;
@@ -267,29 +241,12 @@ small {
   padding-bottom: 5px;
   display: legacy;
 }
-.features-links {
-  text-decoration: none !important;
-  text-align: left;
-  color: #f1eee6;
-  font-family: 'Kumbh Sans', sans-serif;
-  font-size: 20px;
-  padding-top: 10px;
-  outline: none !important;
-  box-shadow: none !important;
-}
-.features-body {
-  background-color: #f1eee6;
-  color: #0f4c81;
-  font-family: 'Crimson Text', serif;
-  font-size: 1vw;
-  padding: 10px;
-}
 /******************** 
  ******* Title ******
  ********************/
 .product-title {
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: 1.25vw;
+  font-size: 26px;
   color: #658DC6;
   display: inline;
 }
@@ -298,7 +255,7 @@ small {
  ********************/
 .product-category {
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: .75vw;
+  font-size: 16px;
   font-weight: 200;
   color: #0f4c81;
   text-transform: uppercase;
@@ -311,24 +268,24 @@ small {
   text-decoration: none !important;
   color: #F5B895 !important;
   font-family: 'Crimson Text', serif;
-  font-size: .75vw;
+  font-size: 14px;
   letter-spacing: 0.02em;
 }
 .stars-review-link:hover a {
   text-decoration: none !important;
   color: #0F4C81 !important;
   font-family: 'Crimson Text', serif;
-  font-size: .75vw;
+  font-size: 14px;
   letter-spacing: 0.02em;
 }
 .stars-spacing {
-  margin-bottom: .5vw;
+  margin-bottom: 8px;
 }
  /******************** 
  ******* Social ******
  ********************/
 .social-spacing {
-  margin-right: 3px;
+  margin-right: 12px;
   margin-bottom: 5px;
 }
 .social-spacing:last-child {
@@ -340,7 +297,7 @@ small {
  ********************/
  .price {
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: .75vw;
+  font-size: 18px;
   font-weight: 300;
   color: #0f4c81;
   text-transform: uppercase;
@@ -348,7 +305,7 @@ small {
  }
  .price-sale {
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: .75vw;
+  font-size: 18px;
   font-weight: 300;
   color: #F5B895;
   text-transform: uppercase;
@@ -356,7 +313,7 @@ small {
  }
  .price-original {
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: .75vw;
+  font-size: 18px;
   font-weight: 200;
   color: #658DC6;
   text-decoration: line-through;
@@ -367,7 +324,7 @@ small {
  ***** Thumbnails ****
  ********************/
 .thumbnails-img {
-  border: 0.15em solid #658dc6;
+  border: 2px solid #658dc6;
   height: 50px;
   width: 50px;
   object-fit: cover;
@@ -375,7 +332,7 @@ small {
   margin-bottom: 20px;
 }
 .thumbnails-selected {
-  border: 0.2em solid #F5B895;
+  border: 3px solid #F5B895;
   height: 50px;
   width: 50px;
   object-fit: cover;
@@ -459,7 +416,6 @@ small {
   border-bottom-right-radius: 2px;
    border-bottom-left-radius: 2px;
 }
-
 .Dropdown-option:hover {
   background-color: #F5B895;
   color: #658DC6;
@@ -518,8 +474,8 @@ small {
   font-weight: 600;
   font-size: 10px;
 }
-  /******************** 
- ****** Favorite ******
+/******************** 
+ ***** Favorite *****
  ********************/
  .favorite-root {
   position: relative;
@@ -565,7 +521,81 @@ small {
 .shopping-bag-root {
   align-content: right;
   width: 30px;
-  mask: #F5B895;
   float: right !important;
   opacity: .8;
+}
+.sale {
+  text-transform: capitalize;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 200;
+  color: #F5B895;
+}
+ /******************** 
+ ***** Navigation ****
+ ********************/
+.nav-root {
+  background-color: #373838 !important;
+  border-left: 2px solid #658DC6;
+  border-right: 2px solid #658DC6;
+  margin: 0px;
+  height: 100px;
+}
+.nav-brand {
+  color: #f1eee6;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 30px;
+}
+.nav-button-root {
+  position: relative;
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+.nav-button-control {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #373838;
+  background-color: #373838 !important;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 10px;
+}
+.nav-button-control:hover {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #B5C7D3;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+.nav-links {
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #B5C7D3 !important;
+  font-weight: 200;
+}
+.nav-links:hover {
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #F5B895 !important;
+  font-weight: 200;
+}
+.nav-img-cart {
+  margin-right: 10px;
+  width: 32px;
+  height: 30px;
 }

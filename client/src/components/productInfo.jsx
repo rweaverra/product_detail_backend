@@ -15,7 +15,7 @@ import StyleName from './styleNames';
 import Cart from './shoppingCart';
 
 const ProductInfo = ({
-  styles, product, productId, reviews,
+  styles, product, productId, reviews, currentStyle,
 }) => {
   const [rating, setRating] = useState(0);
   const [count, setCount] = useState(0);
@@ -32,7 +32,7 @@ const ProductInfo = ({
       reviewCount += counter;
       reviewTotal += stars * counter;
     }
-    console.log('ProductInfo: logging total and count', reviewTotal, reviewCount);
+    // console.log('ProductInfo: logging total and count', reviewTotal, reviewCount);
     return reviewTotal / reviewCount;
   };
 
@@ -53,20 +53,25 @@ const ProductInfo = ({
     setRating(average);
     setCount(numberOReviews);
   }, [reviews]);
+
+  console.log('Product Info: current style:', currentStyle.photos);
+  console.log('Product Info: styles:', styles.results[0].photos[0].url);
+
   return (
     <Container>
       <Row>
         {/* Product Image Carousel & Thumbnail Viewer */}
         <div>
           <Col xs={12}>
-            <MainImage productId={productId} styles={styles} />
+            <MainImage styles={styles} />
           </Col>
         </div>
         <div className="product-container">
           <Col xs={12}>
             {/* Social Sharing */}
             <Row>
-              <SocialShare product={product} styles={styles} />
+              <SocialShare product={product} styles={styles} currentStyle={currentStyle} />
+              <Cart />
             </Row>
             {/* Product Star Ratings */}
             <Row>
@@ -90,7 +95,14 @@ const ProductInfo = ({
             {/* Product Style */}
             <Row><StyleName styles={styles} /></Row>
             {/* Product Style Thumbnails */}
-            <Row><StyleThumbnails productId={productId} styles={styles} /></Row>
+            <Row>
+              <StyleThumbnails
+                productId={productId}
+                styles={styles}
+                currentStyle={currentStyle}
+                // setCurrentStyleHandler={setCurrentStyleHandler}
+              />
+            </Row>
             {/* Size and Quantity Selectors */}
             <Row>
               <SizeDropdown />
@@ -103,10 +115,6 @@ const ProductInfo = ({
             </Row>
           </Col>
         </div>
-        {/* Cart */}
-        <div>
-          <Cart />
-        </div>
       </Row>
     </Container>
   );
@@ -116,6 +124,15 @@ ProductInfo.propTypes = {
   styles: PropTypes.shape({
     product_id: PropTypes.string,
     results: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+  currentStyle: PropTypes.shape({
+    style_id: PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+    sale_price: PropTypes.string,
+    default: PropTypes.number,
+    photos: PropTypes.arrayOf(PropTypes.object),
+    skus: PropTypes.objectOf(PropTypes.number),
   }).isRequired,
   product: PropTypes.shape({
     id: PropTypes.number,

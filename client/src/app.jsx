@@ -75,7 +75,7 @@ const App = () => {
       </div>
     );
   }
-  console.log('App: reviews before passing to product info: ', reviews);
+  // console.log('App: reviews before passing to product info: ', reviews);
   console.log('App: current style passing to product info: ', currentStyle);
   return (
     <Container>
@@ -100,7 +100,7 @@ const App = () => {
       <div className="product-info-root">
         <ProductInfo
           styles={styles}
-          setCurrentStyleHandler={setCurrentStyle}
+          setCurrentStyle={setCurrentStyle}
           currentStyle={currentStyle}
           product={product}
           productId={productId}

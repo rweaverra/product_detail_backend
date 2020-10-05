@@ -14,23 +14,31 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import { v4 as uuidv4 } from 'uuid';
 
-const StyleThumbnails = ({ styles }) => {
+const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
   const [isSelected, imgIsSelected] = useState(false);
   const photoArr = styles.results[0].photos;
-  const handleStyleSelect = useCallback(() => {
-    imgIsSelected(!isSelected); // current style will go here
-  }, [isSelected]);
 
+  // const handleStyleSelect = useCallback(() => {
+  //   console.log('Style Thumbnails: name from image in handleStyleSelect', name);
+  //   imgIsSelected(!isSelected); // current style will go here
+  //   setCurrentStyle();
+  // }, [isSelected]);
+  const handleStyleSelect = () => {
+    console.log('Style Thumbnails: current style in handle style select ', currentStyle);
+    console.log('Style Thumbnails: style results in handle style select ', styles.results);
+    setCurrentStyle(styles.results[2]);
+    console.log('Style Thumbnails: current style in handle style select should be 2', currentStyle);
+  };
   let className = 'thumbnails-img ';
   if (isSelected) {
     className += 'thumbnails-selected';
   }
-
+  console.log('Style Thumbnails: current style', currentStyle);
   return (
     <div>
       {/* <Col sm={10} md={7}> */}
       <Container className="thumbnails-cage">
-        {photoArr.map((photo) => {
+        {photoArr.map((photo, i) => {
           let photoUrl = '';
           if (photo.thumbnail_url === null) {
             photoUrl = 'https://i.imgur.com/5vMEbrv.jpg';
@@ -39,12 +47,13 @@ const StyleThumbnails = ({ styles }) => {
           }
           return (
             <Image
+              value={i}
               key={uuidv4()}
               className={className}
               src={photoUrl}
               alt={photo.name}
               roundedCircle
-              onClick={handleStyleSelect}
+              onClick={(value) => { handleStyleSelect(value); }}
             />
           );
         })}
@@ -59,6 +68,15 @@ StyleThumbnails.propTypes = {
     product_id: PropTypes.string,
     results: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
+  currentStyle: PropTypes.shape({
+//     'default?': 
+// name: "White & White"
+// original_price: "99"
+// photos: (11) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+// sale_price: "0"
+// skus: {7: 14, 8: 9, 9: 18, 10: 10, 11: 11, 12: 25, 7.5: 25, 8.5: 2, 9.5: 12, 10.5: 18, 11.5: 35}
+// style_id: 26
+  })
   // productId: PropTypes.number.isRequired,
 };
 

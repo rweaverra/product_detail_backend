@@ -15,7 +15,7 @@ import StyleName from './styleNames';
 import Cart from './shoppingCart';
 
 const ProductInfo = ({
-  styles, product, productId, reviews, currentStyle,
+  styles, product, productId, reviews, currentStyle, setCurrentStyle
 }) => {
   const [rating, setRating] = useState(0);
   const [count, setCount] = useState(0);
@@ -52,6 +52,7 @@ const ProductInfo = ({
     setCount(numberOReviews);
   }, [reviews]);
 
+  // console.log('Product Info: set style handler', setCurrentStyle);
   return (
     <Container>
       <Row>
@@ -95,7 +96,7 @@ const ProductInfo = ({
                 productId={productId}
                 styles={styles}
                 currentStyle={currentStyle}
-                // setCurrentStyleHandler={setCurrentStyleHandler}
+                setCurrentStyle={setCurrentStyle}
               />
             </Row>
             {/* Size and Quantity Selectors */}

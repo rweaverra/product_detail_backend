@@ -6,11 +6,12 @@ import ControlledZoom from 'react-medium-image-zoom';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
-const MainImage = ({ styles }) => {
-  const photoArr = styles.results[0].photos;
+const MainImage = ({ currentStyle }) => {
+  const photoArr = currentStyle.photos;
   const [nav1, setSlider1] = useState({});
   const [nav2, setSlider2] = useState({});
   const [isZoomed, setIsZoomed] = useState(false);
+
   const handleImgLoad = useCallback(() => {
     setIsZoomed(true);
   }, []);
@@ -84,9 +85,14 @@ const MainImage = ({ styles }) => {
 };
 
 MainImage.propTypes = {
-  styles: PropTypes.shape({
-    product_id: PropTypes.string,
-    results: PropTypes.arrayOf(PropTypes.object),
+  currentStyle: PropTypes.shape({
+    style_id: PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+    sale_price: PropTypes.string,
+    default: PropTypes.number,
+    photos: PropTypes.arrayOf(PropTypes.object),
+    skus: PropTypes.objectOf(PropTypes.number),
   }).isRequired,
 };
 

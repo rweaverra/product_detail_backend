@@ -1,11 +1,6 @@
-// style thumbnails go here
-// How will you display the style images?
-// Will you use the thumbnail or the full image from the style?
-// How will a user see they selected a style?
-// What will the badge look like?
-// How will you grab the image url and the style id?
-// What will be held in state?
-import React, { useCallback, useState } from 'react';
+// FIXES: Need to map over all styles for product image
+//        and display first image of each style.
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
@@ -16,8 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
   const [isSelected, imgIsSelected] = useState(false);
-  const photoArr = styles.results[0].photos;
-
+  const photoArr = Object.entries(styles.results);
   // const handleStyleSelect = useCallback(() => {
   //   console.log('Style Thumbnails: name from image in handleStyleSelect', name);
   //   imgIsSelected(!isSelected); // current style will go here
@@ -39,11 +33,12 @@ const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
       {/* <Col sm={10} md={7}> */}
       <Container className="thumbnails-cage">
         {photoArr.map((photo, i) => {
+          console.log('photo in map', photo);
           let photoUrl = '';
-          if (photo.thumbnail_url === null) {
+          if (photo[1].photos.thumbnail_url === null) {
             photoUrl = 'https://i.imgur.com/5vMEbrv.jpg';
           } else {
-            photoUrl = photo.thumbnail_url;
+            photoUrl = photo[1].photos[0].thumbnail_url;
           }
           return (
             <Image
@@ -75,7 +70,7 @@ StyleThumbnails.propTypes = {
     photos: PropTypes.arrayOf(PropTypes.object),
     sale_price: PropTypes.string,
     skus: PropTypes.objectOf(PropTypes.number),
-    style_id: PropTypes.string,
+    style_id: PropTypes.number,
   }).isRequired,
   // productId: PropTypes.number.isRequired,
 };

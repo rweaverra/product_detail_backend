@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // FIXES: Need to map over all styles for product image
 //        and display first image of each style.
 import React, { useState } from 'react';
@@ -10,45 +11,48 @@ import Image from 'react-bootstrap/Image';
 import { v4 as uuidv4 } from 'uuid';
 
 const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
-  const [isSelected, imgIsSelected] = useState(false);
-  const photoArr = Object.entries(styles.results);
-  // const handleStyleSelect = useCallback(() => {
-  //   console.log('Style Thumbnails: name from image in handleStyleSelect', name);
-  //   imgIsSelected(!isSelected); // current style will go here
-  //   setCurrentStyle();
-  // }, [isSelected]);
-  const handleStyleSelect = () => {
-    console.log('Style Thumbnails: current style in handle style select ', currentStyle);
-    console.log('Style Thumbnails: style results in handle style select ', styles.results);
-    setCurrentStyle(styles.results[2]);
-    console.log('Style Thumbnails: current style in handle style select should be 2', currentStyle);
+  // eslint-disable-next-line no-unused-vars
+  const [isSelected, setIsSelected] = useState(false);
+  const stylesArr = Object.entries(styles.results);
+
+  const handleStyleSelect = (styleId) => {
+    for (let i = 0; i < stylesArr.length; i += 1) {
+      const current = stylesArr[i][1];
+      if (current.style_id === styleId) {
+        setCurrentStyle(current);
+      }
+    }
+    console.log('Style Thumbnails: current style', currentStyle);
   };
   let className = 'thumbnails-img ';
   if (isSelected) {
     className += 'thumbnails-selected';
   }
-  console.log('Style Thumbnails: current style', currentStyle);
   return (
     <div>
       {/* <Col sm={10} md={7}> */}
       <Container className="thumbnails-cage">
-        {photoArr.map((photo, i) => {
-          console.log('photo in map', photo);
+        {stylesArr.map((photo) => {
           let photoUrl = '';
+          const styleId = photo[1].style_id;
+          // console.log('styleId', styleId);
+          // console.log('photo in map', photo);
           if (photo[1].photos.thumbnail_url === null) {
-            photoUrl = '/comingSoon';
+            photoUrl = '/comingSoon.jpg';
           } else {
             photoUrl = photo[1].photos[0].thumbnail_url;
           }
           return (
             <Image
-              value={i}
+              id={styleId}
               key={uuidv4()}
               className={className}
               src={photoUrl}
               alt={photo.name}
               roundedCircle
-              onClick={(value) => { handleStyleSelect(value); }}
+              onClick={() => {
+                handleStyleSelect(styleId);
+              }}
             />
           );
         })}
@@ -72,6 +76,7 @@ StyleThumbnails.propTypes = {
     skus: PropTypes.objectOf(PropTypes.number),
     style_id: PropTypes.number,
   }).isRequired,
+  setCurrentStyle: PropTypes.func.isRequired,
   // productId: PropTypes.number.isRequired,
 };
 

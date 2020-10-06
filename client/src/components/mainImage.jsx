@@ -1,3 +1,5 @@
+// FIXES: Main image needs to be rotating through the currentStyle
+//        currently rotating through the default style
 import React, { useCallback, useState } from 'react';
 import Slider from 'react-slick';
 import ControlledZoom from 'react-medium-image-zoom';

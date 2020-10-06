@@ -51,7 +51,7 @@ const ProductInfo = ({
     setRating(average);
     setCount(numberOReviews);
   }, [reviews]);
-
+  console.log('Product Info: currentStyle before passing to child components', currentStyle);
   // console.log('Product Info: set style handler', setCurrentStyle);
   return (
     <Container>

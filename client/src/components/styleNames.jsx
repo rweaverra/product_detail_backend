@@ -1,6 +1,4 @@
-// Style and Selected Style
-// How will you display the style name?
-// How will you label the style so users know it's the style?
+// FIXES: Needs to be looking at the currentStyle nam
 import React from 'react';
 import PropTypes from 'prop-types';
 

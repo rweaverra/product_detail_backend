@@ -5,7 +5,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
-// import Button from 'react-bootstrap/Button';
 import TitleImage from './components/titleImage';
 import ProductInfo from './components/productInfo';
 import ProductDetails from './components/productDetails';
@@ -20,20 +19,6 @@ const App = () => {
   const [productId, setId] = useState(1);
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState({});
-
-  // styles.results: [{style_id, name, original_price, sale_price,
-  // default, photos [{thumbnail_url, url}] }]
-  // current style = styles.results[0].default NUM (style_id)
-  // -> productInfo & Details, Thumbnails, Price, styleNames, size & quantityDropdown, shoppingCart
-  // default price = product.default_price NUM
-  // -> productInfo, stylePrice
-  // style price = styles.results[0].original_price STR
-  // -> productInfo, stylePrice, shoppingCart
-  // style sale price = styles.results[0].sale_price STR
-  // -> productInfo, stylePrice, shoppingCart
-  // style photos = styles.results[0].photos ARR of OBJ
-  // -> productInfo, mainImage, styleThumbnails
-  // related styles
 
   useEffect(() => {
     getAllStyles((error, response) => {
@@ -53,7 +38,6 @@ const App = () => {
       if (error) {
         return 'Could not get reviews';
       }
-      console.log('App: get reviews response', response.ratings);
       return setReviews(response.ratings); // object
     });
     getDefaultStyle((error, response) => {
@@ -75,8 +59,7 @@ const App = () => {
       </div>
     );
   }
-  // console.log('App: reviews before passing to product info: ', reviews);
-  console.log('App: current style passing to product info: ', currentStyle);
+  console.log('App: currentStyle before passing as props to Product Info: ', currentStyle);
   return (
     <Container>
       <div>

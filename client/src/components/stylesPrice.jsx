@@ -2,22 +2,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const StylePrice = ({ styles }) => {
-  // console.log('Style Price: sales price', styles.results[0].sale_price);
-  // console.log('Style Price: original price', styles.results[0].original_price);
-  if (styles.results.sale_price > 0) {
+const StylePrice = ({ currentStyle }) => {
+  if (currentStyle.sale_price > 0) {
     return (
       <div>
         <div className="price price-original">
           $
           {
-        styles.results[0].original_price
+        currentStyle.original_price
         }
         </div>
         <div className="price price-sale">
-          $
+        &nbsp;$
           {
-        styles.results[0].sale_price
+        currentStyle.sale_price
         }
         </div>
       </div>
@@ -27,16 +25,21 @@ const StylePrice = ({ styles }) => {
     <div className="price">
       $
       {
-      styles.results[0].original_price
+      currentStyle.original_price
     }
     </div>
   );
 };
 
 StylePrice.propTypes = {
-  styles: PropTypes.shape({
-    product_id: PropTypes.string,
-    results: PropTypes.arrayOf(PropTypes.object),
+  currentStyle: PropTypes.shape({
+    'default?': PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+    photos: PropTypes.arrayOf(PropTypes.object),
+    sale_price: PropTypes.string,
+    skus: PropTypes.objectOf(PropTypes.number),
+    style_id: PropTypes.number,
   }).isRequired,
 };
 

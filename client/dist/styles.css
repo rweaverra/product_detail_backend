@@ -286,6 +286,14 @@ padding-top: 10px;
  /******************** 
  ******* Stars *******
  ********************/
+.rating-num {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  color: #F5B895;
+  padding-top: 2px;
+  margin: 0 5px 0 15px;
+}
 .stars-review-link a {
   text-decoration: none !important;
   color: #F5B895 !important;

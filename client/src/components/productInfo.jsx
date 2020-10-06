@@ -15,7 +15,7 @@ import StyleName from './styleNames';
 import Cart from './shoppingCart';
 
 const ProductInfo = ({
-  styles, product, productId, reviews, currentStyle, setCurrentStyle
+  styles, product, productId, reviews, currentStyle, setCurrentStyle,
 }) => {
   const [rating, setRating] = useState(0);
   const [count, setCount] = useState(0);
@@ -59,7 +59,7 @@ const ProductInfo = ({
         {/* Product Image Carousel & Thumbnail Viewer */}
         <div>
           <Col xs={12}>
-            <MainImage styles={styles} />
+            <MainImage styles={styles} currentStyle={currentStyle} />
           </Col>
         </div>
         <div className="product-container">
@@ -87,9 +87,9 @@ const ProductInfo = ({
               </div>
             </Row>
             {/* Product Price */}
-            <Row><StylePrice styles={styles} /></Row>
+            <Row><StylePrice currentStyle={currentStyle} /></Row>
             {/* Product Style */}
-            <Row><StyleName styles={styles} /></Row>
+            <Row><StyleName currentStyle={currentStyle} /></Row>
             {/* Product Style Thumbnails */}
             <Row>
               <StyleThumbnails
@@ -101,8 +101,8 @@ const ProductInfo = ({
             </Row>
             {/* Size and Quantity Selectors */}
             <Row>
-              <SizeDropdown />
-              <QuantityDropdown />
+              <SizeDropdown currentStyle={currentStyle} />
+              <QuantityDropdown currentStyle={currentStyle} />
             </Row>
             {/* Add to Cart/Favorite Options */}
             <Row>
@@ -146,6 +146,7 @@ ProductInfo.propTypes = {
     characteristics: PropTypes.objectOf(PropTypes.string),
   }).isRequired,
   productId: PropTypes.number.isRequired,
+  setCurrentStyle: PropTypes.func.isRequired,
 };
 
 export default ProductInfo;

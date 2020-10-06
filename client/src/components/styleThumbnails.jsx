@@ -69,14 +69,14 @@ StyleThumbnails.propTypes = {
     results: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
   currentStyle: PropTypes.shape({
-//     'default?': 
-// name: "White & White"
-// original_price: "99"
-// photos: (11) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-// sale_price: "0"
-// skus: {7: 14, 8: 9, 9: 18, 10: 10, 11: 11, 12: 25, 7.5: 25, 8.5: 2, 9.5: 12, 10.5: 18, 11.5: 35}
-// style_id: 26
-  })
+    'default?': PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+    photos: PropTypes.arrayOf(PropTypes.object),
+    sale_price: PropTypes.string,
+    skus: PropTypes.objectOf(PropTypes.number),
+    style_id: PropTypes.string,
+  }).isRequired,
   // productId: PropTypes.number.isRequired,
 };
 

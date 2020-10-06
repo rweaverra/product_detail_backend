@@ -1,12 +1,24 @@
-/******************** 
- ***** Imports ******
- ********************/
-
-/******************** 
- ****** Styles ******
- ********************/
 body {
   background-color: #f1eee6;
+}
+/******************** 
+ ***** Loading ******
+ ********************/
+.loading-h1 {
+  text-align: center;
+  padding-top: 30px;
+  height: 500px;
+}
+.loading-h3 {
+  text-align: center;
+  color: #F5B895;
+  font-family: 'Crimson Text', serif;
+}
+.loading-img {
+  background-repeat: repeat;
+  /* background-image: url("https://lh3.googleusercontent.com/proxy/LHpsau3rVyL88HbNSqgIWavi98DBxyioDIrFyhHaki8Fo2O_p-HGVrO9xgSGSDThdC-IUR59UVUsYu1ZMcZKtCrDm4ofjAHV_PtYGgLCVHpU2041JpAH_CbXYQC5_HRhiX71eYZ2aVs4G9f95KxueO7EJOE"); */
+  background-image: url("https://pixelpapa.com/wp-content/uploads/2018/11/1.gif");
+  width: 100%;
 }
 /******************** 
  **** Typography ****
@@ -27,29 +39,14 @@ h3, h4, h5 {
  **** Components ****
  ********************/
 .carousel {
-    width:600;
-    height:400;
-    margin: 10px;
+    max-width:70vw;
+    height:40vw;
+    margin-bottom: 1vw;
 }
-.jumbotron {
-  background-color: #0f4c81;
-  border: 0.25em solid #658dc6;
-  background-image: url(https://media.giphy.com/media/Pn0OvNxhkma6oAaD96/giphy.gif);
-  background-size: 100%;
-  height: 350;
-}
-.jumbotron-h1 {
-  color: #f1eee6;
-}
-.jumbotron-p {
-  color: #373838;
-  font-size: 25px;
-  text-shadow: #f1eee6 2px 0 12px;
-}
-img {
-  border: 0.25em solid #658dc6;
-  border-radius: 5px;
-  height: 500px;
+.main-img {
+  border: 0.15em solid #658dc6;
+  border-radius: .5%;
+  height: 20vmax;
   width: 100%;
   object-fit: cover;
 }
@@ -110,60 +107,132 @@ img {
  }
 
 /******************** 
- ****** Buttons *****
+ ***** Jumbotron ****
  ********************/
-.products {
-  border: 0.15em solid #f1eee6;
-  background-color: #658dc6;
-  color: #f1eee6;
-  font-family: 'Kumbh Sans', sans-serif;
-  outline: none !important;
-  box-shadow: none !important;
-  padding-top: 10px;
-}
-
-.products:hover {
+ .jumbotron {
+  background-color: #F5B895;
   border: 0.15em solid #658dc6;
+  border-radius: .5%;
+  /* background-image: url(https://media.giphy.com/media/Pn0OvNxhkma6oAaD96/giphy.gif); */
+  background-image: url(http://cdn.lowgif.com/full/558c542dc02a1df0-.gif);
+  background-size: 110%;
+  background-repeat: no-repeat;
+  background-clip: padding-box;
+  margin-top: 1vw;
+  width: 100%;
+  min-height: 20vw;
+}
+.jumbotron-h1 {
+  color: #f1eee6;
+}
+.jumbotron-p {
+  color: #373838;
+  font-size: 25px;
+  text-shadow: #f1eee6 2px 0 12px;
+}
+.products-root {
+  position: relative;
+  width: 120px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.products-control {
+  position: relative;
+  overflow: hidden;
+  background-color: #373838;
+  border: 2px solid #658DC6;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 10px;
+}
+.products-control:hover {
+  position: relative;
+  overflow: hidden;
+  background-color: #B5C7D3;
+  border: 2px solid #F5B895;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #0F4C81;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 10px;
+}
+.products-control:active {
+  position: relative;
+  overflow: hidden;
   background-color: #0f4c81;
-  color: #658dc6;
+  border: 2px solid #F5B895;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;;
   font-family: 'Kumbh Sans', sans-serif;
-  outline: none !important;
-  box-shadow: none !important;
-  padding-top: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 10px;
 }
-
-.products:focus {
-  border: 0.15em solid #0f4c81;
-  background-color: #f1eee6;
-  color: #658dc6;
+/******************** 
+ *** Product Info ***
+ ********************/
+.product-container {
+  margin-left: 30px;
+}
+.styles-name {
+font-family: 'Kumbh Sans', sans-serif;
+font-size: .75vw;
+font-weight: 200;
+color: #0f4c81;
+text-transform: uppercase;
+display: inline;
+padding-top: 10px;
+}
+.styles-name-selected {
   font-family: 'Kumbh Sans', sans-serif;
-  outline: none !important;
-  box-shadow: none !important;
+  font-size: .75vw;
+  font-weight: 400;
+  color: #F5B895;
+  text-transform: uppercase;
+  display: inline;
   padding-top: 10px;
-}
-
+  text-decoration: #F5B895 underline;
+  }
 /******************** 
  ** Detailed Info ***
  ********************/
 .accordion-style {
-  border: 0.2em solid #658dc6;
-  background-color: #84898C;
-  margin: 20px;
+  border: 0.15em solid #658dc6;
+  border-radius: .5%;
+  background-color: #373838;
 }
 .accordion-links {
   text-decoration: none !important;
+  text-align: left;
   color: #f1eee6;
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: 1.25vw;
+  font-size: 20px;
   padding-top: 10px;
   outline: none !important;
   box-shadow: none !important;
 }
 .accordion-links:hover {
+  text-align: left;
   text-decoration: none !important;
   color: #f1eee6;
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: 1.25vw;
+  font-size: 20px;
   padding-top: 10px;
   outline: none !important;
   box-shadow: none !important;
@@ -172,13 +241,331 @@ img {
   background-color: #f1eee6;
   color: #0f4c81;
   font-family: 'Crimson Text', serif;
-  font-size: 1vw;
+  font-size: 20px;
   padding: 10px;
 }
 small {
   /* text-decoration: none !important; */
-  color: #f1eee6;
+  color: #F5B895;
   font-family: 'Kumbh Sans', sans-serif;
   font-size: .5vw;
   float: left;
+}
+/******************** 
+ ***** Features *****
+ ********************/
+ .features-style {
+  /* border: 0.2em solid #658dc6; */
+  border: none;
+  background-color: #84898C;
+}
+.features-check {
+  border: none;
+  height: auto;
+  width: 20px;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  display: legacy;
+}
+.features-links {
+  text-decoration: none !important;
+  text-align: left;
+  color: #f1eee6;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 20px;
+  padding-top: 10px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.features-body {
+  background-color: #f1eee6;
+  color: #0f4c81;
+  font-family: 'Crimson Text', serif;
+  font-size: 1vw;
+  padding: 10px;
+}
+/******************** 
+ ******* Title ******
+ ********************/
+.product-title {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 1.25vw;
+  color: #658DC6;
+  display: inline;
+}
+/******************** 
+ ***** Category *****
+ ********************/
+.product-category {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: .75vw;
+  font-weight: 200;
+  color: #0f4c81;
+  text-transform: uppercase;
+  display: inline;
+}
+ /******************** 
+ ******* Stars *******
+ ********************/
+.stars-review-link a {
+  text-decoration: none !important;
+  color: #F5B895 !important;
+  font-family: 'Crimson Text', serif;
+  font-size: .75vw;
+  letter-spacing: 0.02em;
+}
+.stars-review-link:hover a {
+  text-decoration: none !important;
+  color: #0F4C81 !important;
+  font-family: 'Crimson Text', serif;
+  font-size: .75vw;
+  letter-spacing: 0.02em;
+}
+.stars-spacing {
+  margin-bottom: .5vw;
+}
+ /******************** 
+ ******* Social ******
+ ********************/
+.social-spacing {
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+.social-spacing:last-child {
+  margin-right: 80px;
+  margin-bottom: 5px;
+}
+ /******************** 
+ ******* Price *******
+ ********************/
+ .price {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: .75vw;
+  font-weight: 300;
+  color: #0f4c81;
+  text-transform: uppercase;
+  display: inline;
+ }
+ .price-sale {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: .75vw;
+  font-weight: 300;
+  color: #F5B895;
+  text-transform: uppercase;
+  display: inline;
+ }
+ .price-original {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: .75vw;
+  font-weight: 200;
+  color: #658DC6;
+  text-decoration: line-through;
+  text-transform: uppercase;
+  display: inline;
+ }
+ /******************** 
+ ***** Thumbnails ****
+ ********************/
+.thumbnails-img {
+  border: 0.15em solid #658dc6;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.thumbnails-selected {
+  border: 0.2em solid #F5B895;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  opacity: .8;
+}
+.thumbnails-cage {
+  /* border: 0.15em solid #658dc6 !important; */
+  max-width: 250px;
+  margin-top: 10px;
+}
+ /******************** 
+ ****** Dropdown *****
+ ********************/
+.Dropdown-root {
+  position: relative;
+  width: 120px;
+  margin-right: 5px;
+}
+.Dropdown-control {
+  position: relative;
+  overflow: hidden;
+  background-color: #373838;
+  border: 2px solid #658DC6;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 52px 8px 10px;
+  transition: all 200ms ease;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 10px;
+}
+.Dropdown-arrow {
+  border-color: #658DC6 transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: ' ';
+  display: block;
+  height: 0;
+  margin-top: -ceil(2.5);
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  width: 0
+}
+.is-open .Dropdown-arrow {
+  border-color: transparent transparent #F5B895;
+  border-width: 0 5px 5px;
+}
+.Dropdown-menu {
+  background-color: #f1eee6;
+  border-left: 2px solid #658DC6;
+  border-bottom: 2px solid #658DC6;
+  border-right: 2px solid #658DC6;
+  box-sizing: border-box;
+  margin-top: -1px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+}
+.Dropdown-option {
+  box-sizing: border-box;
+  color: #0F4C81;
+  cursor: pointer;
+  display: block;
+  padding: 4px 8px;
+  /* text-transform: uppercase; */
+  font-size: 12px;
+  font-family: 'Kumbh Sans', sans-serif;
+}
+.Dropdown-option:last-child {
+  border-bottom-right-radius: 2px;
+   border-bottom-left-radius: 2px;
+}
+
+.Dropdown-option:hover {
+  background-color: #F5B895;
+  color: #658DC6;
+  font-weight: 500;
+}
+.Dropdown-option.is-selected {
+  background-color: #F5B895;
+  color: #658DC6;
+  font-weight: 500;
+}
+.Dropdown-noresults {
+  box-sizing: border-box;
+  color: #F5B895;
+  cursor: default;
+  display: block;
+  padding: 8px 10px;
+}
+ /******************** 
+ ******** Cart *******
+ ********************/
+.cart-root {
+  position: relative;
+  width: 120px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.cart-control {
+  position: relative;
+  overflow: hidden;
+  background-color: #373838;
+  border: 2px solid #658DC6;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 10px;
+}
+.cart-control:hover {
+  position: relative;
+  overflow: hidden;
+  background-color: #B5C7D3;
+  border: 2px solid #F5B895;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #0F4C81;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 10px;
+}
+  /******************** 
+ ****** Favorite ******
+ ********************/
+ .favorite-root {
+  position: relative;
+  min-width: 120px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.favorite-control {
+  position: relative;
+  overflow: hidden;
+  background-color: #373838;
+  border: 2px solid #658DC6;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #f1eee6;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 10px;
+}
+.favorite-control:hover {
+  position: relative;
+  overflow: hidden;
+  background-color: #B5C7D3;
+  border: 2px solid #F5B895;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #0F4C81;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 10px 8px 10px;;
+  font-family: 'Kumbh Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 10px;
+}
+ /******************** 
+ ******** Cart *******
+ ********************/
+.shopping-bag-root {
+  align-content: right;
+  width: 30px;
+  mask: #F5B895;
+  float: right !important;
+  opacity: .8;
 }

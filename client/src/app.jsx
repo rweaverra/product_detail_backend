@@ -1,68 +1,61 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Accordion } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 import TitleImage from './components/titleImage';
-import MainImage from './components/mainImage';
-import DetailedInfo from './components/detailedInfo';
-import { getAllStyles, getInfo } from './lib/routes';
+import ProductInfo from './components/productInfo';
+import ProductDetails from './components/productDetails';
+// import Cart from './components/shoppingCart';
+import { getAllStyles, getInfo, getReviews } from './lib/routes';
 
 const App = () => {
   const [styles, setStyles] = useState({});
+  // current style
+  // related styles
   const [productId, setId] = useState(1);
-  // const [products, setProducts] = useState([]);
   const [product, setProduct] = useState({});
+  const [reviews, setReviews] = useState({});
 
   useEffect(() => {
-    // console.log('this time!');
     getAllStyles((error, response) => {
-      // console.log('data within get all styles', response.data);
       if (error) {
         return 'Could not get styles';
       }
       return setStyles(response);
     });
-    // listProducts((error, response) => {
-    //   if (error) {
-    //     return 'Could not get products';
-    //   }
-    //   return setProducts(response);
-    // });
     getInfo((error, response) => {
       if (error) {
         return 'Could not get products';
       }
-      // console.log('id in app: ', response.id);
       setId(response.id);
       return setProduct(response);
     });
+    getReviews((error, response) => {
+      if (error) {
+        return 'Could not get reviews';
+      }
+      console.log('App: get reviews response', response.ratings);
+      return setReviews(response.ratings); // object
+    });
   }, []);
 
+  if (Object.keys(reviews).length === 0
+  || Object.keys(product).length === 0
+  || Object.keys(styles).length === 0) {
+    return (
+      <div className="loading loading-img">
+        <h1 className="loading-h1">The Proto Company</h1>
+        <h3 className="loading-h3">504: Oops! Please Refresh The Page</h3>
+        <div />
+      </div>
+    );
+  }
+  console.log('reviews before passing to product info: ', reviews);
   return (
     <Container>
-      {/* <br /> */}
       <TitleImage />
-      <Container>
-        <Row>
-          <MainImage styles={styles} />
-          Stars will go here
-          <br />
-          Category will go here
-          <br />
-          Product Name will go here
-          <br />
-          Price will go here
-          <br />
-          Style and Selected Style will go here
-          <br />
-          Style Thumbnails will go here
-          <br />
-          Size and Quantity Dropdowns will go here
-          <br />
-          Add to Cart and Favorite Buttons will go here
-        </Row>
-      </Container>
-      <Container>
-        <Accordion><DetailedInfo product={product} productId={productId} /></Accordion>
-      </Container>
+      {/* <Cart /> */}
+      <ProductInfo styles={styles} product={product} productId={productId} reviews={reviews} />
+      <ProductDetails product={product} productId={productId} />
     </Container>
   );
 };

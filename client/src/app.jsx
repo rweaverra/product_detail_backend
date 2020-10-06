@@ -44,6 +44,7 @@ const App = () => {
       if (error) {
         return 'Could not get default style';
       }
+      // console.log('App: getDefaultStyle response', response);
       return setCurrentStyle(response);
     });
   }, []);

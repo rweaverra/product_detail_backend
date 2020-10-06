@@ -24,7 +24,7 @@ Status: 200 OK
 ]
 */
 // const productID = Math.ceil(Math.random() * 10000);
-const productID = 5;
+const productID = 1;
 
 export const listProducts = (callback) => {
   const path = `${apiPath}/products/list/`;
@@ -267,11 +267,11 @@ export const getReviews = (callback) => {
   return fetch(path)
     .then((result) => result.json())
     .then((data) => {
-      console.log('Routes: data in fetch', data);
+      // console.log('Routes: data in fetch', data);
       callback(null, data);
     })
     .catch((error) => {
-      console.log('data in fetch error');
+      // console.log('data in fetch error');
       callback(error, null);
     });
 };

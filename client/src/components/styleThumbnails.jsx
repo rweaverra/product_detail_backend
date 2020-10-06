@@ -36,7 +36,7 @@ const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
           console.log('photo in map', photo);
           let photoUrl = '';
           if (photo[1].photos.thumbnail_url === null) {
-            photoUrl = 'https://i.imgur.com/5vMEbrv.jpg';
+            photoUrl = '/comingSoon';
           } else {
             photoUrl = photo[1].photos[0].thumbnail_url;
           }

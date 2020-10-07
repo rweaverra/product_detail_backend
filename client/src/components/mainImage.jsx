@@ -1,12 +1,15 @@
 import React, { useCallback, useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
+import Slider from 'react-slick';
 import ControlledZoom from 'react-medium-image-zoom';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
-const MainImage = ({ styles }) => {
-  const photoArr = styles.results[0].photos;
+const MainImage = ({ currentStyle }) => {
+  const photoArr = currentStyle.photos;
+  const [nav1, setSlider1] = useState({});
+  const [nav2, setSlider2] = useState({});
   const [isZoomed, setIsZoomed] = useState(false);
+
   const handleImgLoad = useCallback(() => {
     setIsZoomed(true);
   }, []);
@@ -15,32 +18,79 @@ const MainImage = ({ styles }) => {
   }, []);
 
   return (
-    <Carousel
-      interval={null}
-      style={{ width: '37vmax', height: '20vmax' }}
-      indicators={false}
-      wrap={false}
-    >
-      {!!photoArr && photoArr.map((photo) => (
-        <Carousel.Item key={uuidv4()} id="mainImage">
-          <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange} closeText="Unzoom Image" openText="Zoom Image" zoomZindex="1" zoomMargin={20}>
-            <img
-              className="main-img"
-              src={photo.url}
-              alt={photo.name}
-              onLoad={handleImgLoad}
-            />
-          </ControlledZoom>
-        </Carousel.Item>
-      ))}
-    </Carousel>
+    <div>
+      <Slider
+        infinite={false}
+        draggable
+        dots
+        accessibility
+        className="main-carousel"
+        asNavFor={nav2}
+        ref={(slider) => (setSlider1(slider))}
+      >
+        {!!photoArr && photoArr.map((photo) => {
+          let photoUrl = '';
+          if (photo.url === null) {
+            photoUrl = 'https://i.imgur.com/5vMEbrv.jpg';
+          } else {
+            photoUrl = photo.url;
+          }
+          return (
+            <div key={uuidv4()}>
+              <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange} closeText="Unzoom Image" openText="Zoom Image" zoomZindex="1" zoomMargin={20}>
+                <img
+                  className="main-img"
+                  src={photoUrl}
+                  alt={photo.name}
+                  onLoad={handleImgLoad}
+                />
+              </ControlledZoom>
+            </div>
+          );
+        })}
+      </Slider>
+      <Slider
+        infinite={false}
+        draggable
+        accessibility
+        className="thumbnail-carousel"
+        asNavFor={nav1}
+        ref={(slider) => (setSlider2(slider))}
+        slidesToShow={3}
+        swipeToSlide
+        focusOnSelect
+      >
+        {!!photoArr && photoArr.map((photo) => {
+          let photoUrl = '';
+          if (photo.thumbnail_url === null) {
+            photoUrl = 'https://i.imgur.com/5vMEbrv.jpg';
+          } else {
+            photoUrl = photo.thumbnail_url;
+          }
+          return (
+            <div key={uuidv4()}>
+              <img
+                className="thumbnail-img"
+                src={photoUrl}
+                alt={photo.name}
+              />
+            </div>
+          );
+        })}
+      </Slider>
+    </div>
   );
 };
 
 MainImage.propTypes = {
-  styles: PropTypes.shape({
-    product_id: PropTypes.string,
-    results: PropTypes.arrayOf(PropTypes.object),
+  currentStyle: PropTypes.shape({
+    style_id: PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+    sale_price: PropTypes.string,
+    default: PropTypes.number,
+    photos: PropTypes.arrayOf(PropTypes.object),
+    skus: PropTypes.objectOf(PropTypes.number),
   }).isRequired,
 };
 

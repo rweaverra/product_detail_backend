@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
@@ -15,13 +14,13 @@ import StyleName from './styleNames';
 import Cart from './shoppingCart';
 
 const ProductInfo = ({
-  styles, product, productId, reviews,
+  styles, product, productId, reviews, currentStyle, setCurrentStyle,
 }) => {
   const [rating, setRating] = useState(0);
   const [count, setCount] = useState(0);
+  const [sku, setSku] = useState({ value: '', label: '' });
 
   const getTheAverageRating = (starData) => {
-    console.log('ProductInfo: star data ', starData);
     let reviewCount = 0;
     let reviewTotal = 0;
     const ratingArr = Object.entries(starData);
@@ -32,7 +31,6 @@ const ProductInfo = ({
       reviewCount += counter;
       reviewTotal += stars * counter;
     }
-    console.log('ProductInfo: logging total and count', reviewTotal, reviewCount);
     return reviewTotal / reviewCount;
   };
 
@@ -53,20 +51,22 @@ const ProductInfo = ({
     setRating(average);
     setCount(numberOReviews);
   }, [reviews]);
+
   return (
     <Container>
       <Row>
         {/* Product Image Carousel & Thumbnail Viewer */}
         <div>
           <Col xs={12}>
-            <MainImage productId={productId} styles={styles} />
+            <MainImage styles={styles} currentStyle={currentStyle} />
           </Col>
         </div>
         <div className="product-container">
           <Col xs={12}>
             {/* Social Sharing */}
             <Row>
-              <SocialShare product={product} styles={styles} />
+              <SocialShare product={product} styles={styles} currentStyle={currentStyle} />
+              <Cart />
             </Row>
             {/* Product Star Ratings */}
             <Row>
@@ -86,15 +86,30 @@ const ProductInfo = ({
               </div>
             </Row>
             {/* Product Price */}
-            <Row><StylePrice styles={styles} /></Row>
+            <Row><StylePrice currentStyle={currentStyle} /></Row>
             {/* Product Style */}
-            <Row><StyleName styles={styles} /></Row>
+            <Row><StyleName currentStyle={currentStyle} /></Row>
             {/* Product Style Thumbnails */}
-            <Row><StyleThumbnails productId={productId} styles={styles} /></Row>
+            <Row>
+              <StyleThumbnails
+                productId={productId}
+                styles={styles}
+                currentStyle={currentStyle}
+                setCurrentStyle={setCurrentStyle}
+              />
+            </Row>
             {/* Size and Quantity Selectors */}
             <Row>
-              <SizeDropdown />
-              <QuantityDropdown />
+              <SizeDropdown
+                currentStyle={currentStyle}
+                sku={sku}
+                setSku={setSku}
+              />
+              <QuantityDropdown
+                currentStyle={currentStyle}
+                sku={sku}
+                setSku={setSku}
+              />
             </Row>
             {/* Add to Cart/Favorite Options */}
             <Row>
@@ -102,10 +117,6 @@ const ProductInfo = ({
               <div className="favorite-root favorite-control">Favorite</div>
             </Row>
           </Col>
-        </div>
-        {/* Cart */}
-        <div>
-          <Cart />
         </div>
       </Row>
     </Container>
@@ -116,6 +127,15 @@ ProductInfo.propTypes = {
   styles: PropTypes.shape({
     product_id: PropTypes.string,
     results: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+  currentStyle: PropTypes.shape({
+    style_id: PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+    sale_price: PropTypes.string,
+    default: PropTypes.number,
+    photos: PropTypes.arrayOf(PropTypes.object),
+    skus: PropTypes.objectOf(PropTypes.number),
   }).isRequired,
   product: PropTypes.shape({
     id: PropTypes.number,
@@ -133,6 +153,7 @@ ProductInfo.propTypes = {
     characteristics: PropTypes.objectOf(PropTypes.string),
   }).isRequired,
   productId: PropTypes.number.isRequired,
+  setCurrentStyle: PropTypes.func.isRequired,
 };
 
 export default ProductInfo;

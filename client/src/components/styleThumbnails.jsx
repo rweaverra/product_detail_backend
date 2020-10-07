@@ -1,47 +1,54 @@
-// style thumbnails go here
-// How will you display the style images?
-// Will you use the thumbnail or the full image from the style?
-// How will a user see they selected a style?
-// What will the badge look like?
-// How will you grab the image url and the style id?
-// What will be held in state?
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
-// import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import { v4 as uuidv4 } from 'uuid';
 
-const StyleThumbnails = ({ styles }) => {
-  const [isSelected, imgIsSelected] = useState(false);
-  const photoArr = styles.results[0].photos;
-  const handleStyleSelect = useCallback(() => {
-    imgIsSelected(!isSelected); // current style will go here
-  }, [isSelected]);
+const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
+  const stylesArr = Object.entries(styles.results);
 
-  let className = 'thumbnails-img ';
-  if (isSelected) {
-    className += 'thumbnails-selected';
-  }
+  const handleStyleSelect = (styleId) => {
+    for (let i = 0; i < stylesArr.length; i += 1) {
+      const current = stylesArr[i][1];
+      if (current.style_id === styleId) {
+        setCurrentStyle(current);
+      }
+    }
+  };
+
+  let className = 'thumbnails-img';
 
   return (
     <div>
-      {/* <Col sm={10} md={7}> */}
       <Container className="thumbnails-cage">
-        {photoArr.map((photo) => (
-          <Image
-            key={uuidv4()}
-            className={className}
-            src={photo.thumbnail_url}
-            alt={photo.name}
-            roundedCircle
-            onClick={handleStyleSelect}
-          />
-        ))}
+        {stylesArr.map((photo) => {
+          let photoUrl = '';
+          const styleId = photo[1].style_id;
+          if (photo[1].photos.thumbnail_url === null) {
+            photoUrl = '/comingSoon.jpg'; // host this on S3 and host it as public
+          } else {
+            photoUrl = photo[1].photos[0].thumbnail_url;
+          }
+          if (styleId === currentStyle.style_id) {
+            className = 'thumbnails-selected';
+          } else {
+            className = 'thumbnails-img';
+          }
+          return (
+            <Image
+              id={styleId}
+              key={uuidv4()}
+              className={className}
+              src={photoUrl}
+              alt={photo.name}
+              roundedCircle
+              onClick={() => {
+                handleStyleSelect(styleId);
+              }}
+            />
+          );
+        })}
       </Container>
-      {/* </Col> */}
     </div>
   );
 };
@@ -51,7 +58,16 @@ StyleThumbnails.propTypes = {
     product_id: PropTypes.string,
     results: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
-  // productId: PropTypes.number.isRequired,
+  currentStyle: PropTypes.shape({
+    'default?': PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+    photos: PropTypes.arrayOf(PropTypes.object),
+    sale_price: PropTypes.string,
+    skus: PropTypes.objectOf(PropTypes.number),
+    style_id: PropTypes.number,
+  }).isRequired,
+  setCurrentStyle: PropTypes.func.isRequired,
 };
 
 export default StyleThumbnails;

@@ -5,5 +5,5 @@ import App from './app.jsx';
 
 ReactDOM.render(
   <App />,
-  document.getElementById('root'),
+  document.getElementById('product-overview'),
 );

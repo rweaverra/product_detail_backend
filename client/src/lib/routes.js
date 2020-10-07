@@ -24,7 +24,7 @@ Status: 200 OK
 ]
 */
 // const productID = Math.ceil(Math.random() * 10000);
-const productID = 4;
+const productID = 1;
 
 export const listProducts = (callback) => {
   const path = `${apiPath}/products/list/`;
@@ -146,6 +146,26 @@ export const getAllStyles = (callback) => {
     .then((data) => { callback(null, data); })
     .catch((error) => { callback(error, null); });
 };
+
+export const getDefaultStyle = (callback) => {
+  const path = `${apiPath}/products/${productID}/styles`;
+  return fetch(path)
+    .then((result) => result.json())
+    .then((data) => {
+      // console.log('Routes: data in get default style', data);
+      const stylesArr = data.results;
+      // console.log('Routes: styles array in get default style', stylesArr);
+      for (let i = 0; i < stylesArr.length; i += 1) {
+        const current = stylesArr[i];
+        // console.log('Routes: current in loop in get default style', current['default?']);
+        if (current['default?'] > 0) {
+          // console.log('Routes: current in get default style', current);
+          callback(null, current);
+        }
+      }
+    })
+    .catch((error) => { callback(error, null); });
+};
 /* Reviews - Returns a list of reviews for a particular product.
 
 GET /reviews/:product_id/list
@@ -247,11 +267,11 @@ export const getReviews = (callback) => {
   return fetch(path)
     .then((result) => result.json())
     .then((data) => {
-      console.log('Routes: data in fetch', data);
+      // console.log('Routes: data in fetch', data);
       callback(null, data);
     })
     .catch((error) => {
-      console.log('data in fetch error');
+      // console.log('data in fetch error');
       callback(error, null);
     });
 };

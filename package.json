@@ -6,7 +6,8 @@
     "react-dev": "webpack -d --watch",
     "start": "cd client/dist && live-server",
     "test": "jest",
-    "build": "webpack -d"
+    "build": "webpack -d",
+    "server": "cd server && nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.21.2",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "express": "^4.17.1",
     "jest": "^26.4.2",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
@@ -51,6 +53,7 @@
     "react-slick": "^0.27.11",
     "react-star-ratings": "^2.3.0",
     "react-test-renderer": "^16.13.1",
+    "slick-carousel": "^1.8.1",
     "uuid": "^8.3.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"

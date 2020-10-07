@@ -1,4 +1,3 @@
-// FIXES: Needs to be looking at the currentStyle price and sale price
 import React from 'react';
 import PropTypes from 'prop-types';
 

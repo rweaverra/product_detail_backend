@@ -1,18 +1,10 @@
-/* eslint-disable no-console */
-// FIXES: Need to map over all styles for product image
-//        and display first image of each style.
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
-// import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import { v4 as uuidv4 } from 'uuid';
 
 const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [isSelected, setIsSelected] = useState(false);
   const stylesArr = Object.entries(styles.results);
 
   const handleStyleSelect = (styleId) => {
@@ -22,25 +14,25 @@ const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
         setCurrentStyle(current);
       }
     }
-    console.log('Style Thumbnails: current style', currentStyle);
   };
-  let className = 'thumbnails-img ';
-  if (isSelected) {
-    className += 'thumbnails-selected';
-  }
+
+  let className = 'thumbnails-img';
+
   return (
     <div>
-      {/* <Col sm={10} md={7}> */}
       <Container className="thumbnails-cage">
         {stylesArr.map((photo) => {
           let photoUrl = '';
           const styleId = photo[1].style_id;
-          // console.log('styleId', styleId);
-          // console.log('photo in map', photo);
           if (photo[1].photos.thumbnail_url === null) {
-            photoUrl = '/comingSoon.jpg';
+            photoUrl = '/comingSoon.jpg'; // host this on S3 and host it as public
           } else {
             photoUrl = photo[1].photos[0].thumbnail_url;
+          }
+          if (styleId === currentStyle.style_id) {
+            className = 'thumbnails-selected';
+          } else {
+            className = 'thumbnails-img';
           }
           return (
             <Image
@@ -57,7 +49,6 @@ const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
           );
         })}
       </Container>
-      {/* </Col> */}
     </div>
   );
 };
@@ -77,7 +68,6 @@ StyleThumbnails.propTypes = {
     style_id: PropTypes.number,
   }).isRequired,
   setCurrentStyle: PropTypes.func.isRequired,
-  // productId: PropTypes.number.isRequired,
 };
 
 export default StyleThumbnails;

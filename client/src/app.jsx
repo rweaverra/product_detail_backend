@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -38,20 +37,24 @@ const App = () => {
       if (error) {
         return 'Could not get reviews';
       }
-      return setReviews(response.ratings); // object
+      return setReviews(response.ratings);
     });
     getDefaultStyle((error, response) => {
       if (error) {
         return 'Could not get default style';
       }
-      // console.log('App: getDefaultStyle response', response);
       return setCurrentStyle(response);
     });
   }, []);
 
   if (Object.keys(reviews).length === 0
   || Object.keys(product).length === 0
-  || Object.keys(styles).length === 0) {
+  || Object.keys(styles).length === 0
+  || Object.keys(currentStyle).length === 0
+  || reviews === undefined
+  || product === undefined
+  || styles === undefined
+  || currentStyle === undefined) {
     return (
       <div className="loading loading-img">
         <h1 className="loading-h1">The Proto Company</h1>
@@ -60,7 +63,7 @@ const App = () => {
       </div>
     );
   }
-  console.log('App: currentStyle before passing as props to Product Info: ', currentStyle);
+
   return (
     <Container>
       <div>

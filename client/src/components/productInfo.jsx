@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
@@ -19,6 +18,7 @@ const ProductInfo = ({
 }) => {
   const [rating, setRating] = useState(0);
   const [count, setCount] = useState(0);
+  const [sku, setSku] = useState({ value: '', label: '' });
 
   const getTheAverageRating = (starData) => {
     let reviewCount = 0;
@@ -51,8 +51,7 @@ const ProductInfo = ({
     setRating(average);
     setCount(numberOReviews);
   }, [reviews]);
-  console.log('Product Info: currentStyle before passing to child components', currentStyle);
-  // console.log('Product Info: set style handler', setCurrentStyle);
+
   return (
     <Container>
       <Row>
@@ -101,8 +100,16 @@ const ProductInfo = ({
             </Row>
             {/* Size and Quantity Selectors */}
             <Row>
-              <SizeDropdown currentStyle={currentStyle} />
-              <QuantityDropdown currentStyle={currentStyle} />
+              <SizeDropdown
+                currentStyle={currentStyle}
+                sku={sku}
+                setSku={setSku}
+              />
+              <QuantityDropdown
+                currentStyle={currentStyle}
+                sku={sku}
+                setSku={setSku}
+              />
             </Row>
             {/* Add to Cart/Favorite Options */}
             <Row>

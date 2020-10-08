@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 
 const Search = ({ setId }) => {
-  const [searchInput, setSearchInput] = useState(0);
+  const [searchInput, setSearchInput] = useState(1);
 
   const handleSearchChange = (e) => {
     setSearchInput(Number(e.target.value));
   };
-  const handleSubmit = () => {
-    console.log(`submitted ${searchInput}`);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // console.log(`submitted ${searchInput}`);
+    setId(searchInput);
   };
 
-  useEffect(() => {
-    console.log('attempting to update set id');
-    setId(searchInput);
-  });
-
   return (
-    <Container className="">
+    <Container>
       <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Control
           as="textarea"
@@ -33,7 +30,7 @@ const Search = ({ setId }) => {
           className="nav-button-root nav-button-control"
           type="submit"
           value="Submit"
-          onClick={(event) => handleSubmit(event.target.value)}
+          onClick={(event) => handleSubmit(event)}
         />
       </Form.Group>
     </Container>
@@ -42,7 +39,6 @@ const Search = ({ setId }) => {
 
 Search.propTypes = {
   setId: PropTypes.func.isRequired,
-  // productId: PropTypes.number.isRequired,
 };
 
 export default Search;

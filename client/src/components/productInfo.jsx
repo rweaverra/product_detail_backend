@@ -11,7 +11,6 @@ import StyleThumbnails from './styleThumbnails';
 import SizeDropdown from './sizeDropdown';
 import QuantityDropdown from './quantityDropdown';
 import StyleName from './styleNames';
-import Cart from './shoppingCart';
 
 const ProductInfo = ({
   styles, product, productId, reviews, currentStyle, setCurrentStyle,
@@ -66,7 +65,6 @@ const ProductInfo = ({
             {/* Social Sharing */}
             <Row>
               <SocialShare product={product} styles={styles} currentStyle={currentStyle} />
-              <Cart />
             </Row>
             {/* Product Star Ratings */}
             <Row>

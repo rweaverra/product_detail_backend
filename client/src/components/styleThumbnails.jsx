@@ -25,7 +25,8 @@ const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
           let photoUrl = '';
           const styleId = photo[1].style_id;
           if (photo[1].photos.thumbnail_url === null) {
-            photoUrl = '/comingSoon.jpg'; // host this on S3 and host it as public
+            // photoUrl = '/comingSoon.jpg'; // host this on S3 and host it as public
+            photoUrl = 'https://i.imgur.com/5vMEbrv.jpg';
           } else {
             photoUrl = photo[1].photos[0].thumbnail_url;
           }

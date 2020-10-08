@@ -305,7 +305,20 @@ Status: 200 OK
   // ...
 ]
 */
-
+export const getCart = ((callback) => {
+  // const path = `${apiPath}/cart/${user_session}`;
+  const path = `${apiPath}/cart/1234`;
+  fetch(path)
+    .then((response) => { response.json(); })
+    .then((data) => {
+      console.log('data in get cart', data);
+      callback(null, data);
+    })
+    .catch((error) => {
+      console.log('error in get cart: ', error);
+      callback(error, null);
+    });
+});
 /* Add to Cart - Adds a product to the cart.
 
 POST /cart/
@@ -317,6 +330,31 @@ product_id   int         ID for the product being added to the cart
 
 Status: 201 CREATED
 */
+export const addToCart = ((callback) => {
+  const path = `${apiPath}/cart/`;
+  fetch(path, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    // body: JSON.stringify({ user_session: int, product_id: int }),
+    body: JSON.stringify({
+      id: 1,
+      user_session: 1234,
+      product_id: { productID },
+      active: 1,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('data in fetch post request: ', data);
+      callback(null, data);
+    })
+    .catch((error) => {
+      console.log('error in fetch post request: ', error);
+      callback(error, null);
+    });
+});
 
 /* Interactions - Adds a interaction to the db.
 

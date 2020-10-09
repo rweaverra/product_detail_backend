@@ -5,10 +5,31 @@ import Table from 'react-bootstrap/Table';
 import PropTypes from 'prop-types';
 
 // will have to display default style and price
-const Cart = ({ cart, currentStyle, product }) => {
+const Cart = ({
+  cart, currentStyle, product,
+}) => {
   console.log('CART: cart! ', cart);
+  // [ {id: 348, user_session: 8888, product_id: 1, active: 1}, ...]
+
   // console.log('CART: current style ', currentStyle);
   // console.log('CART: product ', product);
+
+  // search products and get details - getInfo
+  //   find poduct id, name, default_price
+  // console.log(getInfo)
+  // cart.map((item) => {
+  //   console.log('CART: item product id', item.product_id);
+  //   const itemId = item.product_id;
+  //   // const itemInfo = getInfo(itemId, () => {});
+  //   console.log('CART: item info', itemInfo);
+  // });
+  // const getCartInfo = () => {
+  //   for (var i = 0; i < cart.length; i += 1) {
+  //     const currentItem = cart[i];
+  //     console.log(currentItem);
+  //   }
+  // };
+
   return (
     <div>
       <Table>
@@ -16,7 +37,6 @@ const Cart = ({ cart, currentStyle, product }) => {
           <tr>
             <th>Product Name</th>
             <th>Product Style</th>
-            <th>Size</th>
             <th>Quantity</th>
             <th>Price</th>
           </tr>
@@ -76,6 +96,7 @@ Cart.propTypes = {
     default_price: PropTypes.string,
     features: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
+  getInfo: PropTypes.func.isRequired,
 };
 
 export default Cart;

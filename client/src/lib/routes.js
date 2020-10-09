@@ -24,7 +24,7 @@ Status: 200 OK
 ]
 */
 // const productID = Math.ceil(Math.random() * 10000);
-const productID = 1;
+// const productID = 1;
 
 export const listProducts = (callback) => {
   const path = `${apiPath}/products/list/`;
@@ -65,9 +65,8 @@ Status: 200 OK
 }
 */
 
-export const getInfo = (callback) => {
-  // console.log('fetching styles');
-  const path = `${apiPath}/products/${productID}`;
+export const getInfo = (productId, callback) => {
+  const path = `${apiPath}/products/${productId}`;
   return fetch(path)
     .then((result) => result.json())
     .then((data) => { callback(null, data); })
@@ -138,28 +137,23 @@ Status: 200 OK
   // ...
 }
 */
-export const getAllStyles = (callback) => {
-  // console.log('fetching styles');
-  const path = `${apiPath}/products/${productID}/styles`;
+export const getAllStyles = (productId, callback) => {
+  const path = `${apiPath}/products/${productId}/styles`;
   return fetch(path)
     .then((result) => result.json())
     .then((data) => { callback(null, data); })
     .catch((error) => { callback(error, null); });
 };
 
-export const getDefaultStyle = (callback) => {
-  const path = `${apiPath}/products/${productID}/styles`;
+export const getDefaultStyle = (productId, callback) => {
+  const path = `${apiPath}/products/${productId}/styles`;
   return fetch(path)
     .then((result) => result.json())
     .then((data) => {
-      // console.log('Routes: data in get default style', data);
       const stylesArr = data.results;
-      // console.log('Routes: styles array in get default style', stylesArr);
       for (let i = 0; i < stylesArr.length; i += 1) {
         const current = stylesArr[i];
-        // console.log('Routes: current in loop in get default style', current['default?']);
         if (current['default?'] > 0) {
-          // console.log('Routes: current in get default style', current);
           callback(null, current);
         }
       }
@@ -261,17 +255,14 @@ Status: 200 OK
     // ...
 }
 */
-export const getReviews = (callback) => {
-  // console.log('fetching styles');
-  const path = `${apiPath}/reviews/${productID}/meta`;
+export const getReviews = (productId, callback) => {
+  const path = `${apiPath}/reviews/${productId}/meta`;
   return fetch(path)
     .then((result) => result.json())
     .then((data) => {
-      // console.log('Routes: data in fetch', data);
       callback(null, data);
     })
     .catch((error) => {
-      // console.log('data in fetch error');
       callback(error, null);
     });
 };
@@ -305,9 +296,13 @@ Status: 200 OK
   // ...
 ]
 */
-export const getCart = ((callback) => {
-  // const path = `${apiPath}/cart/${user_session}`;
-  const path = `${apiPath}/cart/1234`;
+// This is my default callback. It prevents callback is not a function error - Temporary
+const arrowFunc = (error, data) => { if (error) { return error; } return data; };
+
+// BUG: cart data is coming back as undefined in routes, app, productInfo, and Cart.
+export const getCart = ((sessionId, callback = arrowFunc) => {
+  // const path = `${apiPath}/cart/${sessionId}`;
+  const path = `${apiPath}/cart/8808`;
   fetch(path)
     .then((response) => { response.json(); })
     .then((data) => {
@@ -330,7 +325,7 @@ product_id   int         ID for the product being added to the cart
 
 Status: 201 CREATED
 */
-export const addToCart = ((callback) => {
+export const addToCart = ((sessionId, productId, callback = arrowFunc) => {
   const path = `${apiPath}/cart/`;
   fetch(path, {
     method: 'POST',
@@ -339,19 +334,17 @@ export const addToCart = ((callback) => {
     },
     // body: JSON.stringify({ user_session: int, product_id: int }),
     body: JSON.stringify({
-      id: 1,
-      user_session: 1234,
-      product_id: { productID },
+      user_session: sessionId,
+      product_id: productId,
       active: 1,
     }),
   })
-    .then((response) => response.json())
     .then((data) => {
-      console.log('data in fetch post request: ', data);
+      // console.log('data in fetch post request: ', data);
       callback(null, data);
     })
     .catch((error) => {
-      console.log('error in fetch post request: ', error);
+      // console.log('error in fetch post request: ', error);
       callback(error, null);
     });
 });

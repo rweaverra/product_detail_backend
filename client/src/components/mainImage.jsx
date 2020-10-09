@@ -31,7 +31,7 @@ const MainImage = ({ currentStyle }) => {
         {!!photoArr && photoArr.map((photo) => {
           let photoUrl = '';
           if (photo.url === null) {
-            photoUrl = 'https://i.imgur.com/5vMEbrv.jpg';
+            photoUrl = 'https://fec-image-bucket.s3-us-west-2.amazonaws.com/Coming+Soon+New+Announcement+Watercolor+Painterly+Social+Media.jpg';
           } else {
             photoUrl = photo.url;
           }
@@ -63,7 +63,7 @@ const MainImage = ({ currentStyle }) => {
         {!!photoArr && photoArr.map((photo) => {
           let photoUrl = '';
           if (photo.thumbnail_url === null) {
-            photoUrl = 'https://i.imgur.com/5vMEbrv.jpg';
+            photoUrl = 'https://fec-image-bucket.s3-us-west-2.amazonaws.com/Coming+Soon+New+Announcement+Watercolor+Painterly+Social+Media.jpg';
           } else {
             photoUrl = photo.thumbnail_url;
           }

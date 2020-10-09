@@ -24,8 +24,8 @@ const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
         {stylesArr.map((photo) => {
           let photoUrl = '';
           const styleId = photo[1].style_id;
-          if (photo[1].photos.thumbnail_url === null) {
-            photoUrl = '/comingSoon.jpg'; // host this on S3 and host it as public
+          if (photo[1].photos[0].thumbnail_url === null) {
+            photoUrl = 'https://fec-image-bucket.s3-us-west-2.amazonaws.com/Coming+Soon+New+Announcement+Watercolor+Painterly+Social+Media.jpg';
           } else {
             photoUrl = photo[1].photos[0].thumbnail_url;
           }

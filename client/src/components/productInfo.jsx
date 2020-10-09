@@ -11,10 +11,10 @@ import StyleThumbnails from './styleThumbnails';
 import SizeDropdown from './sizeDropdown';
 import QuantityDropdown from './quantityDropdown';
 import StyleName from './styleNames';
-import Cart from './shoppingCart';
 
 const ProductInfo = ({
-  styles, product, productId, reviews, currentStyle, setCurrentStyle,
+  styles, product, productId, reviews, currentStyle, setCurrentStyle, sessionId,
+  addToCart,
 }) => {
   const [rating, setRating] = useState(0);
   const [count, setCount] = useState(0);
@@ -66,7 +66,6 @@ const ProductInfo = ({
             {/* Social Sharing */}
             <Row>
               <SocialShare product={product} styles={styles} currentStyle={currentStyle} />
-              <Cart />
             </Row>
             {/* Product Star Ratings */}
             <Row>
@@ -113,8 +112,20 @@ const ProductInfo = ({
             </Row>
             {/* Add to Cart/Favorite Options */}
             <Row>
-              <div className="cart-root cart-control">Add to Cart</div>
-              <div className="favorite-root favorite-control">Favorite</div>
+              <input
+                type="submit"
+                className="cart-root cart-control"
+                value="Add to Cart"
+                onClick={(e) => {
+                  e.preventDefault();
+                  addToCart(sessionId, productId, () => {});
+                }}
+              />
+              <input
+                type="submit"
+                className="favorite-root favorite-control"
+                value="Favorite"
+              />
             </Row>
           </Col>
         </div>
@@ -154,6 +165,8 @@ ProductInfo.propTypes = {
   }).isRequired,
   productId: PropTypes.number.isRequired,
   setCurrentStyle: PropTypes.func.isRequired,
+  sessionId: PropTypes.number.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default ProductInfo;

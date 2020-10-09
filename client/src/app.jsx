@@ -1,15 +1,18 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
+import Row from 'react-bootstrap/Row';
+import Image from 'react-bootstrap/Image';
+import { Col } from 'react-bootstrap';
 import TitleImage from './components/titleImage';
 import ProductInfo from './components/productInfo';
 import ProductDetails from './components/productDetails';
-// import Cart from './components/shoppingCart';
+import Navigation from './components/navigation';
+import Search from './components/search';
+import Cart from './components/shoppingCart';
 import {
-  getAllStyles, getDefaultStyle, getInfo, getReviews,
+  listProducts, addToCart,
+  getAllStyles, getCart, getDefaultStyle, getInfo, getReviews,
 } from './lib/routes';
 
 const App = () => {
@@ -18,42 +21,66 @@ const App = () => {
   const [productId, setId] = useState(1);
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState({});
+  const [cart, setCart] = useState([]);
+  const [productList, setProductList] = useState([]);
+  const [sessionId, setSessionId] = useState(8808);
 
   useEffect(() => {
-    getAllStyles((error, response) => {
+    getAllStyles(productId, (error, response) => {
       if (error) {
         return 'Could not get styles';
       }
       return setStyles(response);
     });
-    getInfo((error, response) => {
+    getInfo(productId, (error, response) => {
       if (error) {
         return 'Could not get products';
       }
-      setId(response.id);
       return setProduct(response);
     });
-    getReviews((error, response) => {
+    getReviews(productId, (error, response) => {
       if (error) {
         return 'Could not get reviews';
       }
       return setReviews(response.ratings);
     });
-    getDefaultStyle((error, response) => {
+    getDefaultStyle(productId, (error, response) => {
       if (error) {
         return 'Could not get default style';
       }
       return setCurrentStyle(response);
     });
-  }, []);
+    getCart((error, response) => {
+      if (error) {
+        return 'Could not get cart';
+      }
+      console.log('APP: get cart response', response);
+      return setCart(response);
+    });
+    addToCart(sessionId, productId, (error, response) => {
+      if (error) {
+        return 'Could not add to Cart';
+      }
+      console.log('add to cart success: ', response);
+      return getCart(sessionId);
+    });
+    listProducts((error, response) => {
+      if (error) {
+        return 'Could not get product list';
+      }
+      return setProductList(response);
+    });
+    setSessionId(8808);
+  }, [sessionId, productId]);
 
-  if (Object.keys(reviews).length === 0
+  if (
+    Object.keys(reviews).length === 0
+    || reviews === undefined
   || Object.keys(product).length === 0
+  || styles === undefined
+  || product === undefined
   || Object.keys(styles).length === 0
   || Object.keys(currentStyle).length === 0
-  || reviews === undefined
-  || product === undefined
-  || styles === undefined
   || currentStyle === undefined) {
     return (
       <div className="loading loading-img">
@@ -63,26 +90,36 @@ const App = () => {
       </div>
     );
   }
-
+  console.log('APP: cart ', cart);
   return (
     <Container>
-      <div>
-        <Navbar bg="dark" variant="dark" className="nav-root">
-          <Navbar.Brand className="nav-brand" href="#home">The Proto Co.</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link className="nav-links" href="#home">Home</Nav.Link>
-            <Nav.Link className="nav-links" href="#products">Products</Nav.Link>
-            <Nav.Link className="nav-links" href="#contact">Contact</Nav.Link>
-          </Nav>
-          <Form inline>
-            <img className="nav-img-cart" src="https://icon-library.com/images/white-shopping-cart-icon/white-shopping-cart-icon-9.jpg" alt="cart" />
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <div className="nav-button-root nav-button-control">Search</div>
-          </Form>
-        </Navbar>
+      <div className="nav-wrap">
+        <Row>
+          <Col xs={10}>
+            <Navigation
+              productList={productList}
+              styles={styles}
+            />
+          </Col>
+          <Col xs={2}>
+            <Search
+              setId={setId}
+            />
+          </Col>
+        </Row>
         <TitleImage />
+        <div className="cart-navbar">
+          <Image className="nav-img-cart" src="https://icon-library.com/images/white-shopping-cart-icon/white-shopping-cart-icon-9.jpg" alt="cart" />
+        </div>
+        <div className="cart-container">
+          <Cart
+            cart={cart}
+            currentStyle={currentStyle}
+            product={product}
+          />
+        </div>
       </div>
-      <h2 className="sale"><em>AUTUMN BACK TO SCHOOL SALE ~ SAVE 15% OFF YOUR FIRST ORDER ~ USE PROMO CODE: &apos;PROTO15&apos;</em></h2>
+      <h2 className="sale">AUTUMN BACK TO SCHOOL SALE ~ SAVE 15% OFF YOUR FIRST ORDER ~ USE PROMO CODE: &apos;PROTO15&apos;</h2>
       <br />
       <div className="product-info-root">
         <ProductInfo
@@ -92,6 +129,10 @@ const App = () => {
           product={product}
           productId={productId}
           reviews={reviews}
+          sessionId={sessionId}
+          cart={cart}
+          setCart={setCart}
+          addToCart={addToCart}
         />
       </div>
       <div className="product-details-root">

@@ -1,3 +1,4 @@
 node_modules
-bundle.js
-test.spec.js.snap
+__tests__
+.circleci
+coverage

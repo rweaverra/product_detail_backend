@@ -6,8 +6,8 @@
     "react-dev": "webpack -d --watch",
     "start": "cd client/dist && live-server",
     "test": "jest",
-    "build": "webpack -d",
-    "server": "cd server && nodemon server.js"
+    "build": "webpack -p",
+    "server": "cd server && node server.js"
   },
   "repository": {
     "type": "git",

@@ -1,43 +1,81 @@
+/* eslint-disable no-console */
 import React from 'react';
 // import Image from 'react-bootstrap/Image';
 import Table from 'react-bootstrap/Table';
+import PropTypes from 'prop-types';
 
-const Cart = () => (
-  <div>
-    <Table>
-      <thead className="cart-table-header">
-        <tr>
-          <th>Product Name</th>
-          <th>Product Style</th>
-          <th>Size</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody className="cart-table-body">
-        <tr>
-          <td>Monicle</td>
-          <td>Gold</td>
-          <td>S</td>
-          <td>1</td>
-          <td>$100.00</td>
-        </tr>
-        <tr>
-          <td>Panda Onsie</td>
-          <td>Black & White</td>
-          <td>S</td>
-          <td>5</td>
-          <td>$320.00</td>
-        </tr>
-        <tr className="totals">
-          <td />
-          <td />
-          <td />
-          <td>6 Total</td>
-          <td>$420.00</td>
-        </tr>
-      </tbody>
-    </Table>
-  </div>
-);
+// will have to display default style and price
+const Cart = ({ cart, currentStyle, product }) => {
+  console.log('CART: cart! ', cart);
+  // console.log('CART: current style ', currentStyle);
+  // console.log('CART: product ', product);
+  return (
+    <div>
+      <Table>
+        <thead className="cart-table-header">
+          <tr>
+            <th>Product Name</th>
+            <th>Product Style</th>
+            <th>Size</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody className="cart-table-body">
+          <tr>
+            <td>{product.name}</td>
+            <td>{currentStyle.name}</td>
+            <td>S</td>
+            <td>1</td>
+            <td>
+              $
+              {
+                currentStyle.sale_price > 0
+                  ? currentStyle.sale_price
+                  : currentStyle.original_price
+              }
+            </td>
+          </tr>
+          <tr className="totals">
+            <td />
+            <td />
+            <td />
+            <td>1 Total</td>
+            <td>
+              $
+              {
+                currentStyle.sale_price > 0
+                  ? currentStyle.sale_price
+                  : currentStyle.original_price
+              }
+            </td>
+          </tr>
+        </tbody>
+      </Table>
+    </div>
+  );
+};
+
+Cart.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.any).isRequired,
+  currentStyle: PropTypes.shape({
+    style_id: PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+    sale_price: PropTypes.string,
+    default: PropTypes.number,
+    photos: PropTypes.arrayOf(PropTypes.object),
+    skus: PropTypes.objectOf(PropTypes.number),
+  }).isRequired,
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    slogan: PropTypes.string,
+    description: PropTypes.string,
+    category: PropTypes.string,
+    default_price: PropTypes.string,
+    features: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+};
+
 export default Cart;

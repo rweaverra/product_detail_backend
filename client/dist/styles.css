@@ -674,3 +674,11 @@ padding-top: 10px;
   padding-left: 15px;
   float: right;
 }
+.search-form-label {
+  /* font-family: 'Crimson Text', serif; */
+  font-family: 'Kumbh Sans', sans-serif;
+  color: #f1eee6;
+  font-size: 8px;
+  float: right;
+  margin-top: 5px;
+}

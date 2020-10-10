@@ -23,7 +23,11 @@ const App = () => {
   const [reviews, setReviews] = useState({});
   const [cart, setCart] = useState([]);
   const [productList, setProductList] = useState([]);
-  const [sessionId, setSessionId] = useState(8808);
+  const [sessionId, setSessionId] = useState(8888);
+  // if is home, the page will render product info
+  // if is contact is true, the page will render contact info
+  // const [isHome, setHome] = useState(true);
+  // const [isContact, setContact] = useState(false);
 
   useEffect(() => {
     getAllStyles(productId, (error, response) => {
@@ -36,6 +40,7 @@ const App = () => {
       if (error) {
         return 'Could not get products';
       }
+      // setId(response.id);
       return setProduct(response);
     });
     getReviews(productId, (error, response) => {
@@ -48,29 +53,30 @@ const App = () => {
       if (error) {
         return 'Could not get default style';
       }
+      // set a conditional handler for styles(product 11)
       return setCurrentStyle(response);
     });
-    getCart((error, response) => {
+    getCart(sessionId, (error, response) => {
       if (error) {
         return 'Could not get cart';
       }
-      console.log('APP: get cart response', response);
+      // console.log('APP: get cart response', response);
       return setCart(response);
     });
-    addToCart(sessionId, productId, (error, response) => {
-      if (error) {
-        return 'Could not add to Cart';
-      }
-      console.log('add to cart success: ', response);
-      return getCart(sessionId);
-    });
+    // addToCart(sessionId, productId, (error, response) => {
+    //   if (error) {
+    //     return 'Could not add to Cart';
+    //   }
+    //   console.log('add to cart success: ', response);
+    //   return getCart(sessionId);
+    // });
     listProducts((error, response) => {
       if (error) {
         return 'Could not get product list';
       }
       return setProductList(response);
     });
-    setSessionId(8808);
+    setSessionId(8888);
   }, [sessionId, productId]);
 
   if (
@@ -90,7 +96,9 @@ const App = () => {
       </div>
     );
   }
-  console.log('APP: cart ', cart);
+  // window.location.reload();
+  console.log();
+
   return (
     <Container>
       <div className="nav-wrap">
@@ -116,6 +124,7 @@ const App = () => {
             cart={cart}
             currentStyle={currentStyle}
             product={product}
+            getInfo={getInfo}
           />
         </div>
       </div>

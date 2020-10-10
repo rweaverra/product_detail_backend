@@ -1,5 +1,8 @@
 /* eslint-disable no-console */
 const apiPath = 'http://52.26.193.201:3000';
+// This is my default callback. It prevents callback is not a function error - Temporary
+const arrowFunc = (error, data) => { if (error) { return error; } return data; };
+
 /* List Products - Retrieves the list of products.
 
 GET /products/list
@@ -65,11 +68,14 @@ Status: 200 OK
 }
 */
 
-export const getInfo = (productId, callback) => {
+export const getInfo = (productId, callback = arrowFunc) => {
   const path = `${apiPath}/products/${productId}`;
   return fetch(path)
     .then((result) => result.json())
-    .then((data) => { callback(null, data); })
+    .then((data) => {
+      console.log('Get Info Data in Routes: ', data);
+      callback(null, data);
+    })
     .catch((error) => { callback(error, null); });
 };
 
@@ -296,21 +302,17 @@ Status: 200 OK
   // ...
 ]
 */
-// This is my default callback. It prevents callback is not a function error - Temporary
-const arrowFunc = (error, data) => { if (error) { return error; } return data; };
 
 // BUG: cart data is coming back as undefined in routes, app, productInfo, and Cart.
+// BUG FIXED: I had curly braces surrounding my response.json
 export const getCart = ((sessionId, callback = arrowFunc) => {
-  // const path = `${apiPath}/cart/${sessionId}`;
-  const path = `${apiPath}/cart/8808`;
+  const path = `${apiPath}/cart/${sessionId}`;
   fetch(path)
-    .then((response) => { response.json(); })
+    .then((response) => response.json())
     .then((data) => {
-      console.log('data in get cart', data);
       callback(null, data);
     })
     .catch((error) => {
-      console.log('error in get cart: ', error);
       callback(error, null);
     });
 });
@@ -340,11 +342,9 @@ export const addToCart = ((sessionId, productId, callback = arrowFunc) => {
     }),
   })
     .then((data) => {
-      // console.log('data in fetch post request: ', data);
       callback(null, data);
     })
     .catch((error) => {
-      // console.log('error in fetch post request: ', error);
       callback(error, null);
     });
 });

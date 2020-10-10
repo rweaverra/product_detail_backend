@@ -33,7 +33,7 @@ const Search = ({ setId }) => {
           onClick={(event) => handleSubmit(event)}
         />
       </Form.Group>
-      <Form.Label className="search-form-label">Search by Product Numbers 1-5</Form.Label>
+      <Form.Label className="search-form-label">Search by Product Numbers</Form.Label>
     </Container>
   );
 };

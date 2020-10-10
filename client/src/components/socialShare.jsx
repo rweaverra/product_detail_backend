@@ -12,8 +12,31 @@ import {
 import PropTypes from 'prop-types';
 
 const SocialShare = ({ product, currentStyle, styles }) => {
-  const body = `Check out ${product.name} in ${currentStyle.name} from The Proto Company!`;
-  const subject = `${product.name} in ${currentStyle.name} from The Proto Co.`;
+  let productName;
+  if (product === undefined || product.name === undefined) {
+    productName = 'new product';
+  } else {
+    productName = product.name;
+  }
+  let styleName;
+  if (currentStyle === undefined || currentStyle.name === undefined) {
+    styleName = 'new style';
+  } else {
+    styleName = currentStyle.name;
+  }
+  let imageURL;
+  if (
+    styles === undefined
+    || styles.results[0] === undefined
+    || styles.results[0].photos[0] === undefined
+    || styles.results[0].photos[0].url === undefined
+  ) {
+    imageURL = 'https://fec-image-bucket.s3-us-west-2.amazonaws.com/Coming+Soon+New+Announcement+Watercolor+Painterly+Social+Media.jpg';
+  } else {
+    imageURL = styles.results[0].photos[0].url;
+  }
+  const body = `Check out ${productName} in ${styleName} from The Proto Company!`;
+  const subject = `${productName} in ${styleName} from The Proto Co.`;
   return (
     <div>
       <TwitterShareButton
@@ -29,13 +52,13 @@ const SocialShare = ({ product, currentStyle, styles }) => {
         className="social-spacing"
         quote={body}
         hashtag="TheProtoCo"
-        url={styles.results[0].photos[0].url}
+        url={imageURL}
       >
         <FacebookIcon size={24} round />
       </FacebookShareButton>
       <PinterestShareButton
         className="social-spacing"
-        media={styles.results[0].photos[0].url}
+        media={imageURL}
         description={body}
         url="protoco.com"
       >
@@ -45,7 +68,7 @@ const SocialShare = ({ product, currentStyle, styles }) => {
         className="social-spacing"
         subject={subject}
         body={body}
-        url={styles.results[0].photos[0].url}
+        url={imageURL}
       >
         <EmailIcon size={24} round />
       </EmailShareButton>

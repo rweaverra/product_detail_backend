@@ -20,7 +20,7 @@ const Cart = ({
       style: 'Black Lenses & Black Frame',
       price: '69',
       size: 'OS',
-      quantity: 2,
+      quantity: 1,
     },
     {
       product_id: '3',
@@ -52,7 +52,7 @@ const Cart = ({
       style: 'Black',
       price: '89',
       size: '7',
-      quantity: 2,
+      quantity: 1,
     },
     {
       product_id: '7',
@@ -108,7 +108,7 @@ const Cart = ({
       style: 'Blue',
       price: '233',
       size: 'OS',
-      quantity: 2,
+      quantity: 1,
     },
     {
       product_id: '15',
@@ -148,7 +148,7 @@ const Cart = ({
       style: 'Indigo',
       price: '757',
       size: 'M',
-      quantity: 2,
+      quantity: 1,
     },
     {
       product_id: '20',
@@ -156,7 +156,47 @@ const Cart = ({
       style: 'Orchid',
       price: '8',
       size: 'M',
-      quantity: 5,
+      quantity: 1,
+    },
+    {
+      product_id: '21',
+      name: 'Alphonso 1050 Shirt',
+      style: 'Black',
+      price: '900',
+      size: 'M',
+      quantity: 1,
+    },
+    {
+      product_id: '22',
+      name: 'Wellington Skirt',
+      style: 'Violet',
+      price: '923',
+      size: 'M',
+      quantity: 1,
+    },
+    {
+      product_id: '23',
+      name: 'Kane Hoodie',
+      style: 'Lime',
+      price: '788',
+      size: 'S',
+      quantity: 1,
+    },
+    {
+      product_id: '24',
+      name: 'Amani Tank Top',
+      style: 'Gold',
+      price: '725',
+      size: 'M',
+      quantity: 1,
+    },
+    {
+      product_id: '25',
+      name: 'Alfreda Jacke',
+      style: 'Gold',
+      price: '521',
+      size: 'M',
+      quantity: 1,
     },
   ];
   return (
@@ -167,6 +207,7 @@ const Cart = ({
             <th>Product Name</th>
             <th>Product Style</th>
             <th>Quantity</th>
+            <th>Size</th>
             <th>Price</th>
           </tr>
         </thead>
@@ -194,52 +235,6 @@ const Cart = ({
       </Table>
     </div>
   );
-
-//   console.log(cartArr);
-//   return (
-//     <div>
-//       <Table>
-//         <thead className="cart-table-header">
-//           <tr>
-//             <th>Product Name</th>
-//             <th>Product Style</th>
-//             <th>Quantity</th>
-//             <th>Price</th>
-//           </tr>
-//         </thead>
-//         <tbody className="cart-table-body">
-//           <tr>
-//             <td>{product.name}</td>
-//             <td>{currentStyle.name}</td>
-//             <td>S</td>
-//             <td>1</td>
-//             <td>
-//               $
-//               {
-//                 currentStyle.sale_price > 0
-//                   ? currentStyle.sale_price
-//                   : currentStyle.original_price
-//               }
-//             </td>
-//           </tr>
-//           <tr className="totals">
-//             <td />
-//             <td />
-//             <td />
-//             <td>1 Total</td>
-//             <td>
-//               $
-//               {
-//                 currentStyle.sale_price > 0
-//                   ? currentStyle.sale_price
-//                   : currentStyle.original_price
-//               }
-//             </td>
-//           </tr>
-//         </tbody>
-//       </Table>
-//     </div>
-//   );
 };
 
 Cart.propTypes = {

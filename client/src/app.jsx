@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -23,11 +22,7 @@ const App = () => {
   const [reviews, setReviews] = useState({});
   const [cart, setCart] = useState([]);
   const [productList, setProductList] = useState([]);
-  const [sessionId, setSessionId] = useState(8888);
-  // if is home, the page will render product info
-  // if is contact is true, the page will render contact info
-  // const [isHome, setHome] = useState(true);
-  // const [isContact, setContact] = useState(false);
+  const [sessionId, setSessionId] = useState(9095);
 
   useEffect(() => {
     getAllStyles(productId, (error, response) => {
@@ -58,6 +53,9 @@ const App = () => {
       if (error) {
         return 'Could not get cart';
       }
+      if (cart.length > 15) {
+        setSessionId((sessionId) + 1);
+      }
       return setCart(response);
     });
     listProducts((error, response) => {
@@ -66,8 +64,8 @@ const App = () => {
       }
       return setProductList(response);
     });
-    setSessionId(8888);
-  }, [sessionId, productId]);
+    setSessionId(9095);
+  }, [sessionId, productId, cart]);
 
   if (
     Object.keys(reviews).length === 0
@@ -86,8 +84,6 @@ const App = () => {
       </div>
     );
   }
-  // window.location.reload();
-  console.log();
 
   return (
     <Container>

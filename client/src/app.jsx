@@ -40,7 +40,6 @@ const App = () => {
       if (error) {
         return 'Could not get products';
       }
-      // setId(response.id);
       return setProduct(response);
     });
     getReviews(productId, (error, response) => {
@@ -53,23 +52,14 @@ const App = () => {
       if (error) {
         return 'Could not get default style';
       }
-      // set a conditional handler for styles(product 11)
       return setCurrentStyle(response);
     });
     getCart(sessionId, (error, response) => {
       if (error) {
         return 'Could not get cart';
       }
-      // console.log('APP: get cart response', response);
       return setCart(response);
     });
-    // addToCart(sessionId, productId, (error, response) => {
-    //   if (error) {
-    //     return 'Could not add to Cart';
-    //   }
-    //   console.log('add to cart success: ', response);
-    //   return getCart(sessionId);
-    // });
     listProducts((error, response) => {
       if (error) {
         return 'Could not get product list';
@@ -124,7 +114,6 @@ const App = () => {
             cart={cart}
             currentStyle={currentStyle}
             product={product}
-            getInfo={getInfo}
           />
         </div>
       </div>

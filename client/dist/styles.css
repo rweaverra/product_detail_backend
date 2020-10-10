@@ -137,7 +137,7 @@ h3, h4, h5 {
   border-top: none;
   border-bottom: none;
   border-radius: 0;
-  background-image: url(http://cdn.lowgif.com/full/558c542dc02a1df0-.gif);
+  background-image: url(https://fec-image-bucket.s3-us-west-2.amazonaws.com/fec-mountains.gif);
   background-size: 104%;
   background-repeat: no-repeat;
   background-clip: padding-box;
@@ -521,7 +521,7 @@ padding-top: 10px;
   margin-bottom: 0;
 }
 .cart-navbar {
-  background-color: #373838;
+  background-color: #373838 !important;
   border-top: none !important;
   border-left: 2px solid #658DC6 !important;
   border-right: 2px solid #658DC6 !important;

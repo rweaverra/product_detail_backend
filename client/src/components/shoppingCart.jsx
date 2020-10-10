@@ -3,11 +3,8 @@ import Table from 'react-bootstrap/Table';
 import PropTypes from 'prop-types';
 
 const Cart = ({
-  cart, currentStyle, product,
+  cart,
 }) => {
-  console.log('CART: cart! ', cart);
-  // [ {id: 348, user_session: 8888, product_id: 1, active: 1}, ...]
-
   const productList = [
     {
       product_id: '1',
@@ -162,8 +159,6 @@ const Cart = ({
       quantity: 5,
     },
   ];
-  const cartArr = cart.map((item) => productList[item.product_id]);
-  console.log(cartArr);
   return (
     <div>
       <Table>
@@ -176,38 +171,75 @@ const Cart = ({
           </tr>
         </thead>
         <tbody className="cart-table-body">
-          <tr>
-            <td>{product.name}</td>
-            <td>{currentStyle.name}</td>
-            <td>S</td>
-            <td>1</td>
-            <td>
-              $
-              {
-                currentStyle.sale_price > 0
-                  ? currentStyle.sale_price
-                  : currentStyle.original_price
-              }
-            </td>
-          </tr>
-          <tr className="totals">
-            <td />
-            <td />
-            <td />
-            <td>1 Total</td>
-            <td>
-              $
-              {
-                currentStyle.sale_price > 0
-                  ? currentStyle.sale_price
-                  : currentStyle.original_price
-              }
-            </td>
-          </tr>
+          {
+            cart.map((item) => {
+              const itemInfo = productList[item.product_id];
+              return (
+                <>
+                  <tr>
+                    <td>{itemInfo.name}</td>
+                    <td>{itemInfo.style}</td>
+                    <td>{itemInfo.size}</td>
+                    <td>{itemInfo.quantity}</td>
+                    <td>
+                      $
+                      {itemInfo.price}
+                    </td>
+                  </tr>
+                </>
+              );
+            })
+          }
         </tbody>
       </Table>
     </div>
   );
+
+//   console.log(cartArr);
+//   return (
+//     <div>
+//       <Table>
+//         <thead className="cart-table-header">
+//           <tr>
+//             <th>Product Name</th>
+//             <th>Product Style</th>
+//             <th>Quantity</th>
+//             <th>Price</th>
+//           </tr>
+//         </thead>
+//         <tbody className="cart-table-body">
+//           <tr>
+//             <td>{product.name}</td>
+//             <td>{currentStyle.name}</td>
+//             <td>S</td>
+//             <td>1</td>
+//             <td>
+//               $
+//               {
+//                 currentStyle.sale_price > 0
+//                   ? currentStyle.sale_price
+//                   : currentStyle.original_price
+//               }
+//             </td>
+//           </tr>
+//           <tr className="totals">
+//             <td />
+//             <td />
+//             <td />
+//             <td>1 Total</td>
+//             <td>
+//               $
+//               {
+//                 currentStyle.sale_price > 0
+//                   ? currentStyle.sale_price
+//                   : currentStyle.original_price
+//               }
+//             </td>
+//           </tr>
+//         </tbody>
+//       </Table>
+//     </div>
+//   );
 };
 
 Cart.propTypes = {

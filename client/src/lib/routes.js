@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const apiPath = 'http://52.26.193.201:3000';
 // This is my default callback. It prevents callback is not a function error - Temporary
 const arrowFunc = (error, data) => { if (error) { return error; } return data; };
@@ -73,7 +72,6 @@ export const getInfo = (productId, callback = arrowFunc) => {
   return fetch(path)
     .then((result) => result.json())
     .then((data) => {
-      console.log('Get Info Data in Routes: ', data);
       callback(null, data);
     })
     .catch((error) => { callback(error, null); });

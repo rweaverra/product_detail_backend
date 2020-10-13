@@ -22,20 +22,77 @@ const App = () => {
   const [reviews, setReviews] = useState({});
   const [cart, setCart] = useState([]);
   const [productList, setProductList] = useState([]);
-  const [sessionId, setSessionId] = useState(9095);
+  const [sessionId, setSessionId] = useState(8008);
+  // const [isLoaded, setLoaded] = useState(false);
+
+  // useEffect(() => {
+  //   getDefaultStyle(productId, (error, response) => {
+  //     if (error) {
+  //       return 'Could not get default style';
+  //     }
+  //     return setCurrentStyle(response);
+  //   });
+  //   if (isLoaded === false) {
+  //     setSessionId(8008);
+  //     getInfo(productId, (error, response) => {
+  //       if (error) {
+  //         return 'Could not get products';
+  //       }
+  //       return setProduct(response);
+  //     });
+  //     getAllStyles(productId, (error, response) => {
+  //       if (error) {
+  //         return 'Could not get styles';
+  //       }
+  //       return setStyles(response);
+  //     });
+  //     getCart(sessionId, (error, response) => {
+  //       if (error) {
+  //         return 'Could not get cart';
+  //       }
+  //       return setCart(response);
+  //     });
+  //     getReviews(productId, (error, response) => {
+  //       if (error) {
+  //         return 'Could not get reviews';
+  //       }
+  //       return setReviews(response.ratings);
+  //     });
+  //     listProducts((error, response) => {
+  //       if (error) {
+  //         return 'Could not get product list';
+  //       }
+  //       return setProductList(response);
+  //     });
+  //     setLoaded(true);
+  //   }
+  // }, [sessionId, productId, cart, isLoaded, product]);
 
   useEffect(() => {
+    getDefaultStyle(productId, (error, response) => {
+      if (error) {
+        return 'Could not get default style';
+      }
+      return setCurrentStyle(response);
+    });
+    setSessionId(8008);
+    getInfo(productId, (error, response) => {
+      if (error) {
+        return 'Could not get products';
+      }
+      return setProduct(response);
+    });
     getAllStyles(productId, (error, response) => {
       if (error) {
         return 'Could not get styles';
       }
       return setStyles(response);
     });
-    getInfo(productId, (error, response) => {
+    getCart(sessionId, (error, response) => {
       if (error) {
-        return 'Could not get products';
+        return 'Could not get cart';
       }
-      return setProduct(response);
+      return setCart(response);
     });
     getReviews(productId, (error, response) => {
       if (error) {
@@ -43,29 +100,14 @@ const App = () => {
       }
       return setReviews(response.ratings);
     });
-    getDefaultStyle(productId, (error, response) => {
-      if (error) {
-        return 'Could not get default style';
-      }
-      return setCurrentStyle(response);
-    });
-    getCart(sessionId, (error, response) => {
-      if (error) {
-        return 'Could not get cart';
-      }
-      if (cart.length > 15) {
-        setSessionId((sessionId) + 1);
-      }
-      return setCart(response);
-    });
     listProducts((error, response) => {
       if (error) {
         return 'Could not get product list';
       }
       return setProductList(response);
     });
-    setSessionId(9095);
-  }, [sessionId, productId, cart]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productId, cart]);
 
   if (
     Object.keys(reviews).length === 0

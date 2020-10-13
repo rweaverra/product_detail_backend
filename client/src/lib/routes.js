@@ -332,7 +332,6 @@ export const addToCart = ((sessionId, productId, callback = arrowFunc) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    // body: JSON.stringify({ user_session: int, product_id: int }),
     body: JSON.stringify({
       user_session: sessionId,
       product_id: productId,

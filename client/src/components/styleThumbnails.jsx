@@ -24,10 +24,14 @@ const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
         {stylesArr.map((photo) => {
           let photoUrl = '';
           const styleId = photo[1].style_id;
-          if (photo[1].photos[0].thumbnail_url === null) {
+          const firstPhoto = photo[1].photos[0];
+          if (
+            firstPhoto.thumbnail_url === undefined
+            || firstPhoto.thumbnail_url === null
+          ) {
             photoUrl = 'https://fec-image-bucket.s3-us-west-2.amazonaws.com/Coming+Soon+New+Announcement+Watercolor+Painterly+Social+Media.jpg';
           } else {
-            photoUrl = photo[1].photos[0].thumbnail_url;
+            photoUrl = firstPhoto.thumbnail_url;
           }
           if (styleId === currentStyle.style_id) {
             className = 'thumbnails-selected';

@@ -7,20 +7,10 @@ const Search = ({ setId }) => {
   const [searchInput, setSearchInput] = useState(1);
 
   const handleSearchChange = (e) => {
-    if (e.target.value === 3) {
-      setSearchInput(2);
-    }
-    if (e.target.value === 10 || e.target.value === 11) {
-      setSearchInput(9);
-    }
-    if (e.target.value === 12) {
-      setSearchInput(13);
-    }
     setSearchInput(Number(e.target.value));
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(`submitted ${searchInput}`);
     setId(searchInput);
   };
 

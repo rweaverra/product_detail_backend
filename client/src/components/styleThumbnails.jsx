@@ -47,7 +47,6 @@ const StyleThumbnails = ({ styles, setCurrentStyle, currentStyle }) => {
               alt={photo.name}
               roundedCircle
               onClick={() => {
-                console.log('clicked');
                 handleStyleSelect(styleId);
               }}
             />

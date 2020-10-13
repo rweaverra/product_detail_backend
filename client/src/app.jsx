@@ -22,51 +22,92 @@ const App = () => {
   const [reviews, setReviews] = useState({});
   const [cart, setCart] = useState([]);
   const [productList, setProductList] = useState([]);
-  const [sessionId, setSessionId] = useState(9098);
-  const [isLoaded, setLoaded] = useState(false);
+  const [sessionId, setSessionId] = useState(8008);
+  // const [isLoaded, setLoaded] = useState(false);
+
+  // useEffect(() => {
+  //   getDefaultStyle(productId, (error, response) => {
+  //     if (error) {
+  //       return 'Could not get default style';
+  //     }
+  //     return setCurrentStyle(response);
+  //   });
+  //   if (isLoaded === false) {
+  //     setSessionId(8008);
+  //     getInfo(productId, (error, response) => {
+  //       if (error) {
+  //         return 'Could not get products';
+  //       }
+  //       return setProduct(response);
+  //     });
+  //     getAllStyles(productId, (error, response) => {
+  //       if (error) {
+  //         return 'Could not get styles';
+  //       }
+  //       return setStyles(response);
+  //     });
+  //     getCart(sessionId, (error, response) => {
+  //       if (error) {
+  //         return 'Could not get cart';
+  //       }
+  //       return setCart(response);
+  //     });
+  //     getReviews(productId, (error, response) => {
+  //       if (error) {
+  //         return 'Could not get reviews';
+  //       }
+  //       return setReviews(response.ratings);
+  //     });
+  //     listProducts((error, response) => {
+  //       if (error) {
+  //         return 'Could not get product list';
+  //       }
+  //       return setProductList(response);
+  //     });
+  //     setLoaded(true);
+  //   }
+  // }, [sessionId, productId, cart, isLoaded, product]);
 
   useEffect(() => {
-    if (isLoaded === false) {
-      getAllStyles(productId, (error, response) => {
-        if (error) {
-          return 'Could not get styles';
-        }
-        return setStyles(response);
-      });
-      getInfo(productId, (error, response) => {
-        if (error) {
-          return 'Could not get products';
-        }
-        return setProduct(response);
-      });
-      getReviews(productId, (error, response) => {
-        if (error) {
-          return 'Could not get reviews';
-        }
-        return setReviews(response.ratings);
-      });
-      getDefaultStyle(productId, (error, response) => {
-        if (error) {
-          return 'Could not get default style';
-        }
-        return setCurrentStyle(response);
-      });
-      getCart(sessionId, (error, response) => {
-        if (error) {
-          return 'Could not get cart';
-        }
-        return setCart(response);
-      });
-      listProducts((error, response) => {
-        if (error) {
-          return 'Could not get product list';
-        }
-        return setProductList(response);
-      });
-      setSessionId(9098);
-      setLoaded(true);
-    }
-  }, [sessionId, productId, cart, isLoaded]);
+    getDefaultStyle(productId, (error, response) => {
+      if (error) {
+        return 'Could not get default style';
+      }
+      return setCurrentStyle(response);
+    });
+    setSessionId(8008);
+    getInfo(productId, (error, response) => {
+      if (error) {
+        return 'Could not get products';
+      }
+      return setProduct(response);
+    });
+    getAllStyles(productId, (error, response) => {
+      if (error) {
+        return 'Could not get styles';
+      }
+      return setStyles(response);
+    });
+    getCart(sessionId, (error, response) => {
+      if (error) {
+        return 'Could not get cart';
+      }
+      return setCart(response);
+    });
+    getReviews(productId, (error, response) => {
+      if (error) {
+        return 'Could not get reviews';
+      }
+      return setReviews(response.ratings);
+    });
+    listProducts((error, response) => {
+      if (error) {
+        return 'Could not get product list';
+      }
+      return setProductList(response);
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productId, cart]);
 
   if (
     Object.keys(reviews).length === 0

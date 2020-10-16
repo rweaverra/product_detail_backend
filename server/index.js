@@ -58,7 +58,7 @@ app.get('/products/:product_id', function (req, res) {
       res.send(results);
     }
   })
-
+console.log('this test');
 });
 
 

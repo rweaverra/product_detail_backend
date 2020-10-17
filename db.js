@@ -3,7 +3,7 @@ const Pool = require("pg").Pool;
 const pool = new Pool({
   user: "ryanweaver",
   password: "rootpass",
-  database: "postgres",
+  database: "reviews2",
   host: "localhost",
   port: 5432
 });
@@ -49,11 +49,25 @@ const queryFeauturesById = function(productId, callback) {
  })
 }
 
+const querySkusById = function(productId, callback) {
+  var queryString = `SELECT size, quantity FROM skus
+  INNER JOIN styles ON styles_id = ${productId};`
+
+  pool.query(queryString, (err, results) => {
+    if(err, null) {
+      callback(err)
+    }else {
+      callback(null, results)
+    }
+  })
+}
+
 
 
 module.exports = {
   pool,
   queryProductId,
   queryStylesByProductId,
-  queryFeauturesById
+  queryFeauturesById,
+  querySkusById
 };

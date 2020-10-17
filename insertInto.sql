@@ -11,6 +11,10 @@ INSERT INTO styles(
 	id, product_id, name, sale_price, original_price, default_style)
 	VALUES (1, 1, 'Forest Green & Black', null, 140, 1);
 
+    INSERT INTO styles(
+	product_id, name, sale_price, original_price, default_style)
+	VALUES (1, 'Forest Green & Black', null, '140', 1);
+
 
 INSERT INTO features(
 	id, product_id, feature, value)
@@ -19,3 +23,7 @@ INSERT INTO features(
 INSERT INTO features(
 	id, product_id, feature, value)
 	VALUES (2, 1, 'Buttons', 'Brass');
+
+INSERT INTO skus (
+  styles_id, size, quantity)
+  VALUES (1, 'XS', 8);

@@ -39,23 +39,8 @@ app.get('/products/list/:page/:count', function (req, res) {
 });
 
 
-// //product information
-// app.get('/products/:product_id', function (req, res) {
-//   console.log('req.body', req.params.product_id);
-//   var productId = req.params.product_id;
 
-//   pool.queryProductId(productId, (err, results) => {
-//     if (err) {
-//       res.sendStatus(404);
-//     } else {
-//       //this needs to include features in the return object.
-//       res.send(results.rows);
-//     }
-//   })
-// });
-
-
-//product Styles
+//product items
 app.get('/products/:product_id', function (req, res) {
   console.log('req.body', req.params.product_id);
   var productId = req.params.product_id;
@@ -82,7 +67,35 @@ app.get('/products/:product_id', function (req, res) {
 });
 
 
+//product styles
 
+app.get('/products/:product_id/styles', (req, res) => {
+  var productId = req.params.product_id;
+  var resultObject = {product_id: productId.toString()}
+  console.log('resultObject', resultObject)
+
+  pool.queryStylesByProductId(productId, (err, results) => {
+    if(err) {
+      res.sendStatus(400)
+    }else {
+      var returnedResults = results.rows
+      resultObject.results = returnedResults;
+      pool.querySkusById(productId, (err, results) => {
+        if(err){
+          res.sendStatus(404)
+        } else {
+          console.log('queryskus is working', results.rows);
+          var skus = results.rows;
+          resultObject.skus = skus;
+          res.send(resultObject);
+        }
+      })
+      // res.send(resultObject);
+      //make query to add the skus.
+    }
+  })
+
+})
 
 
 /*

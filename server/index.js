@@ -80,18 +80,27 @@ app.get('/products/:product_id/styles', (req, res) => {
     }else {
       var returnedResults = results.rows
       resultObject.results = returnedResults;
+
       pool.querySkusById(productId, (err, results) => {
         if(err){
           res.sendStatus(404)
         } else {
-          console.log('queryskus is working', results.rows);
           var skus = results.rows;
           resultObject.skus = skus;
-          res.send(resultObject);
+
+          pool.queryPhotosById(productId, (err, results) => {
+            if(err) {
+              res.sendStatus(400)
+            } else {
+              console.log('query photos is working', results.rows);
+              var photos = results.rows;
+          resultObject.photos = photos;
+              res.send(resultObject);
+            }
+          })
         }
       })
-      // res.send(resultObject);
-      //make query to add the skus.
+      //make query to add the photos
     }
   })
 

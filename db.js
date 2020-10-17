@@ -51,12 +51,26 @@ const queryFeauturesById = function(productId, callback) {
 
 const querySkusById = function(productId, callback) {
   var queryString = `SELECT size, quantity FROM skus
-  INNER JOIN styles ON styles_id = ${productId};`
+  INNER JOIN styles ON styles_id = styles.id
+  WHERE styles.id = ${productId};`
 
   pool.query(queryString, (err, results) => {
     if(err, null) {
       callback(err)
     }else {
+      callback(null, results)
+    }
+  })
+}
+
+const queryPhotosById = function (productId, callback) {
+  const queryString = `SELECT thumbnail_url, url FROM photos
+  INNER JOIN styles ON styles_id = styles.id WHERE styles.id = ${productId};`
+
+  pool.query(queryString, (err, results) => {
+    if(err) {
+      callback(err, null)
+    } else {
       callback(null, results)
     }
   })
@@ -69,5 +83,6 @@ module.exports = {
   queryProductId,
   queryStylesByProductId,
   queryFeauturesById,
-  querySkusById
+  querySkusById,
+  queryPhotosById
 };

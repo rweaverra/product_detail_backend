@@ -27,3 +27,8 @@ INSERT INTO features(
 INSERT INTO skus (
   styles_id, size, quantity)
   VALUES (1, 'XS', 8);
+
+INSERT INTO photos (
+	styles_id, url, thumbnail_url)
+	Values (1, 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80', 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80');
+

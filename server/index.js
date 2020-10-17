@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
 const pool = require('../db');
+const cors = require('cors')
 const PORT = 3000;
 
 app.use(express.static('../client/dist'));
 app.use(express.json())
-
+app.use(cors());
 
 
 
@@ -38,36 +39,53 @@ app.get('/products/list/:page/:count', function (req, res) {
 });
 
 
-//product information
+// //product information
+// app.get('/products/:product_id', function (req, res) {
+//   console.log('req.body', req.params.product_id);
+//   var productId = req.params.product_id;
+
+//   pool.queryProductId(productId, (err, results) => {
+//     if (err) {
+//       res.sendStatus(404);
+//     } else {
+//       //this needs to include features in the return object.
+//       res.send(results.rows);
+//     }
+//   })
+// });
+
+
+//product Styles
 app.get('/products/:product_id', function (req, res) {
   console.log('req.body', req.params.product_id);
   var productId = req.params.product_id;
+  var resultObject ={};
 
   pool.queryProductId(productId, (err, results) => {
     if (err) {
       res.sendStatus(404);
     } else {
-      //this needs to include features in the return object.
-      res.send(results.rows);
-    }
-  })
-});
-
-
-//product Styles
-app.get('/products/:product_id/styles', function (req, res) {
-  var productId = req.params.product_id;
-  console.log('req.body', productId);
-
- pool.queryStylesByProductId(productId, (err, results) => {
-  if(err) {
-    res.sendStatus(422)
-  } else {
-    res.send(results.rows)
-    //this needs to send an object of
+      resultObject = results.rows[0];
+      pool.queryFeauturesById(productId, (err, results) => {
+        if (err) {
+          res.sendStatus(404);
+        } else {
+          var features = results.rows
+          resultObject.features = features;
+          console.log('resultObject', resultObject);
+          res.send(resultObject);
   }
- })
+    }
+      )
+  }
 });
+});
+
+
+
+
+
+/*
 
 //related Products
 app.get('/products/:product_id/related', function (req, res) {
@@ -121,3 +139,4 @@ app.post('/interactions/:element/:widget/:time', function (req, res) {
 });
 
 
+*/

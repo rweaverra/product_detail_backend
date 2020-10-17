@@ -72,6 +72,7 @@ export const getInfo = (productId, callback = arrowFunc) => {
   return fetch(path)
     .then((result) => result.json())
     .then((data) => {
+      console.log('inside Alis getrequest', data);
       callback(null, data);
     })
     .catch((error) => { callback(error, null); });
@@ -259,6 +260,10 @@ Status: 200 OK
     // ...
 }
 */
+
+
+
+
 export const getReviews = (productId, callback) => {
   const path = `${apiPath}/reviews/${productId}/meta`;
   return fetch(path)
@@ -270,6 +275,13 @@ export const getReviews = (productId, callback) => {
       callback(error, null);
     });
 };
+
+
+
+
+
+
+
 /* Questions & Answers
   I think I will want to connect to Kym's service via link.
 */

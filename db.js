@@ -41,10 +41,24 @@ const queryStylesByProductId = function(productId, callback) {
   })
 }
 
+const queryFeauturesById = function(productId, callback) {
+ var queryString = `SELECT feature, value FROM features
+ INNER JOIN product ON product_id = ${productId};`
+
+ pool.query(queryString, (err, results) => {
+   if(err, null) {
+     callback(err)
+   } else {
+     callback(null, results)
+   }
+ })
+}
+
 
 
 module.exports = {
   pool,
   queryProductId,
-  queryStylesByProductId
+  queryStylesByProductId,
+  queryFeauturesById
 };

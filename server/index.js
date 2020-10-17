@@ -33,46 +33,40 @@ pool.query('SELECT * FROM people', (err,res)=>{
 //list Products
 app.get('/products/list/:page/:count', function (req, res) {
   //need to account for page and count parameters
-
-
+  var page = req.params.page;
+  var count = req.params.count;
 });
 
 
-// app.post("/test", (req, res) => {
-//   console.log('inside app.post')
-// pool.query('SELECT * FROM people', (err,res)=>{
-//  console.log(err,res);
-
-// }
-// )
-//  });
-
 //product information
 app.get('/products/:product_id', function (req, res) {
-  //query databbase
+  console.log('req.body', req.params.product_id);
+  var productId = req.params.product_id;
 
-  pool.queryProductId((err, results) => {
+  pool.queryProductId(productId, (err, results) => {
     if (err) {
       res.sendStatus(404);
     } else {
-      res.send(results);
+      //this needs to include features in the return object.
+      res.send(results.rows);
     }
   })
-console.log('this test');
 });
 
 
 //product Styles
 app.get('/products/:product_id/styles', function (req, res) {
-  //query databbase
+  var productId = req.params.product_id;
+  console.log('req.body', productId);
 
-
-
+ pool.queryStylesByProductId(productId, (err, results) => {
   if(err) {
     res.sendStatus(422)
   } else {
-    res.sendStatus(200)
+    res.send(results.rows)
+    //this needs to send an object of
   }
+ })
 });
 
 //related Products

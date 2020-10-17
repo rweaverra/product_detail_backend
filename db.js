@@ -16,8 +16,8 @@ const pool = new Pool({
 // })
 
 
-const queryProductId = function(callback) {
-  var queryString = `SELECT * FROM product WHERE id = 1;`
+const queryProductId = function(productId, callback) {
+  var queryString = `SELECT * FROM product WHERE id = ${productId};`
 
   pool.query(queryString, (err, results) => {
     if(err) {
@@ -25,14 +25,26 @@ const queryProductId = function(callback) {
     }else {
       callback(null, results);
     }
-
  })
+}
 
+const queryStylesByProductId = function(productId, callback) {
+  var queryString = `SELECT * FROM styles WHERE product_id = ${productId};`
+
+  pool.query(queryString, (err, results) => {
+    if(err) {
+      callback(err, null)
+    }else {
+      callback (null, results)
+    }
+
+  })
 }
 
 
 
 module.exports = {
   pool,
-  queryProductId
+  queryProductId,
+  queryStylesByProductId
 };

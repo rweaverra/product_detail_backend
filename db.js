@@ -3,18 +3,13 @@ const Pool = require("pg").Pool;
 const pool = new Pool({
   user: "ryanweaver",
   password: "rootpass",
-  database: "reviews1",
+  database: "postgres",
   host: "localhost",
   port: 5432
 });
 
-
-
-// pool.query('SELECT * FROM people', (err,res)=>{
-//   console.log(err,res)
-//   pool.end()
-// })
-
+// var sql = fs.readFileSync('postgres.sql').toString();
+// pool.query()
 
 const queryProductId = function(productId, callback) {
   var queryString = `SELECT * FROM product WHERE id = ${productId};`

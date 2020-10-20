@@ -70,10 +70,11 @@ app.get('/products/:product_id', function (req, res) {
 app.get('/products/:product_id/styles', (req, res) => {
   var productId = req.params.product_id;
  var newResults = {};
- var resultsArray;
- var counter = 1;
  var photosArray = [];
  var skus = {};
+ var resultsArray = [];
+ var photosObject = {};
+ var counter = 1;
  var photoCounter = 1;
  var skusCounter = 1;
 
@@ -82,60 +83,80 @@ app.get('/products/:product_id/styles', (req, res) => {
       res.sendStatus(400)
     }else {
       var returnedResults = results.rows
-      console.log('results array', returnedResults[0]['size']);
-      var skuKey = returnedResults[0]['size'].toString()
-
+  // console.log('returnedResults', returnedResults);
 
       //iterate results row
-      newResults['style_id'] = returnedResults[0]['stylesid'];
-      newResults['name'] = returnedResults[0]['name'];
-      newResults['original_price'] = returnedResults[0]['original_price'];
-      newResults['default?'] = returnedResults[0]['default_style'];
-      newResults['photos'] = [returnedResults[0]['thumbnail_url'], returnedResults[0]['url']];
-      skus[returnedResults[0]['size']] = returnedResults[0]['quantity'];
+      var initializeObject = function(index) {
+      newResults['style_id'] = returnedResults[index]['stylesid'];
+      newResults['name'] = returnedResults[index]['name'];
+      newResults['original_price'] = returnedResults[index]['original_price'];
+      newResults['sale_price'] = 0 || returnedResults[index]['sale_price'];
+      newResults['default?'] = returnedResults[index]['default_style'];
+      newResults['photos'] = [returnedResults[index]['thumbnail_url'], returnedResults[index]['url']];
+      skus[returnedResults[index]['size']] = returnedResults[index]['quantity'];  //<<<< may be an issue with the skus object
+      photosObject['thumbnail_url'] = returnedResults[index]['thumbnail_url']
+      photosObject['url'] = returnedResults[index]['url']
+      photosArray.push(photosObject);
 
-    console.log('newResults', newResults);
-    console.log('skus', skus);
+      return;
+
+      }
+
+
+
+    initializeObject(0);
 
       for(var i = 1; i < returnedResults.length; i++) {
         //if styles id hasnt change
-        if(returnedResults['stylesid'] === counter) {
+        if(returnedResults[i]['stylesid'] === counter) {
              //check photos and add
-             console.log(returnedResults[i].skusid)
-             if(returnedResults[i]['photos'] > skusCounter) {
-               console.log('yeah')
-               skus[returnedResults[i]['size']] = skus[returnedResults[i]['quantity']]
+             if(returnedResults[i]['skusid'] > skusCounter) {
+               console.log('skusid is greater than counter', returnedResults[i]['skusid'] )
+               skus[returnedResults[i]['size']] = returnedResults[i]['quantity']
+               console.log('skus', skus)
                skusCounter++;
              }
-             if(returnedResults[i]['skusid'] > photosCounter) {
-               console.log('counting skussssss')
+             if(returnedResults[i]['photosid'] > photoCounter) {
                photosArray.push(
                  { 'thumbnail_url': returnedResults[i]['thumbnail_url'],
                     'url': returnedResults[i]['url']
                });
                photosCounter++;
              }
-          //check features and add
 
         }
 
         //if styles id has changed
-         if(returnedResults[i].stylesid > counter) {
-           //combine all of the style 1 photos in an array, add the skus object, and then push the full object into the array. then recall the function.
-          counter ++;
-          photosArray = [];
+         if(returnedResults[i]['stylesid'] > counter) {
+
+           //combine all of the style 1 photos in an array, add the skus
+           //object, and then push the full object into the array. then
+           newResults['skus'] = skus;
+           newResults['photos'] = photosArray;
+          var stringified = JSON.stringify(newResults)
+          var parsed = JSON.parse(stringified)
+           resultsArray.push(parsed);
+
+           //call initialization function function and reset photocounter and skus counter
+           photosArray = [];
           skus = {};
           photoCounter = 1;
          skusCounter = 1;
+         counter ++;
 
-
-
+         initializeObject(i);
 
          }
 
-      }
+         //will need to make a final if state to push newresults into array if there are no more styles left.
 
-      res.send(returnedResults);
+      }
+           newResults['skus'] = skus;
+           newResults['photos'] = photosArray;
+           resultsArray.push(newResults);
+
+
+      res.send(resultsArray);
     }
   })
 });

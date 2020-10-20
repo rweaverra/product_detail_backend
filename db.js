@@ -12,7 +12,7 @@ const pool = new Pool({
 // pool.query()
 
 const queryProductId = function(productId, callback) {
-  var queryString = `SELECT * FROM product WHERE id = ${productId};`
+  var queryString = `SELECT * FROM product WHERE productId = ${productId};`
 
   pool.query(queryString, (err, results) => {
     if(err) {
@@ -21,6 +21,30 @@ const queryProductId = function(productId, callback) {
       callback(null, results);
     }
  })
+}
+
+const queryStyles = function(productId, callback) {
+  var queryString = `SELECT
+  stylesId, name, original_price, sale_price, default_style, photosId, url, thumbnail_url, skusId, size, quantity
+  FROM
+  styles
+
+  LEFT OUTER JOIN photos
+  ON photos.styles_id = stylesId
+
+  LEFT OUTER JOIN skus
+  ON skus.styles_id = stylesId
+
+  WHERE styles.product_id = 1;`
+  pool.query(queryString, (err, results) => {
+    if(err) {
+      callback(err, null)
+    }else {
+      callback (null, results)
+    }
+
+  })
+
 }
 
 const queryStylesByProductId = function(productId, callback) {
@@ -52,7 +76,7 @@ const queryFeauturesById = function(productId, callback) {
 const querySkusById = function(productId, callback) {
   var queryString = `SELECT size, quantity FROM skus
   INNER JOIN styles ON styles_id = styles.id
-  WHERE styles.id = ${productId};`
+  WHERE styles.product_id = ${productId};`
 
   pool.query(queryString, (err, results) => {
     if(err, null) {
@@ -84,5 +108,9 @@ module.exports = {
   queryStylesByProductId,
   queryFeauturesById,
   querySkusById,
-  queryPhotosById
+  queryPhotosById,
+  queryStyles
 };
+
+
+

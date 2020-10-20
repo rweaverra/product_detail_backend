@@ -72,7 +72,6 @@ export const getInfo = (productId, callback = arrowFunc) => {
   return fetch(path)
     .then((result) => result.json())
     .then((data) => {
-      console.log('inside Alis getrequest', data);
       callback(null, data);
     })
     .catch((error) => { callback(error, null); });
@@ -146,7 +145,9 @@ export const getAllStyles = (productId, callback) => {
   const path = `${apiPath}/products/${productId}/styles`;
   return fetch(path)
     .then((result) => result.json())
-    .then((data) => { callback(null, data); })
+    .then((data) => { callback(null, data);
+      console.log('inside Alis getrequest', data.results[0]);
+    })
     .catch((error) => { callback(error, null); });
 };
 

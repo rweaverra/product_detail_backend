@@ -66,9 +66,83 @@ app.get('/products/:product_id', function (req, res) {
 });
 });
 
+//current test of query styles-
+app.get('/products/:product_id/styles', (req, res) => {
+  var productId = req.params.product_id;
+ var newResults = {};
+ var resultsArray;
+ var counter = 1;
+ var photosArray = [];
+ var skus = {};
+ var photoCounter = 1;
+ var skusCounter = 1;
 
+  pool.queryStyles(productId, (err, results) => {
+    if(err) {
+      res.sendStatus(400)
+    }else {
+      var returnedResults = results.rows
+      console.log('results array', returnedResults[0]['size']);
+      var skuKey = returnedResults[0]['size'].toString()
+
+
+      //iterate results row
+      newResults['style_id'] = returnedResults[0]['stylesid'];
+      newResults['name'] = returnedResults[0]['name'];
+      newResults['original_price'] = returnedResults[0]['original_price'];
+      newResults['default?'] = returnedResults[0]['default_style'];
+      newResults['photos'] = [returnedResults[0]['thumbnail_url'], returnedResults[0]['url']];
+      skus[returnedResults[0]['size']] = returnedResults[0]['quantity'];
+
+    console.log('newResults', newResults);
+    console.log('skus', skus);
+
+      for(var i = 1; i < returnedResults.length; i++) {
+        //if styles id hasnt change
+        if(returnedResults['stylesid'] === counter) {
+             //check photos and add
+             console.log(returnedResults[i].skusid)
+             if(returnedResults[i]['photos'] > skusCounter) {
+               console.log('yeah')
+               skus[returnedResults[i]['size']] = skus[returnedResults[i]['quantity']]
+               skusCounter++;
+             }
+             if(returnedResults[i]['skusid'] > photosCounter) {
+               console.log('counting skussssss')
+               photosArray.push(
+                 { 'thumbnail_url': returnedResults[i]['thumbnail_url'],
+                    'url': returnedResults[i]['url']
+               });
+               photosCounter++;
+             }
+          //check features and add
+
+        }
+
+        //if styles id has changed
+         if(returnedResults[i].stylesid > counter) {
+           //combine all of the style 1 photos in an array, add the skus object, and then push the full object into the array. then recall the function.
+          counter ++;
+          photosArray = [];
+          skus = {};
+          photoCounter = 1;
+         skusCounter = 1;
+
+
+
+
+         }
+
+      }
+
+      res.send(returnedResults);
+    }
+  })
+});
 //product styles
 
+/*
+this was original query it pulled all the data but didn't organize it correctly
 app.get('/products/:product_id/styles', (req, res) => {
   var productId = req.params.product_id;
   var resultObject = {product_id: productId.toString()}
@@ -79,6 +153,7 @@ app.get('/products/:product_id/styles', (req, res) => {
       res.sendStatus(400)
     }else {
       var returnedResults = results.rows
+      console.log('results array', returnedResults);
       resultObject.results = returnedResults;
 
       pool.querySkusById(productId, (err, results) => {
@@ -105,7 +180,7 @@ app.get('/products/:product_id/styles', (req, res) => {
   })
 
 })
-
+*/
 
 /*
 

@@ -118,3 +118,12 @@ COPY photos FROM '/Users/ryanweaver/hackreactor/SDC/product-detail/database/phot
 DELIMITER ','
 CSV HEADER;
 
+
+
+CREATE INDEX product_index ON product (id);
+CREATE INDEX styles_index ON styles (product_id);
+
+CREATE INDEX features_index ON features (product_id)
+
+CREATE INDEX skus_index ON skus (styles_id);
+CREATE INDEX photos_index ON photos (styles_id);

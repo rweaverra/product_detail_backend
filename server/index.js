@@ -23,9 +23,11 @@ app.get('/products/list/:page/:count', (req, res) => {
   const { count } = req.params;
 });
 
+
 // product items
 app.get('/products/:product_id', (req, res) => {
   const productId = req.params.product_id;
+  console.log(req.body);
 
   pool.queryProductId(productId, (err, results) => {
     if (err) {

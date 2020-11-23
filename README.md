@@ -3,9 +3,8 @@
 
 ## Table of Contents
 
-
-* [Technologies Used](#technologies-used)
 * [Achievements and Optimizations](#achievements-and-optimizations)
+* [Technologies Used](#technologies-used)
 * [Requirements](#requirements)
 * [Development](#development)
 

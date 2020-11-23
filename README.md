@@ -1,4 +1,5 @@
-# Proto Company product server
+# Proto Company: product-page backend microservice
+> Proto company is an ecommerce retail clothing store. The company originally had working backend, however the api was buggy and not quick enough to accomodate increased traffic. The challenge was to replace the api and server and increase latency and throughput by designing the database schema, api, and deploying on AWS.
 
 
 ## Table of Contents
